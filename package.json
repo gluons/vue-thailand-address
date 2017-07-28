@@ -1,0 +1,54 @@
+{
+  "name": "vue-thailand-address",
+  "version": "0.0.1",
+  "description": "Thai address input for Vue.",
+  "main": "",
+  "scripts": {
+    "build": "poi build",
+    "dev": "poi --config ./poi.dev.config.js",
+    "sync:db": "node ./scripts/sync-db.js",
+    "sync:jql": "node ./scripts/sync-JQL.js",
+    "sync": "npm-run-all sync:*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gluons/vue-thailand-address.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vue-component",
+    "thailand",
+    "thai",
+    "address",
+    "addresses"
+  ],
+  "author": "Saran Tanpituckpong <sarunta@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gluons/vue-thailand-address/issues"
+  },
+  "homepage": "https://github.com/gluons/vue-thailand-address",
+  "peerDependencies": {
+    "vue": "2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "chalk": "^2.0.1",
+    "eslint": "^4.3.0",
+    "eslint-config-gluons": "^2.0.2",
+    "eslint-plugin-vue": "^2.1.0",
+    "fs-extra": "^4.0.0",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.0.2",
+    "poi": "^9.1.6",
+    "pug": "^2.0.0-rc.2",
+    "sass-loader": "^6.0.6"
+  },
+  "dependencies": {
+    "debounce-fn": "^1.0.0",
+    "es6-promise": "^4.1.1",
+    "string-similarity": "^1.2.0"
+  }
+}

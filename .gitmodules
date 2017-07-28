@@ -1,0 +1,8 @@
+[submodule "jquery.Thailand.js"]
+	path = dependencies/jquery.Thailand.js
+	url = https://github.com/earthchie/jquery.Thailand.js.git
+	branch = master
+[submodule "JQL"]
+	path = dependencies/JQL
+	url = https://github.com/earthchie/JQL.js.git
+	branch = master
