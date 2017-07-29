@@ -47,8 +47,8 @@
     "sass-loader": "^6.0.6"
   },
   "dependencies": {
-    "debounce-fn": "^1.0.0",
     "es6-promise": "^4.1.1",
+    "lodash.debounce": "^4.0.8",
     "string-similarity": "^1.2.0"
   }
 }
