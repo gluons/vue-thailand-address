@@ -2,9 +2,11 @@
   "name": "vue-thailand-address",
   "version": "0.0.1",
   "description": "Thai address input for Vue.",
-  "main": "",
+  "main": "./dist/vue-thailand-address.js",
   "scripts": {
-    "build": "poi build",
+    "build:unmin": "poi build --format umd --module-name VueThailandAddress",
+    "build:min": "poi build --config ./poi.config.min.js --format umd --module-name VueThailandAddress",
+    "build": "run-s build:unmin build:min",
     "dev": "poi --config ./poi.dev.config.js",
     "sync:db": "node ./scripts/sync-db.js",
     "sync:jql": "node ./scripts/sync-JQL.js",
