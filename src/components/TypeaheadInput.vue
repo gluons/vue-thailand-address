@@ -10,7 +10,7 @@
 				v-model='query',
 				@input='onInput'
 			)
-		autocomplete(:query='query', :target='name', :list='list')
+		autocomplete(:query='query', :target='target')
 	//- When no label
 	template(v-else)
 		input.typeahead-input(
@@ -19,10 +19,12 @@
 			v-model='query',
 			@input='onInput'
 		)
-		autocomplete(:query='query', :target='name', :list='list')
+		autocomplete(:query='query', :target='target', :list='list')
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { getPossibles } from '@/lib/datasource-utils';
 import Autocomplete from './Autocomplete';
 
 export default {
@@ -31,26 +33,36 @@ export default {
 		Autocomplete
 	},
 	props: {
-		name: { // Name. It's an actual property name in address data.
+		target: { // Name. It's an actual property name in address data.
 			type: String,
 			required: true
 		},
-		label: String, // Input label.
-		list: Array // Autocomplete list.
-	},
-	data() {
-		return {
-			query: '' // Search query.
-		};
+		label: String // Input label.
 	},
 	computed: {
+		...mapState([
+			'dataSource'
+		]),
+		query: {
+			get() {
+				return this.$store.state[this.target].value;
+			},
+			set(value) {
+				return this.$store.dispatch(`${this.target}/updateValue`, value);
+			}
+		},
 		hasLabel() {
 			return (this.label != null) && (this.label.length > 0);
 		}
 	},
 	methods: {
 		onInput() {
-			this.$emit('query', this.name, this.query);
+			if (this.query.length > 0) {
+				let possibles = getPossibles(this.dataSource, this.target, this.query);
+				this.$store.dispatch(`${this.target}/updateList`, possibles);
+			} else {
+				this.$store.dispatch('clearAutocompleteList');
+			}
 		}
 	}
 };

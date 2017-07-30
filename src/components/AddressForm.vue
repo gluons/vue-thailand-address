@@ -2,20 +2,20 @@
 .typeahead-address-form
 	.row
 		.col
-			typeahead-input(name='district', label='ตำบล/เขต', :list='autocompleteList.district', @query='onQuery')
+			typeahead-input(target='district', label='ตำบล/เขต')
 		.col
-			typeahead-input(name='amphoe', label='อำเภอ/แขวง', :list='autocompleteList.amphoe', @query='onQuery')
+			typeahead-input(target='amphoe', label='อำเภอ/แขวง')
 	.row
 		.col
-			typeahead-input(name='province', label='จังหวัด', :list='autocompleteList.province', @query='onQuery')
+			typeahead-input(target='province', label='จังหวัด')
 		.col
-			typeahead-input(name='zipcode', label='รหัสไปรษณีย์', :list='autocompleteList.zipcode', @query='onQuery')
+			typeahead-input(target='zipcode', label='รหัสไปรษณีย์')
 </template>
 
 <script>
-import { loadDB } from '@/lib/datasource-utils';
-import { calculateSimilarity } from '@/lib/utils';
-import * as debounce from 'lodash.debounce';
+import store from '@/store';
+
+import { loadDataSource } from '@/lib/datasource-utils';
 import TypeaheadInput from './TypeaheadInput';
 
 export default {
@@ -23,45 +23,10 @@ export default {
 	components: {
 		TypeaheadInput
 	},
-	data() {
-		return {
-			DB: null,
-			autocompleteList: {
-				district: [],
-				amphoe: [],
-				province: [],
-				zipcode: []
-			}
-		};
-	},
-	methods: {
-		clearAutocompleteList() {
-			this.autocompleteList = {
-				district: [],
-				amphoe: [],
-				province: [],
-				zipcode: []
-			};
-		},
-		onQuery: debounce(function (target, query) {
-			this.clearAutocompleteList();
-
-			if ((typeof query == 'string') && (query.length > 0)) {
-				let possibles = this.DB.select('*').where(target).match(query).fetch();
-				possibles.sort((a, b) => {
-					let aSimilarity = calculateSimilarity(query, a);
-					let bSimilarity = calculateSimilarity(query, b);
-
-					return bSimilarity - aSimilarity;
-				});
-
-				this.autocompleteList[target] = possibles;
-			}
-		}, 100)
-	},
+	store,
 	async created() {
-		let DB = await loadDB();
-		this.DB = DB;
+		let dataSource = await loadDataSource();
+		this.$store.dispatch('updateDataSource', dataSource);
 	}
 };
 </script>

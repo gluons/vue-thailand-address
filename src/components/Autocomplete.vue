@@ -1,49 +1,39 @@
 <template lang="pug">
-ul.typeahead-autocomplete(:style='{ maxHeight: maxHeight + "px" }', v-if='hasData')
-	li(v-for='(item, index) in autocompleteList', :key='index', v-html='item')
+ul.typeahead-autocomplete(:style='style', v-if='hasData')
+	li(v-for='(item, index) in autocompleteList', :key='item', v-html='item')
 </template>
 
 <script>
+import { addressToString } from '@/lib/utils';
+
 export default {
 	name: 'autocomplete',
 	props: {
-		query: String, // Search query.
-		target: String, // A property name in data item.
-		list: Array, // Autocomplete list,
+		target: { // A property name in data item.
+			type: String,
+			required: true
+		},
 		maxHeight: { // Max autocomplete height.
 			type: Number,
 			default: 200
 		}
 	},
 	computed: {
+		style() {
+			return {
+				'max-height': `${this.maxHeight}px`
+			};
+		},
+		query() {
+			return this.$store.state[this.target].value;
+		},
 		hasData() {
-			return this.list.length > 0;
+			return this.$store.getters[`${this.target}/hasAutocomplete`];
 		},
 		autocompleteList() {
-			return this.list.map(item => {
-				// Clone item to addressComponents. Do not mutate original item.
-				let addressComponents = Object.assign({}, item);
-				addressComponents[this.target] = this.highlightQuery(addressComponents[this.target]);
+			let autocomplete = this.$store.getters[`${this.target}/autocomplete`];
 
-				return this.compose(addressComponents);
-			});
-		}
-	},
-	methods: {
-		compose(addressComponents) {
-			return [
-				addressComponents.district,
-				addressComponents.amphoe,
-				addressComponents.province,
-				addressComponents.zipcode
-			].join(' » ');
-		},
-		highlightQuery(value) {
-			if (value) {
-				return value.replace(new RegExp(this.query, 'ig'), match => `<b>${match}</b>`);
-			} else {
-				return value;
-			}
+			return autocomplete.map(item => addressToString(item, this.target, this.query));
 		}
 	}
 };

@@ -44,11 +44,12 @@
     "npm-run-all": "^4.0.2",
     "poi": "^9.1.6",
     "pug": "^2.0.0-rc.2",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "vue": "^2.4.2",
+    "vuex": "^2.3.1"
   },
   "dependencies": {
     "es6-promise": "^4.1.1",
-    "lodash.debounce": "^4.0.8",
     "string-similarity": "^1.2.0"
   }
 }

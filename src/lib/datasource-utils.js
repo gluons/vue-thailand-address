@@ -1,4 +1,5 @@
 import * as JQL from '@/lib/JQL';
+import { calculateSimilarity } from '@/lib/utils';
 
 /*
  * Some functions are taken from jquery.Thailand.js
@@ -76,18 +77,39 @@ function preprocess(data) {
 }
 
 /**
- * Load JSON database.
+ * Load data source.
  *
- * @returns {Promise} Promise of processed database data.
+ * @returns {Promise} Promise of data source.
  */
-async function loadDB() {
+async function loadDataSource() {
 	let dataSource = await import('@/data/db.json');
-	let DB = new JQL(preprocess(dataSource));
+	return preprocess(dataSource);
+}
 
-	return DB;
+/**
+ * Get possibles that target property match search query.
+ *
+ * @param {Object[]} dataSource Data source.
+ * @param {String} target Target property.
+ * @param {String} query Search query.
+ * @returns {Object[]} Possibles.
+ */
+function getPossibles(dataSource, target, query) {
+	dataSource = dataSource.slice(0); // Prevent mutate the original data source. Clone it!
+	let DB = new JQL(dataSource);
+	let possibles = DB.select('*').where(target).match(`^${query}`).fetch();
+	possibles.sort((a, b) => {
+		let aSimilarity = calculateSimilarity(query, a);
+		let bSimilarity = calculateSimilarity(query, b);
+
+		return bSimilarity - aSimilarity;
+	});
+
+	return possibles;
 }
 
 export {
 	preprocess,
-	loadDB
+	loadDataSource,
+	getPossibles
 };
