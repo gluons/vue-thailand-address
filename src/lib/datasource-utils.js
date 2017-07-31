@@ -1,5 +1,6 @@
 import * as JQL from '@/lib/JQL';
 import { calculateSimilarity } from '@/lib/utils';
+import dataSource from '@/data/db.json';
 
 /*
  * Some functions are taken from jquery.Thailand.js
@@ -79,10 +80,9 @@ function preprocess(data) {
 /**
  * Load data source.
  *
- * @returns {Promise} Promise of data source.
+ * @returns {Object[]} Processed data source.
  */
-async function loadDataSource() {
-	let dataSource = await import('@/data/db.json');
+function loadDataSource() {
 	return preprocess(dataSource);
 }
 

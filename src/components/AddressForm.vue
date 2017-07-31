@@ -24,8 +24,8 @@ export default {
 		TypeaheadInput
 	},
 	store,
-	async created() {
-		let dataSource = await loadDataSource();
+	created() {
+		let dataSource = loadDataSource();
 		this.$store.dispatch('updateDataSource', dataSource);
 	}
 };
