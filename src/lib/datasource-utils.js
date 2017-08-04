@@ -2,16 +2,16 @@ import * as JQL from '@/lib/JQL';
 import { calculateSimilarity } from '@/lib/utils';
 import dataSource from '@/data/db.json';
 
-/*
- * Some functions are taken from jquery.Thailand.js
- * See the original file: https://github.com/earthchie/jquery.Thailand.js/blob/master/jquery.Thailand.js/src/jquery.Thailand.js
- */
-
 /**
  * Preprocess data from JSON database.
  *
  * @param {Object} data Data from JSON database.
  * @returns Processed data.
+ */
+
+/*
+ * Remark: This function is taken from earthchie/jquery.Thailand.js
+ * See: https://github.com/earthchie/jquery.Thailand.js/blob/master/jquery.Thailand.js/src/jquery.Thailand.js
  */
 function preprocess(data) {
 	let lookup = [],

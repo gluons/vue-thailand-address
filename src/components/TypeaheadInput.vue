@@ -8,7 +8,9 @@
 				type='text',
 				autocomplete='off',
 				v-model='query',
-				@input='onInput'
+				@input='onInput',
+				@blur='closeAutocomplete',
+				@keyup.esc='closeAutocomplete'
 			)
 		autocomplete(:query='query', :target='target')
 	//- When no label
@@ -17,7 +19,9 @@
 			type='text',
 			autocomplete='off',
 			v-model='query',
-			@input='onInput'
+			@input='onInput',
+			@blur='closeAutocomplete',
+			@keyup.esc='closeAutocomplete'
 		)
 		autocomplete(:query='query', :target='target', :list='list')
 </template>
@@ -61,8 +65,13 @@ export default {
 				let possibles = getPossibles(this.dataSource, this.target, this.query);
 				this.$store.dispatch(`${this.target}/updateList`, possibles);
 			} else {
-				this.$store.dispatch('clearAutocompleteList');
+				this.$store.dispatch(`${this.target}/clearList`);
 			}
+		},
+		closeAutocomplete() {
+			setTimeout(() => {
+				this.$store.dispatch(`${this.target}/clearList`);
+			}, 250);
 		}
 	}
 };

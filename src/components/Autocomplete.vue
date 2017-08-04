@@ -1,6 +1,6 @@
 <template lang="pug">
 ul.typeahead-autocomplete(:style='style', v-if='hasData')
-	li(v-for='(item, index) in autocompleteList', :key='item', v-html='item')
+	li(v-for='(item, index) in autocompleteList', :key='item.text', v-html='item.text', @click='onItemClick(item.data)')
 </template>
 
 <script>
@@ -33,7 +33,20 @@ export default {
 		autocompleteList() {
 			let autocomplete = this.$store.getters[`${this.target}/autocomplete`];
 
-			return autocomplete.map(item => addressToString(item, this.target, this.query));
+			return autocomplete.map(item => {
+				return {
+					data: item,
+					text: addressToString(item, this.target, this.query)
+				};
+			});
+		}
+	},
+	methods: {
+		onItemClick(data) {
+			let keys = Object.keys(data).filter(key => Object.prototype.hasOwnProperty.call(data, key));
+			keys.forEach(key => {
+				this.$store.dispatch(`${key}/updateValue`, data[key]);
+			});
 		}
 	}
 };
