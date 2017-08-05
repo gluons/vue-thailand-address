@@ -5,7 +5,7 @@ config.webpack = webpackConfig => {
 	webpackConfig.output.libraryTarget = 'commonjs2';
 	webpackConfig.output.libraryExport = 'default';
 	webpackConfig.externals = {
-		'es6-promise': 'es6-promise',
+		'array-filter': 'array-filter',
 		'string-similarity': 'string-similarity'
 	};
 
