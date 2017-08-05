@@ -57,8 +57,20 @@ function addressToString(addressData, currentTarget, query) {
 	].join(' » ');
 }
 
+/**
+ * Get the real keys/properties of given data item.
+ * Filter the external keys/properties out.
+ *
+ * @param {Object} dataItem A data item.
+ * @returns {String[]} Keys/Properties
+ */
+function getDataItemKeys(dataItem) {
+	return Object.keys(dataItem).filter(key => Object.prototype.hasOwnProperty.call(dataItem, key));
+}
+
 export {
 	calculateSimilarity,
 	highlightQuery,
-	addressToString
+	addressToString,
+	getDataItemKeys
 };

@@ -1,10 +1,17 @@
 <template lang="pug">
 ul.typeahead-autocomplete(:style='style', v-if='hasData')
-	li(v-for='(item, index) in autocompleteList', :key='item.text', v-html='item.text', @click='onItemClick(item.data)')
+	li(
+		v-for='(item, index) in autocompleteList',
+		:class='{ active: selectedIndex === index }'
+		:key='item.text',
+		v-html='item.text',
+		@click='onItemClick(item.data)',
+		@mouseover='changeSelectedIndex(index)'
+	)
 </template>
 
 <script>
-import { addressToString } from '@/lib/utils';
+import { addressToString, getDataItemKeys } from '@/lib/utils';
 
 export default {
 	name: 'autocomplete',
@@ -16,6 +23,10 @@ export default {
 		maxHeight: { // Max autocomplete height.
 			type: Number,
 			default: 200
+		},
+		selectedIndex: {
+			type: Number,
+			default: -1
 		}
 	},
 	computed: {
@@ -35,7 +46,7 @@ export default {
 
 			return autocomplete.map(item => {
 				return {
-					data: item,
+					data: Object.assign({}, item), // Shallow Clone
 					text: addressToString(item, this.target, this.query)
 				};
 			});
@@ -43,10 +54,15 @@ export default {
 	},
 	methods: {
 		onItemClick(data) {
-			let keys = Object.keys(data).filter(key => Object.prototype.hasOwnProperty.call(data, key));
+			let keys = getDataItemKeys(data);
 			keys.forEach(key => {
 				this.$store.dispatch(`${key}/updateValue`, data[key]);
 			});
+		},
+		changeSelectedIndex(index) {
+			if ((index >= 0) && (index < this.autocompleteList.length)) {
+				this.$emit('update:selectedIndex', index);
+			}
 		}
 	}
 };
@@ -69,7 +85,7 @@ export default {
 		cursor: pointer;
 		padding: 10px 5px;
 
-		&:hover {
+		&:hover, &.active {
 			background-color: #f5f5f5;
 		}
 		&:not(:last-child) {

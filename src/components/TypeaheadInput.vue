@@ -9,10 +9,13 @@
 				autocomplete='off',
 				v-model='query',
 				@input='onInput',
-				@blur='closeAutocomplete',
-				@keyup.esc='closeAutocomplete'
+				@blur='closeAutocomplete(false)',
+				@keyup.esc='closeAutocomplete',
+				@keyup.up='moveSelectedIndex(-1)',
+				@keyup.down='moveSelectedIndex(1)',
+				@keyup.enter.prevent='fillItemData'
 			)
-		autocomplete(:query='query', :target='target')
+		autocomplete(:query='query', :target='target', :selectedIndex.sync='selectedIndex')
 	//- When no label
 	template(v-else)
 		input.typeahead-input(
@@ -20,16 +23,22 @@
 			autocomplete='off',
 			v-model='query',
 			@input='onInput',
-			@blur='closeAutocomplete',
-			@keyup.esc='closeAutocomplete'
+			@blur='closeAutocomplete(false)',
+			@keyup.esc='closeAutocomplete',
+			@keyup.up='moveSelectedIndex(-1)',
+			@keyup.down='moveSelectedIndex(1)',
+			@keyup.enter.prevent='fillItemData'
 		)
-		autocomplete(:query='query', :target='target', :list='list')
+		autocomplete(:query='query', :target='target', :list='list', :selectedIndex.sync='selectedIndex')
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import { getPossibles } from '@/lib/datasource-utils';
+import { getDataItemKeys } from '@/lib/utils';
 import Autocomplete from './Autocomplete';
+
+const AUTOCOMPLETE_CLOSE_DELAY = 250;
 
 export default {
 	name: 'typeahead-input',
@@ -43,10 +52,19 @@ export default {
 		},
 		label: String // Input label.
 	},
+	data() {
+		return {
+			selectedIndex: -1,
+			autocompleteCount: 0
+		};
+	},
 	computed: {
 		...mapState([
 			'dataSource'
 		]),
+		possibles() {
+			return this.$store.getters[`${this.target}/autocomplete`];
+		},
 		query: {
 			get() {
 				return this.$store.state[this.target].value;
@@ -63,15 +81,47 @@ export default {
 		onInput() {
 			if (this.query.length > 0) {
 				let possibles = getPossibles(this.dataSource, this.target, this.query);
+				this.autocompleteCount = possibles.length;
+
 				this.$store.dispatch(`${this.target}/updateList`, possibles);
 			} else {
+				this.selectedIndex = -1;
+				this.autocompleteCount = 0;
+
 				this.$store.dispatch(`${this.target}/clearList`);
 			}
 		},
-		closeAutocomplete() {
+		closeAutocomplete(immediate) {
 			setTimeout(() => {
+				this.selectedIndex = -1;
+				this.autocompleteCount = 0;
+
 				this.$store.dispatch(`${this.target}/clearList`);
-			}, 250);
+			}, immediate ? 0 : AUTOCOMPLETE_CLOSE_DELAY);
+		},
+		moveSelectedIndex(indicator) {
+			if (
+				(this.autocompleteCount > 0)
+				&&
+				((this.selectedIndex + indicator) >= 0)
+				&&
+				((this.selectedIndex + indicator) < this.autocompleteCount)
+			) {
+				this.selectedIndex += indicator;
+			} else {
+				this.selectedIndex = ((this.selectedIndex + indicator) >= this.autocompleteCount) ? 0 : (this.autocompleteCount - 1);
+			}
+		},
+		fillItemData() {
+			let selectedIndex = this.selectedIndex;
+			if (this.possibles[selectedIndex]) {
+				let selectedItem = Object.assign({}, this.possibles[selectedIndex]); // Shallow Clone
+				let keys = getDataItemKeys(selectedItem);
+				keys.forEach(key => {
+					this.$store.dispatch(`${key}/updateValue`, selectedItem[key]);
+				});
+			}
+			this.closeAutocomplete(true);
 		}
 	}
 };
