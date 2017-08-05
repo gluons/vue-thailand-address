@@ -1,4 +1,4 @@
-import * as JQL from '@/lib/JQL';
+import * as filter from 'array-filter';
 import { calculateSimilarity } from '@/lib/utils';
 import dataSource from '@/data/db.json';
 
@@ -96,8 +96,8 @@ function loadDataSource() {
  */
 function getPossibles(dataSource, target, query) {
 	dataSource = dataSource.slice(0); // Prevent mutate the original data source. Clone it!
-	let DB = new JQL(dataSource);
-	let possibles = DB.select('*').where(target).match(`^${query}`).fetch();
+	let pattern = new RegExp(`^${query}`);
+	let possibles = filter(dataSource, item => (item[target] ? pattern.test(item[target]) : false));
 	possibles.sort((a, b) => {
 		let aSimilarity = calculateSimilarity(query, a);
 		let bSimilarity = calculateSimilarity(query, b);

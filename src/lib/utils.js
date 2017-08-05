@@ -1,3 +1,4 @@
+import * as filter from 'array-filter';
 import * as stringSimilarity from 'string-similarity';
 
 /**
@@ -65,7 +66,7 @@ function addressToString(addressData, currentTarget, query) {
  * @returns {String[]} Keys/Properties
  */
 function getDataItemKeys(dataItem) {
-	return Object.keys(dataItem).filter(key => Object.prototype.hasOwnProperty.call(dataItem, key));
+	return filter(Object.keys(dataItem), key => Object.prototype.hasOwnProperty.call(dataItem, key));
 }
 
 export {
