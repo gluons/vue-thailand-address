@@ -8,7 +8,9 @@ import * as actions from './actions';
 // Module
 import inputModule from './modules/input-module';
 
-Vue.use(Vuex);
+if (!((typeof window !== 'undefined') && window.Vue)) {
+	Vue.use(Vuex);
+}
 
 const debug = process.env.NODE_ENV !== 'production';
 
