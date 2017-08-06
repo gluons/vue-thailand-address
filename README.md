@@ -11,7 +11,7 @@
 
 ## 🔥 ต้นกำเนิด
 
-มาจาก [jquery.Thailand.js](https://github.com/earthchie/jquery.Thailand.js) ของ @earthchie
+มาจาก [jquery.Thailand.js](https://github.com/earthchie/jquery.Thailand.js) ของ [@earthchie](https://github.com/earthchie)
 
 ## ⚙️ การติดตั้ง
 
@@ -68,7 +68,7 @@ Vue.use(VueGitHubCorners);
 ## 👐 การช่วยเหลือ
 
 - Fork repo นี้ สร้าง branch ใหม่ แล้วส่ง pull request 🙂
-- ใช้ [Gitmoji](https://github.com/carloscuesta/gitmoji) ในข้อความ commit 😎
+- ใช้ [Gitmoji](https://github.com/carloscuesta/gitmoji) กับข้อความ commit 😎
 
 ## 🤖 การพัฒนา
 
