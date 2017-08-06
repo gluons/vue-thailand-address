@@ -65,6 +65,7 @@ module.exports = (minimize = false) => {
 					loader: 'vue-loader',
 					options: {
 						extractCSS: true,
+						optimizeSSR: false,
 						loaders: {
 							css: cssUse(true),
 							scss: scssUse(true)
