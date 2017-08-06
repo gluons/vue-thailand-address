@@ -2,14 +2,14 @@
 .typeahead-address-form
 	.row
 		.col
-			typeahead-input(target='district', label='ตำบล/เขต')
+			typeahead-input(target='district', :label='subdistrictLabel')
 		.col
-			typeahead-input(target='amphoe', label='อำเภอ/แขวง')
+			typeahead-input(target='amphoe', :label='districtLabel')
 	.row
 		.col
-			typeahead-input(target='province', label='จังหวัด')
+			typeahead-input(target='province', :label='provinceLabel')
 		.col
-			typeahead-input(target='zipcode', label='รหัสไปรษณีย์')
+			typeahead-input(target='zipcode', :label='zipcodeLabel')
 </template>
 
 <script>
@@ -20,6 +20,24 @@ import TypeaheadInput from './TypeaheadInput';
 
 export default {
 	name: 'address-form',
+	props: {
+		subdistrictLabel: {
+			type: String,
+			default: 'ตำบล/เขต'
+		},
+		districtLabel: {
+			type: String,
+			default: 'อำเภอ/แขวง'
+		},
+		provinceLabel: {
+			type: String,
+			default: 'จังหวัด'
+		},
+		zipcodeLabel: {
+			type: String,
+			default: 'รหัสไปรษณีย์'
+		}
+	},
 	components: {
 		TypeaheadInput
 	},
