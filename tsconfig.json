@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"lib": [
+			"dom",
+			"es5",
+			"es2015"
+		],
+		"baseUrl": ".",
+		"moduleResolution": "node",
+		"module": "es6",
+		"target": "es5",
+		"outDir": "./dist/",
+		"sourceMap": true,
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	},
+	"include": [
+		"./src/**/*"
+	]
+}

@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import state from './state';
+import actions from './actions';
 import mutations from './mutations';
-import * as actions from './actions';
+import state from './state';
 
 // Module
 import inputModule from './modules/input-module';
 
+// Prevent duplicate calling use when in browser.
 if (!((typeof window !== 'undefined') && window.Vue)) {
 	Vue.use(Vuex);
 }

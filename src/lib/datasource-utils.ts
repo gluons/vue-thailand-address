@@ -1,6 +1,7 @@
-import * as filter from 'array-filter';
-import { calculateSimilarity } from '@/lib/utils';
-import dataSource from '@/data/db.json';
+import database from '@/data/db.json';
+import AddressEntry from '@/interface/AddressEntry';
+import filter from 'array-filter';
+import { calculateSimilarity } from './utils';
 
 /**
  * Preprocess data from JSON database.
@@ -13,12 +14,12 @@ import dataSource from '@/data/db.json';
  * Remark: This function is taken from earthchie/jquery.Thailand.js
  * See: https://github.com/earthchie/jquery.Thailand.js/blob/master/jquery.Thailand.js/src/jquery.Thailand.js
  */
-function preprocess(data) {
-	let lookup = [],
-		words = [],
-		expanded = [],
-		useLookup = false,
-		t;
+function preprocess(data): AddressEntry[] {
+	let lookup = [];
+	let words = [];
+	let expanded = [];
+	let useLookup = false;
+	let t;
 
 	if (data.lookup && data.words) {
 		// compact with dictionary and lookup
@@ -28,7 +29,7 @@ function preprocess(data) {
 		data = data.data;
 	}
 
-	t = function (text) {
+	t = text => {
 		function repl(m) {
 			let ch = m.charCodeAt(0);
 			return words[ch < 97 ? ch - 65 : 26 + ch - 97];
@@ -48,17 +49,17 @@ function preprocess(data) {
 	}
 	// decompacted database in hierarchical form of:
 	// [["province",[["amphur",[["district",["zip"...]]...]]...]]...]
-	data.map(function (provinces) {
+	data.map(provinces => {
 		let i = 1;
 		if (provinces.length === 3) { // geographic database
 			i = 2;
 		}
 
-		provinces[i].map(function (amphoes) {
-			amphoes[i].map(function (districts) {
+		provinces[i].map(amphoes => {
+			amphoes[i].map(districts => {
 				districts[i] = districts[i] instanceof Array ? districts[i] : [districts[i]];
-				districts[i].map(function (zipcode) {
-					let entry = {
+				districts[i].map(zipcode => {
+					let entry: AddressEntry = {
 						district: t(districts[0]),
 						amphoe: t(amphoes[0]),
 						province: t(provinces[0]),
@@ -80,24 +81,24 @@ function preprocess(data) {
 /**
  * Load data source.
  *
- * @returns {Object[]} Processed data source.
+ * @returns {AddressEntry[]} Processed data source.
  */
-function loadDataSource() {
-	return preprocess(dataSource);
+function loadDataSource(): AddressEntry[] {
+	return preprocess(database);
 }
 
 /**
  * Get possibles that target property match search query.
  *
- * @param {Object[]} dataSource Data source.
+ * @param {AddressEntry[]} dataSource Data source.
  * @param {String} target Target property.
  * @param {String} query Search query.
- * @returns {Object[]} Possibles.
+ * @returns {AddressEntry[]} Possibles.
  */
-function getPossibles(dataSource, target, query) {
+function getPossibles(dataSource: AddressEntry[], target: string, query: string): AddressEntry[] {
 	dataSource = dataSource.slice(0); // Prevent mutate the original data source. Clone it!
 	let pattern = new RegExp(`^${query}`);
-	let possibles = filter(dataSource, item => (item[target] ? pattern.test(item[target]) : false));
+	let possibles: AddressEntry[] = filter(dataSource, item => (item[target] ? pattern.test(item[target]) : false));
 	possibles.sort((a, b) => {
 		let aSimilarity = calculateSimilarity(query, a);
 		let bSimilarity = calculateSimilarity(query, b);

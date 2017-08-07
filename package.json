@@ -15,7 +15,7 @@
     "build:web": "webpack --config ./build/webpack.web.config.js",
     "build": "run-p build:*",
     "dev": "poi",
-    "sync:db": "node ./scripts/sync-db.js",
+    "sync:db": "node ./scripts/sync-db",
     "sync": "npm-run-all sync:*",
     "test": "npm run lint"
   },
@@ -47,6 +47,9 @@
     "vue": "2"
   },
   "devDependencies": {
+    "@types/node": "6",
+    "@types/string-similarity": "^1.2.0",
+    "@types/webpack": "^3.0.5",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
@@ -68,6 +71,11 @@
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "ts-loader": "^2.3.2",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.5.0",
+    "tslint-config-gluons": "^1.0.5",
+    "typescript": "^2.4.2",
     "vue": "^2.4.2",
     "vue-loader": "^13.0.4",
     "vue-template-compiler": "^2.4.2",
