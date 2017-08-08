@@ -15,7 +15,7 @@
     "build:web": "webpack --config ./build/webpack.web.config.js",
     "build": "run-p build:*",
     "dev": "poi",
-    "sync:db": "node ./scripts/sync-db",
+    "sync:db": "ts-node -O '{ \"module\": \"commonjs\" }' ./scripts/sync-db.ts",
     "sync": "npm-run-all sync:*",
     "test": "npm run lint"
   },
