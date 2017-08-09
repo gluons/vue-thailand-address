@@ -3,10 +3,10 @@ import Vuex from 'vuex';
 
 import actions from './actions';
 import mutations from './mutations';
-import state from './state';
+import { State } from './state';
 
 // Module
-import inputModule from './modules/input-module';
+import { InputModule } from './modules/input-module';
 
 // Prevent duplicate calling use when in browser.
 if (!((typeof window !== 'undefined') && window.Vue)) {
@@ -15,15 +15,15 @@ if (!((typeof window !== 'undefined') && window.Vue)) {
 
 const debug = process.env.NODE_ENV !== 'production';
 
-export default new Vuex.Store({
-	state,
+export default new Vuex.Store<State>({
+	state: new State(),
 	mutations,
 	actions,
 	modules: {
-		district: inputModule,
-		amphoe: inputModule,
-		province: inputModule,
-		zipcode: inputModule
+		district: new InputModule(),
+		amphoe: new InputModule(),
+		province: new InputModule(),
+		zipcode: new InputModule()
 	},
 	strict: debug
 });

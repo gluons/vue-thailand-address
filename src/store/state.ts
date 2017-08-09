@@ -1,5 +1,5 @@
-import FormState from '@/interface/FormState';
+import AddressEntry from '@/interface/AddressEntry';
 
-export default {
-	dataSource: null
-} as FormState;
+export class State {
+	public dataSource: AddressEntry[] = null;
+}

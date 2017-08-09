@@ -1,16 +1,15 @@
-/* tslint:disable: no-shadowed-variable */
+/* tslint:disable: max-classes-per-file */
 import AddressEntry from '@/interface/AddressEntry';
-import InputState from '@/interface/InputState';
+import { ActionContext, ActionTree, GetterTree, Module, MutationTree } from 'vuex';
 import { LIST, VALUE } from '../mutation-types';
+import { State as RootState } from '../state';
 
-const state = (): InputState => {
-	return {
-		value: '',
-		autocompleteList: []
-	};
-};
+class InputState {
+	public value: string = '';
+	public autocompleteList: AddressEntry[] = [];
+}
 
-const getters = {
+const getters: GetterTree<InputState, RootState> = {
 	hasAutocomplete(state: InputState): boolean {
 		return state.autocompleteList.length > 0;
 	},
@@ -19,7 +18,7 @@ const getters = {
 	}
 };
 
-const mutations = {
+const mutations: MutationTree<InputState> = {
 	[VALUE](state: InputState, newValue: string) {
 		state.value = newValue;
 	},
@@ -28,22 +27,27 @@ const mutations = {
 	}
 };
 
-const actions = {
-	updateValue({ commit }, newValue: string) {
+const actions: ActionTree<InputState, RootState> = {
+	updateValue({ commit }: ActionContext<InputState, RootState>, newValue: string) {
 		commit(VALUE, newValue);
 	},
-	updateList({ commit }, newList: AddressEntry[]) {
+	updateList({ commit }: ActionContext<InputState, RootState>, newList: AddressEntry[]) {
 		commit(LIST, newList);
 	},
-	clearList({ commit }) {
+	clearList({ commit }: ActionContext<InputState, RootState>) {
 		commit(LIST, []);
 	}
 };
 
-export default {
-	namespaced: true,
-	state,
-	getters,
-	mutations,
-	actions
-};
+export class InputModule implements Module<InputState, RootState> {
+	public namespaced: boolean = true;
+
+	public state: InputState;
+	public mutations = mutations;
+	public getters = getters;
+	public actions = actions;
+
+	constructor() {
+		this.state = new InputState();
+	}
+}
