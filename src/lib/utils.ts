@@ -66,7 +66,7 @@ function addressToString(addressData: AddressEntry, currentTarget: string, query
  * @param {AddressEntry} dataItem A data item.
  * @returns {String[]} Keys/Properties
  */
-function getDataItemKeys(dataItem: AddressEntry) {
+function getDataItemKeys(dataItem: AddressEntry): string[] {
 	return filter(Object.keys(dataItem), key => Object.prototype.hasOwnProperty.call(dataItem, key));
 }
 
