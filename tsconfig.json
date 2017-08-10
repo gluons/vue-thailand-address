@@ -8,7 +8,7 @@
 		],
 		"baseUrl": ".",
 		"moduleResolution": "node",
-		"module": "es6",
+		"module": "commonjs",
 		"target": "es5",
 		"experimentalDecorators": true,
 		"outDir": "./dist/",

@@ -2,6 +2,23 @@
 # yarn lockfile v1
 
 
+"@types/copy-webpack-plugin@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/copy-webpack-plugin/-/copy-webpack-plugin-4.0.0.tgz#bfda8f5ed388cf09c426abe5111fccb7f3f25f0d"
+  dependencies:
+    "@types/minimatch" "*"
+    "@types/webpack" "*"
+
+"@types/extract-text-webpack-plugin@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/extract-text-webpack-plugin/-/extract-text-webpack-plugin-2.1.0.tgz#db0eb859d1b61ea5d2a0b75ad34b4ff317a18379"
+  dependencies:
+    "@types/webpack" "*"
+
+"@types/minimatch@*":
+  version "2.0.29"
+  resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-2.0.29.tgz#5002e14f75e2d71e564281df0431c8c1b4a2a36a"
+
 "@types/node@*":
   version "8.0.19"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.19.tgz#e46e2b0243de7d03f15b26b45c59ebb84f657a4e"
@@ -27,6 +44,14 @@
   resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-2.6.29.tgz#521347f69e20201d218f5991ae66e10878afcf1a"
   dependencies:
     "@types/source-map" "*"
+
+"@types/webpack@*":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.0.8.tgz#f9e93fdc268ef52fd933d6f2dcf62fb9a6524078"
+  dependencies:
+    "@types/node" "*"
+    "@types/tapable" "*"
+    "@types/uglify-js" "*"
 
 "@types/webpack@^3.0.6":
   version "3.0.6"

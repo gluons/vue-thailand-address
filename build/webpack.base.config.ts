@@ -1,8 +1,12 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path');
-const webpack = require('webpack');
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+import * as path from 'path';
+import * as webpack from 'webpack';
 
-module.exports = (minimize = false) => {
+/**
+ * Create webpack config.
+ * @param minimize {Boolean} Enable minimization
+ */
+const createConfig = (minimize = false): webpack.Configuration => {
 	const cssUse = (vue = false) => ExtractTextPlugin.extract({
 		fallback: vue ? 'vue-style-loader' : 'style-loader',
 		use: [
@@ -48,7 +52,7 @@ module.exports = (minimize = false) => {
 
 	return {
 		entry: {
-			'vue-thailand-address': path.resolve(__dirname, '../src/index.js')
+			'vue-thailand-address': path.resolve(__dirname, '../src/index.ts')
 		},
 		output: {
 			path: path.resolve(__dirname, '../dist')
@@ -61,6 +65,13 @@ module.exports = (minimize = false) => {
 					loader: 'babel-loader'
 				},
 				{
+					test: /\.ts$/,
+					loader: 'ts-loader',
+					options: {
+						appendTsSuffixTo: [/\.vue$/]
+					}
+				},
+				{
 					test: /\.vue$/,
 					loader: 'vue-loader',
 					options: {
@@ -68,7 +79,8 @@ module.exports = (minimize = false) => {
 						optimizeSSR: false,
 						loaders: {
 							css: cssUse(true),
-							scss: scssUse(true)
+							scss: scssUse(true),
+							ts: 'ts-loader'
 						}
 					}
 				},
@@ -89,7 +101,7 @@ module.exports = (minimize = false) => {
 			...(minimize ? [ new webpack.optimize.UglifyJsPlugin({ sourceMap: true }) ] : [])
 		],
 		resolve: {
-			extensions: ['.js', '.json', '.vue'],
+			extensions: ['.js', '.json', '.ts', '.vue'],
 			alias: {
 				'@': path.resolve(__dirname, '../src')
 			}
@@ -100,3 +112,5 @@ module.exports = (minimize = false) => {
 		}
 	};
 };
+
+export default createConfig;

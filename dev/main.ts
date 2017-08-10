@@ -1,5 +1,3 @@
-/// <reference path="./vue-shims.d.ts" />
-
 import Vue from 'vue';
 import VueThailandAddress from '../src/index';
 import App from './App.vue';

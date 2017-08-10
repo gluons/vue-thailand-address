@@ -10,12 +10,12 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue .",
     "prebuild": "rimraf ./dist/*",
-    "build:common": "webpack --config ./build/webpack.common.config.js",
-    "build:esm": "webpack --config ./build/webpack.esm.config.js",
-    "build:web": "webpack --config ./build/webpack.web.config.js",
+    "build:common": "webpack --config ./build/webpack.common.config.ts",
+    "build:esm": "webpack --config ./build/webpack.esm.config.ts",
+    "build:web": "webpack --config ./build/webpack.web.config.ts",
     "build": "run-p build:*",
     "dev": "poi",
-    "sync:db": "ts-node -O '{ \"module\": \"commonjs\" }' ./scripts/sync-db.ts",
+    "sync:db": "ts-node ./scripts/sync-db.ts",
     "sync": "npm-run-all sync:*",
     "test": "npm run lint"
   },
@@ -47,6 +47,8 @@
     "vue": "2"
   },
   "devDependencies": {
+    "@types/copy-webpack-plugin": "^4.0.0",
+    "@types/extract-text-webpack-plugin": "^2.1.0",
     "@types/node": "6",
     "@types/string-similarity": "^1.2.0",
     "@types/webpack": "^3.0.6",

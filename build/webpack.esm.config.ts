@@ -1,11 +1,13 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const merge = require('webpack-merge');
-const path = require('path');
+import * as CopyWebpackPlugin from 'copy-webpack-plugin';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+import * as path from 'path';
+import * as webpack from 'webpack';
+import * as merge from 'webpack-merge';
 
-const baseConfig = require('./webpack.base.config')();
+import createConfig from './webpack.base.config';
+const baseConfig: webpack.Configuration = createConfig();
 
-module.exports = merge(baseConfig, {
+const config: webpack.Configuration = merge(baseConfig, {
 	output: {
 		filename: '[name].esm.js',
 		libraryTarget: 'commonjs2'
@@ -28,3 +30,5 @@ module.exports = merge(baseConfig, {
 		'@/data/db.json': './db.json'
 	}
 });
+
+export default config;
