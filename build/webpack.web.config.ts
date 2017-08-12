@@ -16,7 +16,10 @@ const webConfig: webpack.Configuration = {
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'db'
 		})
-	]
+	],
+	externals: {
+		vue: 'Vue'
+	}
 };
 
 const configs: webpack.Configuration[] = [
