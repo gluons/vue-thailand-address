@@ -4,7 +4,7 @@ import { ActionContext, ActionTree, GetterTree, Module, MutationTree } from 'vue
 import { LIST, VALUE } from '../mutation-types';
 import { State as RootState } from '../state';
 
-class InputState {
+export class InputState {
 	public value: string = '';
 	public autocompleteList: AddressEntry[] = [];
 }

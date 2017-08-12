@@ -1,5 +1,5 @@
+import VueThailandAddress from '@/index';
 import Vue from 'vue';
-import VueThailandAddress from '../src/index';
 import App from './App.vue';
 
 Vue.use(VueThailandAddress);

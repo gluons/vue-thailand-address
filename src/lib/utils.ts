@@ -1,6 +1,6 @@
 import AddressEntry from '@/interface/AddressEntry';
-import filter from 'array-filter';
-import stringSimilarity from 'string-similarity';
+import * as filter from 'array-filter';
+import * as stringSimilarity from 'string-similarity';
 
 /**
  * Calculate similarity between query and address data.

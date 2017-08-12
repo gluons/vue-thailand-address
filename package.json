@@ -9,7 +9,7 @@
   "style": "./dist/vue-thailand-address.css",
   "scripts": {
     "lint": "eslint --ext .js,.vue .",
-    "prebuild": "rimraf ./dist/*",
+    "prebuild": "rimraf ./dist/* ./types/*",
     "build:common": "webpack --config ./build/webpack.common.config.ts",
     "build:esm": "webpack --config ./build/webpack.esm.config.ts",
     "build:web": "webpack --config ./build/webpack.web.config.ts",

@@ -6,18 +6,23 @@
 			"es5",
 			"es2015"
 		],
-		"baseUrl": ".",
 		"moduleResolution": "node",
 		"module": "commonjs",
 		"target": "es5",
 		"experimentalDecorators": true,
 		"outDir": "./dist/",
-		"sourceMap": true,
+		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
-		}
+			"@/*": [
+				"./src/*"
+			]
+		},
+		"sourceMap": true,
+		"declaration": true,
+		"declarationDir": "../types"
 	},
 	"include": [
-		"./src/**/*"
+		"./src/**/*",
+		"./dev/**/*"
 	]
 }
