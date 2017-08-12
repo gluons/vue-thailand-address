@@ -103,7 +103,9 @@ const createConfig = (minimize = false): webpack.Configuration => {
 		resolve: {
 			extensions: ['.js', '.json', '.ts', '.vue'],
 			alias: {
-				'@': path.resolve(__dirname, '../src')
+				'@': path.resolve(__dirname, '../src'),
+				'vue$': 'vue/dist/vue.esm.js',
+				'vuex$': 'vuex/dist/vuex.esm.js'
 			}
 		},
 		devtool: 'source-map',
