@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import * as Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 import AddressEntry from '@/interface/AddressEntry';

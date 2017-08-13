@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import * as Vue from 'vue';
+import * as Vuex from 'vuex';
 
 import actions from './actions';
 import mutations from './mutations';
