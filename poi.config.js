@@ -6,11 +6,5 @@ module.exports = {
 	},
 	presets: [
 		require('poi-preset-typescript')()
-	],
-	extendWebpack(config) {
-		config.resolve
-			.alias
-			.set('vue$', 'vue/dist/vue.runtime.common.js')
-			.set('vuex$', 'vuex/dist/vuex.js');
-	}
+	]
 };

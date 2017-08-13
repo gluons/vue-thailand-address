@@ -15,10 +15,10 @@
     "build:common": "webpack --config ./build/webpack.common.config.ts",
     "build:esm": "webpack --config ./build/webpack.esm.config.ts",
     "build:web": "webpack --config ./build/webpack.web.config.ts",
-    "build": "run-p build:*",
+    "build": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} run-p build:*",
     "dev": "poi",
     "sync:db": "ts-node ./scripts/sync-db.ts",
-    "sync": "npm-run-all sync:*",
+    "sync": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} npm-run-all sync:*",
     "test": "npm run lint"
   },
   "repository": {
@@ -63,6 +63,7 @@
     "babel-preset-vue-app": "^1.2.0",
     "chalk": "^2.1.0",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.5",
     "css-loader": "^0.28.4",
     "eslint": "^4.4.1",
     "eslint-config-gluons": "^2.0.2",

@@ -13,7 +13,9 @@ const clearAutocompleteList = ({ dispatch }: ActionContext<State, any>) => {
 	dispatch('zipcode/clearList');
 };
 
-export default {
+const actions: ActionTree<State, any> = {
 	updateDataSource,
 	clearAutocompleteList
-} as ActionTree<State, any>;
+};
+
+export default actions;
