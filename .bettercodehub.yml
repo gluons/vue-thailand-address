@@ -1,2 +1,5 @@
 exclude:
   - /build/.*
+languages:
+  - javascript
+  - typescript
