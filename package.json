@@ -8,7 +8,9 @@
   "browser": "./dist/vue-thailand-address.min.js",
   "style": "./dist/vue-thailand-address.css",
   "scripts": {
-    "lint": "eslint --ext .js,.vue .",
+    "lint:js": "eslint .",
+    "lint:ts": "tslint -p .",
+    "lint": "npm-run-all lint:*",
     "prebuild": "rimraf ./dist/* ./types/*",
     "build:common": "webpack --config ./build/webpack.common.config.ts",
     "build:esm": "webpack --config ./build/webpack.esm.config.ts",
