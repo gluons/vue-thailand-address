@@ -3,8 +3,9 @@
 [![vue 2](https://img.shields.io/badge/vue-2-42b983.svg?style=flat-square)](https://vuejs.org)
 [![npm](https://img.shields.io/npm/v/vue-thailand-address.svg?style=flat-square)](https://www.npmjs.com/package/vue-thailand-address)
 [![npm](https://img.shields.io/npm/dt/vue-thailand-address.svg?style=flat-square)](https://www.npmjs.com/package/vue-thailand-address)
+[![BCH compliance](https://bettercodehub.com/edge/badge/gluons/vue-thailand-address?style=flat-square&branch=master)](https://bettercodehub.com/)
 [![Dependency Status](https://dependencyci.com/github/gluons/vue-thailand-address/badge?style=flat-square)](https://dependencyci.com/github/gluons/vue-thailand-address)
-[![ESLint Gluons](https://img.shields.io/badge/code%20style-gluons-9C27B0.svg?style=flat-square)](https://github.com/gluons/eslint-config-gluons)
+[![TSLint](https://img.shields.io/badge/TSLint-gluons-15757B.svg?style=flat-square)](https://github.com/gluons/tslint-config-gluons)
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://github.com/carloscuesta/gitmoji)
 
 ตัวช่วยกรอกที่อยู่ของไทย สำหรับ [Vue](https://vuejs.org) (ปราศจาก jQuery 🎉)
