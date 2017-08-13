@@ -1,7 +1,12 @@
 import AddressForm from '@/components/AddressForm.vue';
 import V from 'vue';
 
-function install(Vue: typeof V) {
+/**
+ * Install as Vue plugin.
+ *
+ * @param {typeof V} Vue Vue instance.
+ */
+function install(Vue: typeof V): void {
 	Vue.component('address-form', AddressForm);
 }
 

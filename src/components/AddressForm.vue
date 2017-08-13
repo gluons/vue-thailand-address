@@ -16,10 +16,10 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import AddressEntry from '@/interface/AddressEntry';
 
 import store from '@/store';
 
+import AddressEntry from '@/interface/AddressEntry';
 import { loadDataSource } from '@/lib/datasource-utils';
 import TypeaheadInput from './TypeaheadInput.vue';
 

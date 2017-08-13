@@ -36,8 +36,8 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import AddressEntry from '@/interface/AddressEntry';
 
+import AddressEntry from '@/interface/AddressEntry';
 import { getPossibles } from '@/lib/datasource-utils';
 import { getDataItemKeys } from '@/lib/utils';
 import Autocomplete from './Autocomplete.vue';

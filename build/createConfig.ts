@@ -2,54 +2,14 @@ import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 import * as path from 'path';
 import * as webpack from 'webpack';
 
+import { createCSSUse, createSCSSUse } from './utils';
+
 /**
  * Create webpack config.
- * @param minimize {Boolean} Enable minimization
+ * @param {boolean} [minimize=false] Enable minimization.
+ * @returns {webpack.Configuration}
  */
-const createConfig = (minimize = false): webpack.Configuration => {
-	const cssUse = (vue = false) => ExtractTextPlugin.extract({
-		fallback: vue ? 'vue-style-loader' : 'style-loader',
-		use: [
-			{
-				loader: 'css-loader',
-				options: {
-					sourceMap: true,
-					minimize
-				}
-			},
-			{
-				loader: 'postcss-loader',
-				options: {
-					sourceMap: true
-				}
-			}
-		]
-	});
-	const scssUse = (vue = false) => ExtractTextPlugin.extract({
-		fallback: vue ? 'vue-style-loader' : 'style-loader',
-		use: [
-			{
-				loader: 'css-loader',
-				options: {
-					sourceMap: true,
-					minimize
-				}
-			},
-			{
-				loader: 'postcss-loader',
-				options: {
-					sourceMap: true
-				}
-			},
-			{
-				loader: 'sass-loader',
-				options: {
-					sourceMap: true
-				}
-			}
-		]
-	});
-
+function createConfig(minimize = false): webpack.Configuration {
 	return {
 		entry: {
 			'vue-thailand-address': path.resolve(__dirname, '../src/index.ts')
@@ -78,19 +38,19 @@ const createConfig = (minimize = false): webpack.Configuration => {
 						extractCSS: true,
 						optimizeSSR: false,
 						loaders: {
-							css: cssUse(true),
-							scss: scssUse(true),
+							css: createCSSUse(minimize, true),
+							scss: createSCSSUse(minimize, true),
 							ts: 'ts-loader'
 						}
 					}
 				},
 				{
 					test: /\.css$/,
-					use: cssUse()
+					use: createCSSUse(minimize)
 				},
 				{
 					test: /\.scss$/,
-					use: scssUse()
+					use: createSCSSUse(minimize)
 				}
 			]
 		},
@@ -98,7 +58,7 @@ const createConfig = (minimize = false): webpack.Configuration => {
 			new webpack.DefinePlugin({
 				'process.env.NODE_ENV': JSON.stringify('production')
 			}),
-			...(minimize ? [ new webpack.optimize.UglifyJsPlugin({ sourceMap: true }) ] : [])
+			...(minimize ? [new webpack.optimize.UglifyJsPlugin({ sourceMap: true })] : [])
 		],
 		resolve: {
 			extensions: ['.js', '.json', '.ts', '.vue'],
@@ -113,6 +73,6 @@ const createConfig = (minimize = false): webpack.Configuration => {
 			modules: false
 		}
 	};
-};
+}
 
 export default createConfig;

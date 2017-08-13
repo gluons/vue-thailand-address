@@ -14,8 +14,8 @@ ul.typeahead-autocomplete(:style='style', v-if='hasData')
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import AddressEntry from '@/interface/AddressEntry';
 
+import AddressEntry from '@/interface/AddressEntry';
 import { addressToString, getDataItemKeys } from '@/lib/utils';
 
 @Component({

@@ -1,7 +1,7 @@
 module.exports = {
 	entry: './dev/main.ts',
 	html: {
-		title: 'Vue Thailand address',
+		title: 'Vue Thailand Address',
 		description: 'Thai address input for Vue.'
 	},
 	presets: [

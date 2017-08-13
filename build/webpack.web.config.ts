@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import * as merge from 'webpack-merge';
 
-import createConfig from './webpack.base.config';
+import createConfig from './createConfig';
 
 const webConfig: webpack.Configuration = {
 	entry: {

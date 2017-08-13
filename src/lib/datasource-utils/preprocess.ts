@@ -1,18 +1,12 @@
-import database from '@/data/db.json';
 import AddressEntry from '@/interface/AddressEntry';
-import * as filter from 'array-filter';
-import { calculateSimilarity } from './utils';
 
 /**
  * Preprocess data from JSON database.
  *
- * @param {Object} data Data from JSON database.
+ * @author earthchie
+ * @see https://github.com/earthchie/jquery.Thailand.js/blob/master/jquery.Thailand.js/src/jquery.Thailand.js
+ * @param {any} data Data from JSON database.
  * @returns Processed data.
- */
-
-/*
- * Remark: This function is taken from earthchie/jquery.Thailand.js
- * See: https://github.com/earthchie/jquery.Thailand.js/blob/master/jquery.Thailand.js/src/jquery.Thailand.js
  */
 function preprocess(data): AddressEntry[] {
 	let lookup = [];
@@ -78,39 +72,4 @@ function preprocess(data): AddressEntry[] {
 	return expanded;
 }
 
-/**
- * Load data source.
- *
- * @returns {AddressEntry[]} Processed data source.
- */
-function loadDataSource(): AddressEntry[] {
-	return preprocess(database);
-}
-
-/**
- * Get possibles that target property match search query.
- *
- * @param {AddressEntry[]} dataSource Data source.
- * @param {String} target Target property.
- * @param {String} query Search query.
- * @returns {AddressEntry[]} Possibles.
- */
-function getPossibles(dataSource: AddressEntry[], target: string, query: string): AddressEntry[] {
-	dataSource = dataSource.slice(0); // Prevent mutate the original data source. Clone it!
-	let pattern = new RegExp(`^${query}`);
-	let possibles: AddressEntry[] = filter(dataSource, item => (item[target] ? pattern.test(item[target]) : false));
-	possibles.sort((a, b) => {
-		let aSimilarity = calculateSimilarity(query, a);
-		let bSimilarity = calculateSimilarity(query, b);
-
-		return bSimilarity - aSimilarity;
-	});
-
-	return possibles;
-}
-
-export {
-	preprocess,
-	loadDataSource,
-	getPossibles
-};
+export default preprocess;
