@@ -1,5 +1,8 @@
-const { copy } = require('fs-extra');
-const { green } = require('chalk');
+import * as chalk from 'chalk';
+import * as fs from 'fs-extra';
+
+const { green } = chalk;
+const { copy } = fs;
 
 /**
  * Copy file. (Overwrite destination file)
@@ -8,7 +11,7 @@ const { green } = require('chalk');
  * @param {String} dest Destination path.
  * @param {String} successMsg Success message.
  */
-function copyOverwrite(src, dest, successMsg = 'Sync success.') {
+function copyOverwrite(src: string, dest: string, successMsg = 'Sync success.'): void {
 	copy(src, dest, {
 		overwrite: true,
 		preserveTimestamps: true
@@ -21,4 +24,4 @@ function copyOverwrite(src, dest, successMsg = 'Sync success.') {
 		});
 }
 
-module.exports = copyOverwrite;
+export default copyOverwrite;

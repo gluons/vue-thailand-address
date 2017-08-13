@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"lib": [
+			"dom",
+			"es5",
+			"es2015"
+		],
+		"moduleResolution": "node",
+		"module": "commonjs",
+		"target": "es5",
+		"experimentalDecorators": true,
+		"outDir": "./dist/",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		},
+		"sourceMap": true,
+		"declaration": true,
+		"declarationDir": "../types"
+	},
+	"include": [
+		"./src/**/*",
+		"./dev/**/*"
+	]
+}

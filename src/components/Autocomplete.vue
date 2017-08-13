@@ -10,62 +10,62 @@ ul.typeahead-autocomplete(:style='style', v-if='hasData')
 	)
 </template>
 
-<script>
+<script lang="ts">
+import * as Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import AddressEntry from '@/interface/AddressEntry';
+
 import { addressToString, getDataItemKeys } from '@/lib/utils';
 
-export default {
-	name: 'autocomplete',
-	props: {
-		target: { // A property name in data item.
-			type: String,
-			required: true
-		},
-		maxHeight: { // Max autocomplete height.
-			type: Number,
-			default: 200
-		},
-		selectedIndex: {
-			type: Number,
-			default: -1
-		}
-	},
-	computed: {
-		style() {
-			return {
-				'max-height': `${this.maxHeight}px`
-			};
-		},
-		query() {
-			return this.$store.state[this.target].value;
-		},
-		hasData() {
-			return this.$store.getters[`${this.target}/hasAutocomplete`];
-		},
-		autocompleteList() {
-			let autocomplete = this.$store.getters[`${this.target}/autocomplete`];
+@Component({
+	name: 'autocomplete'
+})
+export default class Autocomplete extends Vue {
+	// Props
+	@Prop({ required: true })
+	target: string; // A property name in data item.
+	@Prop({ default: 200 })
+	maxHeight: number; // Max autocomplete height.
+	@Prop({ default: -1 })
+	selectedIndex = -1;
 
-			return autocomplete.map(item => {
-				return {
-					data: Object.assign({}, item), // Shallow Clone
-					text: addressToString(item, this.target, this.query)
-				};
-			});
-		}
-	},
-	methods: {
-		onItemClick(data) {
-			let keys = getDataItemKeys(data);
-			keys.forEach(key => {
-				this.$store.dispatch(`${key}/updateValue`, data[key]);
-			});
-		},
-		changeSelectedIndex(index) {
-			if ((index >= 0) && (index < this.autocompleteList.length)) {
-				this.$emit('update:selectedIndex', index);
-			}
+	// Computed
+	get style() {
+		return {
+			'max-height': `${this.maxHeight}px`
+		};
+	}
+	get query(): string {
+		return this.$store.state[this.target].value;
+	}
+	get hasData(): boolean {
+		return this.$store.getters[`${this.target}/hasAutocomplete`];
+	}
+	get autocompleteList() {
+		let autocomplete: AddressEntry[] = this.$store.getters[`${this.target}/autocomplete`];
+
+		return autocomplete.map(item => {
+			return {
+				data: Object.assign({}, item), // Shallow Clone
+				text: addressToString(item, this.target, this.query)
+			};
+		});
+	}
+
+	// Methods
+	onItemClick(data: AddressEntry): void {
+		let keys: string[] = getDataItemKeys(data);
+		keys.forEach(key => {
+			this.$store.dispatch(`${key}/updateValue`, data[key]);
+		});
+	}
+	changeSelectedIndex(index: number): void {
+		if ((index >= 0) && (index < this.autocompleteList.length)) {
+			this.$emit('update:selectedIndex', index);
 		}
 	}
-};
+}
 </script>
 
 <style lang="scss">

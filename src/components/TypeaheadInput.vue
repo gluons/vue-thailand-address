@@ -32,99 +32,105 @@
 		autocomplete(:query='query', :target='target', :list='list', :selectedIndex.sync='selectedIndex')
 </template>
 
-<script>
-import { mapState } from 'vuex';
+<script lang="ts">
+import * as Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import AddressEntry from '@/interface/AddressEntry';
+
 import { getPossibles } from '@/lib/datasource-utils';
 import { getDataItemKeys } from '@/lib/utils';
-import Autocomplete from './Autocomplete';
+import Autocomplete from './Autocomplete.vue';
 
 const AUTOCOMPLETE_CLOSE_DELAY = 250;
 
-export default {
+@Component({
 	name: 'typeahead-input',
 	components: {
 		Autocomplete
-	},
-	props: {
-		target: { // Name. It's an actual property name in address data.
-			type: String,
-			required: true
-		},
-		label: String // Input label.
 	},
 	data() {
 		return {
 			selectedIndex: -1,
 			autocompleteCount: 0
 		};
-	},
-	computed: {
-		...mapState([
-			'dataSource'
-		]),
-		possibles() {
-			return this.$store.getters[`${this.target}/autocomplete`];
-		},
-		query: {
-			get() {
-				return this.$store.state[this.target].value;
-			},
-			set(value) {
-				return this.$store.dispatch(`${this.target}/updateValue`, value);
-			}
-		},
-		hasLabel() {
-			return (this.label != null) && (this.label.length > 0);
-		}
-	},
-	methods: {
-		onInput() {
-			if (this.query.length > 0) {
-				let possibles = getPossibles(this.dataSource, this.target, this.query);
-				this.autocompleteCount = possibles.length;
+	}
+})
+export default class TypeaheadInput extends Vue {
+	// Data
+	selectedIndex: number = -1;
+	autocompleteCount: number = 0;
 
-				this.$store.dispatch(`${this.target}/updateList`, possibles);
-			} else {
-				this.selectedIndex = -1;
-				this.autocompleteCount = 0;
+	// Props
+	@Prop({ required: true })
+	target: string; // Name. It's an actual property name in address data.
+	@Prop()
+	label: string; // Input label.
 
-				this.$store.dispatch(`${this.target}/clearList`);
-			}
-		},
-		closeAutocomplete(immediate) {
-			setTimeout(() => {
-				this.selectedIndex = -1;
-				this.autocompleteCount = 0;
+	// Computed
+	get dataSource(): AddressEntry[] {
+		return this.$store.state.dataSource;
+	}
+	get possibles(): AddressEntry[] {
+		return this.$store.getters[`${this.target}/autocomplete`];
+	}
+	get query(): string {
+		return this.$store.state[this.target].value;
+	}
+	set query(value: string) {
+		this.$store.dispatch(`${this.target}/updateValue`, value);
+	}
+	get hasLabel(): boolean {
+		return (this.label != null) && (this.label.length > 0);
+	}
 
-				this.$store.dispatch(`${this.target}/clearList`);
-			}, immediate ? 0 : AUTOCOMPLETE_CLOSE_DELAY);
-		},
-		moveSelectedIndex(indicator) {
-			if (
-				(this.autocompleteCount > 0)
-				&&
-				((this.selectedIndex + indicator) >= 0)
-				&&
-				((this.selectedIndex + indicator) < this.autocompleteCount)
-			) {
-				this.selectedIndex += indicator;
-			} else {
-				this.selectedIndex = ((this.selectedIndex + indicator) >= this.autocompleteCount) ? 0 : (this.autocompleteCount - 1);
-			}
-		},
-		fillItemData() {
-			let selectedIndex = this.selectedIndex;
-			if (this.possibles[selectedIndex]) {
-				let selectedItem = Object.assign({}, this.possibles[selectedIndex]); // Shallow Clone
-				let keys = getDataItemKeys(selectedItem);
-				keys.forEach(key => {
-					this.$store.dispatch(`${key}/updateValue`, selectedItem[key]);
-				});
-			}
-			this.closeAutocomplete(true);
+	// Methods
+	onInput() {
+		if (this.query.length > 0) {
+			let possibles = getPossibles(this.dataSource, this.target, this.query);
+			this.autocompleteCount = possibles.length;
+
+			this.$store.dispatch(`${this.target}/updateList`, possibles);
+		} else {
+			this.selectedIndex = -1;
+			this.autocompleteCount = 0;
+
+			this.$store.dispatch(`${this.target}/clearList`);
 		}
 	}
-};
+	closeAutocomplete(immediate: boolean) {
+		setTimeout(() => {
+			this.selectedIndex = -1;
+			this.autocompleteCount = 0;
+
+			this.$store.dispatch(`${this.target}/clearList`);
+		}, immediate ? 0 : AUTOCOMPLETE_CLOSE_DELAY);
+	}
+	moveSelectedIndex(indicator: number) {
+		if (
+			(this.autocompleteCount > 0)
+			&&
+			((this.selectedIndex + indicator) >= 0)
+			&&
+			((this.selectedIndex + indicator) < this.autocompleteCount)
+		) {
+			this.selectedIndex += indicator;
+		} else {
+			this.selectedIndex = ((this.selectedIndex + indicator) >= this.autocompleteCount) ? 0 : (this.autocompleteCount - 1);
+		}
+	}
+	fillItemData() {
+		let selectedIndex = this.selectedIndex;
+		if (this.possibles[selectedIndex]) {
+			let selectedItem = Object.assign({}, this.possibles[selectedIndex]); // Shallow Clone
+			let keys = getDataItemKeys(selectedItem);
+			keys.forEach(key => {
+				this.$store.dispatch(`${key}/updateValue`, selectedItem[key]);
+			});
+		}
+		this.closeAutocomplete(true);
+	}
+}
 </script>
 
 <style lang="scss">

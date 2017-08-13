@@ -12,41 +12,40 @@
 			typeahead-input(target='zipcode', :label='zipcodeLabel')
 </template>
 
-<script>
+<script lang="ts">
+import * as Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import AddressEntry from '@/interface/AddressEntry';
+
 import store from '@/store';
 
 import { loadDataSource } from '@/lib/datasource-utils';
-import TypeaheadInput from './TypeaheadInput';
+import TypeaheadInput from './TypeaheadInput.vue';
 
-export default {
+@Component({
 	name: 'address-form',
-	props: {
-		subdistrictLabel: {
-			type: String,
-			default: 'ตำบล/เขต'
-		},
-		districtLabel: {
-			type: String,
-			default: 'อำเภอ/แขวง'
-		},
-		provinceLabel: {
-			type: String,
-			default: 'จังหวัด'
-		},
-		zipcodeLabel: {
-			type: String,
-			default: 'รหัสไปรษณีย์'
-		}
-	},
 	components: {
 		TypeaheadInput
 	},
-	store,
+	store
+})
+export default class AddressForm extends Vue {
+	// Props
+	@Prop({ default: 'ตำบล/เขต' })
+	subdistrictLabel: string;
+	@Prop({ default: 'อำเภอ/แขวง' })
+	districtLabel: string;
+	@Prop({ default: 'จังหวัด' })
+	provinceLabel: string;
+	@Prop({ default: 'รหัสไปรษณีย์' })
+	zipcodeLabel: string;
+
 	created() {
-		let dataSource = loadDataSource();
+		let dataSource: AddressEntry[] = loadDataSource();
 		this.$store.dispatch('updateDataSource', dataSource);
 	}
-};
+}
 </script>
 
 <style lang="scss">

@@ -118,7 +118,7 @@ Vue.use(VueGitHubCorners);
 
 ดูได้ที่ https://github.com/gluons/vue-thailand-address/projects
 
-## 👐 การช่วยเหลือ
+## 🤝 การช่วยเหลือ
 
 - Fork repo นี้ สร้าง branch ใหม่ แล้วส่ง pull request 🙂
 - ใช้ [Gitmoji](https://github.com/carloscuesta/gitmoji) กับข้อความ commit 😎
