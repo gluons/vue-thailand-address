@@ -3,8 +3,10 @@ import { MutationTree } from 'vuex';
 import { DATA_SOURCE } from './mutation-types';
 import { State } from './state';
 
-export default {
+const mutations: MutationTree<State> = {
 	[DATA_SOURCE](state: State, newDataSource: AddressEntry[]) {
 		state.dataSource = newDataSource;
 	}
-} as MutationTree<State>;
+};
+
+export default mutations;

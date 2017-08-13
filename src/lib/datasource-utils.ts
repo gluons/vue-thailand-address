@@ -1,4 +1,4 @@
-import database = require('@/data/db.json');
+import database from '@/data/db.json';
 import AddressEntry from '@/interface/AddressEntry';
 import * as filter from 'array-filter';
 import { calculateSimilarity } from './utils';
