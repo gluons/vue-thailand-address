@@ -107,7 +107,7 @@ Vue.use(VueGitHubCorners);
 - **`db.json`:** ไฟล์ฐานข้อมูล (นำมาจาก [earthchie/jquery.Thailand.js's `db.json`](https://github.com/earthchie/jquery.Thailand.js/blob/master/jquery.Thailand.js/database/db.json))
 - **`vue-thailand-address.common.js`:** สำหรับใช้กับ CommonJS/Node
 - **`vue-thailand-address.esm.js`:** สำหรับใช้กับ ES module
-- **`db.js` (Unminified) และ `db.min.js` (Minified):** เป็นไฟล์ฐานข้อมูลสำหรับใช้บร Browser
+- **`db.js` (Unminified) และ `db.min.js` (Minified):** เป็นไฟล์ฐานข้อมูลสำหรับใช้บน Browser
 - **`vue-thailand-address.js` (Unminified) และ `vue-thailand-address.min.js` (Minified):** เป็นไฟล์ Vue plugin สำหรับใช้บน Browser
 
 ## 📚 API
