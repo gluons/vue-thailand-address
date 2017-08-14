@@ -5,6 +5,7 @@
 [![npm](https://img.shields.io/npm/dt/vue-thailand-address.svg?style=flat-square)](https://www.npmjs.com/package/vue-thailand-address)
 [![BCH compliance](https://bettercodehub.com/edge/badge/gluons/vue-thailand-address?style=flat-square&branch=master)](https://bettercodehub.com/)
 [![Dependency Status](https://dependencyci.com/github/gluons/vue-thailand-address/badge?style=flat-square)](https://dependencyci.com/github/gluons/vue-thailand-address)
+[![Travis branch](https://img.shields.io/travis/gluons/vue-thailand-address/master.svg?style=flat-square)](https://travis-ci.org/gluons/vue-thailand-address)
 [![TSLint](https://img.shields.io/badge/TSLint-gluons-15757B.svg?style=flat-square)](https://github.com/gluons/tslint-config-gluons)
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://github.com/carloscuesta/gitmoji)
 
