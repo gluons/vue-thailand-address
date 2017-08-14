@@ -1,6 +1,5 @@
-import { ActionTree, GetterTree, Module, MutationTree } from 'vuex';
+import { ActionTree, GetterTree, Module, MutationTree } from 'vuex'; // tslint:disable-line
 
-import AddressEntry from '@/interface/AddressEntry';
 import { State as RootState } from '@/store/state';
 import actions from './actions';
 import getters from './getters';

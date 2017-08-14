@@ -41,6 +41,7 @@ export default class AddressForm extends Vue {
 	@Prop({ default: 'รหัสไปรษณีย์' })
 	zipcodeLabel: string;
 
+	// Hooks
 	created() {
 		let dataSource: AddressEntry[] = loadDataSource();
 		this.$store.dispatch('updateDataSource', dataSource);
