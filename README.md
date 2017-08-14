@@ -114,7 +114,7 @@ Vue.use(VueThailandAddress);
 
 ## 📚 API
 
-ดูได้ที่ https://gluons.github.io/vue-thailand-address
+ดูได้ที่ https://gluons.github.io/vue-thailand-address/#/api
 
 ## 📝 แผน
 
