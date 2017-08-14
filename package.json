@@ -41,7 +41,7 @@
   "bugs": {
     "url": "https://github.com/gluons/vue-thailand-address/issues"
   },
-  "homepage": "https://github.com/gluons/vue-thailand-address",
+  "homepage": "https://gluons.github.io/vue-thailand-address/",
   "browserslist": [
     "ie >= 9",
     "Firefox ESR",
