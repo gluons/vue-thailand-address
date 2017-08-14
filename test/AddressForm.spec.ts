@@ -11,10 +11,10 @@ describe('AddressForm', () => {
 		let propsData: any = wrapper.propsData();
 
 		it(`should has 'subdistrictLabel' prop with default value`, () => {
-			expect(propsData.subdistrictLabel).to.equal('ตำบล/เขต');
+			expect(propsData.subdistrictLabel).to.equal('ตำบล/แขวง');
 		});
 		it(`should has 'districtLabel' prop with default value`, () => {
-			expect(propsData.districtLabel).to.equal('อำเภอ/แขวง');
+			expect(propsData.districtLabel).to.equal('อำเภอ/เขต');
 		});
 		it(`should has 'provinceLabel' prop with default value`, () => {
 			expect(propsData.provinceLabel).to.equal('จังหวัด');
