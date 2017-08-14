@@ -7,6 +7,7 @@
   "unpkg": "./dist/vue-thailand-address.min.js",
   "browser": "./dist/vue-thailand-address.min.js",
   "style": "./dist/vue-thailand-address.css",
+  "typings": "./types/src/index.d.ts",
   "scripts": {
     "lint:js": "eslint .",
     "lint:ts": "tslint -p .",
