@@ -32,9 +32,9 @@ import TypeaheadInput from './TypeaheadInput.vue';
 })
 export default class AddressForm extends Vue {
 	// Props
-	@Prop({ default: 'ตำบล/เขต' })
+	@Prop({ default: 'ตำบล/แขวง' })
 	subdistrictLabel: string;
-	@Prop({ default: 'อำเภอ/แขวง' })
+	@Prop({ default: 'อำเภอ/เขต' })
 	districtLabel: string;
 	@Prop({ default: 'จังหวัด' })
 	provinceLabel: string;
