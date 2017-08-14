@@ -28,7 +28,7 @@ export default class Autocomplete extends Vue {
 	@Prop({ default: 200 })
 	maxHeight: number; // Max autocomplete height.
 	@Prop({ default: -1 })
-	selectedIndex = -1;
+	selectedIndex: number;
 
 	// Computed
 	get style() {
