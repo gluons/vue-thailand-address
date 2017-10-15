@@ -1,4 +1,3 @@
-import AddressEntry from '@/interface/AddressEntry';
 import { MutationTree } from 'vuex';
 import { DATA_SOURCE } from './mutation-types';
 import { State } from './state';

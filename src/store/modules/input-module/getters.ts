@@ -1,6 +1,5 @@
 import { GetterTree } from 'vuex';
 
-import AddressEntry from '@/interface/AddressEntry';
 import { State as RootState } from '@/store/state';
 import { InputState } from './state';
 

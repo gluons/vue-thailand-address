@@ -1,6 +1,5 @@
 import { MutationTree } from 'vuex';
 
-import AddressEntry from '@/interface/AddressEntry';
 import { LIST, VALUE } from '@/store/mutation-types';
 import { InputState } from './state';
 

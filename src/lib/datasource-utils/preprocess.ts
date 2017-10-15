@@ -1,5 +1,3 @@
-import AddressEntry from '@/interface/AddressEntry';
-
 /**
  * Preprocess data from JSON database.
  *

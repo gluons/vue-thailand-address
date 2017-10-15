@@ -1,4 +1,3 @@
-import AddressEntry from '@/interface/AddressEntry';
 import { calculateSimilarity } from '@/lib/utils';
 import * as filter from 'array-filter';
 

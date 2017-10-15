@@ -1,6 +1,5 @@
 import { ActionContext, ActionTree } from 'vuex';
 
-import AddressEntry from '@/interface/AddressEntry';
 import { LIST, VALUE } from '@/store/mutation-types';
 import { State as RootState } from '@/store/state';
 import { InputState } from './state';

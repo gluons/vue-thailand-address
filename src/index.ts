@@ -1,12 +1,19 @@
 import AddressForm from '@/components/AddressForm.vue';
-import V from 'vue';
+import Vue from 'vue';
+
+/* tslint:disable: no-namespace */
+declare global {
+	interface Window {
+		Vue: typeof Vue;
+	}
+}
 
 /**
  * Install as Vue plugin.
  *
- * @param {typeof V} Vue Vue instance.
+ * @param {typeof Vue} vue Vue instance.
  */
-function install(Vue: typeof V): void {
+function install(vue: typeof Vue): void {
 	Vue.component('address-form', AddressForm);
 }
 
