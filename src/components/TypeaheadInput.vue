@@ -35,7 +35,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
 
 import AddressEntry from '@/interface/AddressEntry';
 import { getPossibles } from '@/lib/datasource-utils';
@@ -46,6 +45,13 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 
 @Component({
 	name: 'typeahead-input',
+	props: {
+		target: {
+			type: String,
+			required: true
+		},
+		label: String
+	},
 	components: {
 		Autocomplete
 	},
@@ -62,9 +68,7 @@ export default class TypeaheadInput extends Vue {
 	autocompleteCount: number = 0;
 
 	// Props
-	@Prop({ required: true })
 	target: string; // Name. It's an actual property name in address data.
-	@Prop()
 	label: string; // Input label.
 
 	// Computed

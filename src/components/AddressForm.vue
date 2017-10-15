@@ -15,7 +15,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
 
 import store from '@/store';
 
@@ -25,6 +24,24 @@ import TypeaheadInput from './TypeaheadInput.vue';
 
 @Component({
 	name: 'address-form',
+	props: {
+		subdistrictLabel: {
+			type: String,
+			default: 'ตำบล/แขวง'
+		},
+		districtLabel: {
+			type: String,
+			default: 'อำเภอ/เขต'
+		},
+		provinceLabel: {
+			type: String,
+			default: 'จังหวัด'
+		},
+		zipcodeLabel: {
+			type: String,
+			default: 'รหัสไปรษณีย์'
+		}
+	},
 	components: {
 		TypeaheadInput
 	},
@@ -32,13 +49,9 @@ import TypeaheadInput from './TypeaheadInput.vue';
 })
 export default class AddressForm extends Vue {
 	// Props
-	@Prop({ default: 'ตำบล/แขวง' })
 	subdistrictLabel: string;
-	@Prop({ default: 'อำเภอ/เขต' })
 	districtLabel: string;
-	@Prop({ default: 'จังหวัด' })
 	provinceLabel: string;
-	@Prop({ default: 'รหัสไปรษณีย์' })
 	zipcodeLabel: string;
 
 	// Hooks

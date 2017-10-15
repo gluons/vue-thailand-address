@@ -5415,10 +5415,6 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-reflect-metadata@^0.1.9:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.10.tgz#b4f83704416acad89988c9b15635d47e03b9344a"
-
 regenerate@^1.2.1:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.3.tgz#0c336d3980553d755c39b586ae3b20aa49c82b7f"
@@ -6600,7 +6596,7 @@ vue-add-globals@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/vue-add-globals/-/vue-add-globals-2.0.1.tgz#c9fba6faac44f679ec15d5a9637f518b181fc44d"
 
-vue-class-component@^5.0.0, vue-class-component@^5.0.2:
+vue-class-component@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-5.0.2.tgz#3dcdc005c58c4e88d8ec2d46e01c74f4d90135c8"
 
@@ -6643,13 +6639,6 @@ vue-loader@^13.0.4:
     vue-hot-reload-api "^2.1.0"
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.5.3"
-
-vue-property-decorator@^5.2.1:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-5.3.0.tgz#f0fa1d0efd3c569ff2009fe9546cd2fb33ed7f43"
-  dependencies:
-    reflect-metadata "^0.1.9"
-    vue-class-component "^5.0.0"
 
 vue-style-loader@^3.0.0:
   version "3.0.3"
