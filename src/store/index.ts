@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { Store } from 'vuex';
 
 import actions from './actions';
 import mutations from './mutations';
@@ -15,7 +15,7 @@ if (!((typeof window !== 'undefined') && window.Vue)) {
 
 const debug = process.env.NODE_ENV !== 'production';
 
-export default new Vuex.Store<State>({
+export default new Store<State>({
 	state: new State(),
 	mutations,
 	actions,

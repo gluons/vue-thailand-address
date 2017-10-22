@@ -22,6 +22,5 @@ if ((typeof window !== 'undefined') && window.Vue) {
 }
 
 export default {
-	install,
-	component: AddressForm
+	install
 };
