@@ -13,7 +13,7 @@ declare global {
  *
  * @param {typeof Vue} vue Vue instance.
  */
-function install(vue: typeof Vue): void {
+function install(vue): void {
 	vue.component('address-form', AddressForm);
 }
 

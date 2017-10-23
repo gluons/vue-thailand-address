@@ -3,11 +3,9 @@ import { mount } from 'avoriaz';
 import { expect } from 'chai';
 
 import TypeaheadInput from '@/components/TypeaheadInput.vue';
-import store from '@/store';
 
 describe('TypeaheadInput', () => {
 	const wrapper = mount(TypeaheadInput, {
-		store,
 		propsData: {
 			target: 'province',
 			label: 'Province'
@@ -43,17 +41,8 @@ describe('TypeaheadInput', () => {
 	describe('Computed', () => {
 		let computed: any = wrapper.computed();
 
-		it(`should has 'dataSource' computed`, () => {
-			expect(computed.dataSource).to.exist;
-		});
-		it(`should has 'possibles' computed`, () => {
-			expect(computed.possibles).to.exist;
-		});
-		it(`should has 'query' computed`, () => {
-			expect(computed.query).to.exist;
-		});
 		it(`should has 'hasLabel' computed`, () => {
-			expect(computed.dataSource).to.exist;
+			expect(computed.hasLabel).to.exist;
 		});
 	});
 	describe('Methods', () => {
@@ -68,8 +57,8 @@ describe('TypeaheadInput', () => {
 		it(`should has 'moveSelectedIndex' method`, () => {
 			expect(typeof methods.moveSelectedIndex).to.equal('function');
 		});
-		it(`should has 'fillItemData' method`, () => {
-			expect(typeof methods.fillItemData).to.equal('function');
+		it(`should has 'selectItemData' method`, () => {
+			expect(typeof methods.selectItemData).to.equal('function');
 		});
 	});
 });

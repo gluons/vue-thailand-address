@@ -13,9 +13,15 @@
 				@keyup.esc='closeAutocomplete',
 				@keyup.up='moveSelectedIndex(-1)',
 				@keyup.down='moveSelectedIndex(1)',
-				@keyup.enter.prevent='fillItemData'
+				@keyup.enter.prevent='selectItemData'
 			)
-		autocomplete(:query='query', :target='target', :selectedIndex.sync='selectedIndex')
+		autocomplete(
+			:query='query',
+			:possibles='possibles',
+			:target='target',
+			:selectedIndex.sync='selectedIndex',
+			@itemclick='onItemClick'
+		)
 	//- When no label
 	template(v-else)
 		input.typeahead-input(
@@ -27,9 +33,15 @@
 			@keyup.esc='closeAutocomplete',
 			@keyup.up='moveSelectedIndex(-1)',
 			@keyup.down='moveSelectedIndex(1)',
-			@keyup.enter.prevent='fillItemData'
+			@keyup.enter.prevent='selectItemData'
 		)
-		autocomplete(:query='query', :target='target', :list='list', :selectedIndex.sync='selectedIndex')
+		autocomplete(
+			:query='query',
+			:possibles='possibles',
+			:target='target',
+			:selectedIndex.sync='selectedIndex',
+			@itemclick='onItemClick'
+		)
 </template>
 
 <script lang="ts">
@@ -45,6 +57,10 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 @Component({
 	name: 'typeahead-input',
 	props: {
+		dataSource: {
+			type: Array,
+			required: true
+		},
 		target: {
 			type: String,
 			required: true
@@ -56,6 +72,8 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 	},
 	data() {
 		return {
+			query: '',
+			possibles: [],
 			selectedIndex: -1,
 			autocompleteCount: 0
 		};
@@ -63,26 +81,17 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 })
 export default class TypeaheadInput extends Vue {
 	// Data
-	selectedIndex: number = -1;
-	autocompleteCount: number = 0;
+	query: string;
+	possibles: AddressEntry[];
+	selectedIndex: number;
+	autocompleteCount: number;
 
 	// Props
+	dataSource: AddressEntry[];
 	target: string; // Name. It's an actual property name in address data.
 	label: string; // Input label.
 
 	// Computed
-	get dataSource(): AddressEntry[] {
-		return this.$store.state.dataSource;
-	}
-	get possibles(): AddressEntry[] {
-		return this.$store.getters[`${this.target}/autocomplete`];
-	}
-	get query(): string {
-		return this.$store.state[this.target].value;
-	}
-	set query(value: string) {
-		this.$store.dispatch(`${this.target}/updateValue`, value);
-	}
 	get hasLabel(): boolean {
 		return (this.label != null) && (this.label.length > 0);
 	}
@@ -92,21 +101,18 @@ export default class TypeaheadInput extends Vue {
 		if (this.query.length > 0) {
 			let possibles = getPossibles(this.dataSource, this.target, this.query);
 			this.autocompleteCount = possibles.length;
-
-			this.$store.dispatch(`${this.target}/updateList`, possibles);
+			this.possibles = possibles;
 		} else {
 			this.selectedIndex = -1;
 			this.autocompleteCount = 0;
-
-			this.$store.dispatch(`${this.target}/clearList`);
+			this.possibles = [];
 		}
 	}
 	closeAutocomplete(immediate: boolean) {
 		setTimeout(() => {
 			this.selectedIndex = -1;
 			this.autocompleteCount = 0;
-
-			this.$store.dispatch(`${this.target}/clearList`);
+			this.possibles = [];
 		}, immediate ? 0 : AUTOCOMPLETE_CLOSE_DELAY);
 	}
 	moveSelectedIndex(indicator: number) {
@@ -122,16 +128,16 @@ export default class TypeaheadInput extends Vue {
 			this.selectedIndex = ((this.selectedIndex + indicator) >= this.autocompleteCount) ? 0 : (this.autocompleteCount - 1);
 		}
 	}
-	fillItemData() {
+	selectItemData() {
 		let selectedIndex = this.selectedIndex;
 		if (this.possibles[selectedIndex]) {
 			let selectedItem = Object.assign({}, this.possibles[selectedIndex]); // Shallow Clone
-			let keys = getDataItemKeys(selectedItem);
-			keys.forEach(key => {
-				this.$store.dispatch(`${key}/updateValue`, selectedItem[key]);
-			});
+			this.$emit('itemselect', selectedItem);
 		}
 		this.closeAutocomplete(true);
+	}
+	onItemClick(item: AddressEntry) {
+		this.$emit('itemselect', item);
 	}
 }
 </script>

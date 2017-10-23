@@ -2,21 +2,39 @@
 .typeahead-address-form
 	.row
 		.col
-			typeahead-input(target='district', :label='subdistrictLabel')
+			typeahead-input(
+				:dataSource='dataSource',
+				target='district',
+				:label='subdistrictLabel',
+				@itemselect='onItemSelect'
+			)
 		.col
-			typeahead-input(target='amphoe', :label='districtLabel')
+			typeahead-input(
+				:dataSource='dataSource',
+				target='amphoe',
+				:label='districtLabel',
+				@itemselect='onItemSelect'
+			)
 	.row
 		.col
-			typeahead-input(target='province', :label='provinceLabel')
+			typeahead-input(
+				:dataSource='dataSource',
+				target='province',
+				:label='provinceLabel',
+				@itemselect='onItemSelect'
+			)
 		.col
-			typeahead-input(target='zipcode', :label='zipcodeLabel')
+			typeahead-input(
+				:dataSource='dataSource',
+				target='zipcode',
+				:label='zipcodeLabel',
+				@itemselect='onItemSelect'
+			)
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-
-import store from '@/store';
 
 import { loadDataSource } from '@/lib/datasource-utils';
 import TypeaheadInput from './TypeaheadInput.vue';
@@ -44,9 +62,16 @@ import TypeaheadInput from './TypeaheadInput.vue';
 	components: {
 		TypeaheadInput
 	},
-	store
+	data() {
+		return {
+			dataSource: []
+		};
+	}
 })
 export default class AddressForm extends Vue {
+	// Data
+	dataSource: AddressEntry[];
+
 	// Props
 	subdistrictLabel: string;
 	districtLabel: string;
@@ -54,9 +79,13 @@ export default class AddressForm extends Vue {
 	zipcodeLabel: string;
 
 	// Hooks
-	created() {
-		let dataSource: AddressEntry[] = loadDataSource();
-		this.$store.dispatch('updateDataSource', dataSource);
+	async created() {
+		this.dataSource = await loadDataSource();
+	}
+
+	// Methods
+	onItemSelect(item: AddressEntry) {
+		console.log(item);
 	}
 }
 </script>

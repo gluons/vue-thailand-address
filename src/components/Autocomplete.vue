@@ -19,6 +19,8 @@ import { addressToString, getDataItemKeys } from '@/lib/utils';
 @Component({
 	name: 'autocomplete',
 	props: {
+		query: String,
+		possibles: Array,
 		target: {
 			type: String,
 			required: true
@@ -35,6 +37,8 @@ import { addressToString, getDataItemKeys } from '@/lib/utils';
 })
 export default class Autocomplete extends Vue {
 	// Props
+	query: string;
+	possibles: AddressEntry[];
 	target: string; // A property name in data item.
 	maxHeight: number; // Max autocomplete height.
 	selectedIndex: number;
@@ -45,14 +49,11 @@ export default class Autocomplete extends Vue {
 			'max-height': `${this.maxHeight}px`
 		};
 	}
-	get query(): string {
-		return this.$store.state[this.target].value;
-	}
 	get hasData(): boolean {
-		return this.$store.getters[`${this.target}/hasAutocomplete`];
+		return this.possibles && (this.possibles.length > 0);
 	}
 	get autocompleteList() {
-		let autocomplete: AddressEntry[] = this.$store.getters[`${this.target}/autocomplete`];
+		let autocomplete: AddressEntry[] = this.possibles;
 
 		return autocomplete.map(item => {
 			return {
@@ -63,11 +64,8 @@ export default class Autocomplete extends Vue {
 	}
 
 	// Methods
-	onItemClick(data: AddressEntry): void {
-		let keys: string[] = getDataItemKeys(data);
-		keys.forEach(key => {
-			this.$store.dispatch(`${key}/updateValue`, data[key]);
-		});
+	onItemClick(item: AddressEntry): void {
+		this.$emit('itemclick', item);
 	}
 	changeSelectedIndex(index: number): void {
 		if ((index >= 0) && (index < this.autocompleteList.length)) {

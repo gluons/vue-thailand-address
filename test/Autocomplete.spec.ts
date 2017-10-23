@@ -3,11 +3,9 @@ import { mount } from 'avoriaz';
 import { expect } from 'chai';
 
 import Autocomplete from '@/components/Autocomplete.vue';
-import store from '@/store';
 
 describe('Autocomplete', () => {
 	const wrapper = mount(Autocomplete, {
-		store,
 		propsData: {
 			target: 'amphoe',
 			maxHeight: 500
@@ -32,9 +30,6 @@ describe('Autocomplete', () => {
 
 		it(`should has 'style' computed`, () => {
 			expect(computed.style).to.exist;
-		});
-		it(`should has 'query' computed`, () => {
-			expect(computed.query).to.exist;
 		});
 		it(`should has 'hasData' computed`, () => {
 			expect(computed.hasData).to.exist;

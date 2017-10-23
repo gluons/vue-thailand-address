@@ -52,7 +52,9 @@
     "Firefox ESR",
     "last 3 versions"
   ],
-  "peerDependencies": {},
+  "peerDependencies": {
+    "vue": ">=2.3.0"
+  },
   "devDependencies": {
     "@types/chai": "^4.0.3",
     "@types/copy-webpack-plugin": "^4.0.0",
@@ -109,7 +111,6 @@
   },
   "dependencies": {
     "array-filter": "^1.0.0",
-    "string-similarity": "^1.2.0",
-    "vuex": "^3.0.0"
+    "string-similarity": "^1.2.0"
   }
 }
