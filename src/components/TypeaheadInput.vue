@@ -57,6 +57,7 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 @Component({
 	name: 'typeahead-input',
 	props: {
+		data: String,
 		dataSource: {
 			type: Array,
 			required: true
@@ -66,6 +67,11 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 			required: true
 		},
 		label: String
+	},
+	watch: {
+		data(newData: string) {
+			this.query = newData;
+		}
 	},
 	components: {
 		Autocomplete

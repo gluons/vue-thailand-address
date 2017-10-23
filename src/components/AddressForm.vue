@@ -4,6 +4,7 @@
 		.col
 			typeahead-input(
 				:dataSource='dataSource',
+				:data='district',
 				target='district',
 				:label='subdistrictLabel',
 				@itemselect='onItemSelect'
@@ -11,6 +12,7 @@
 		.col
 			typeahead-input(
 				:dataSource='dataSource',
+				:data='amphoe',
 				target='amphoe',
 				:label='districtLabel',
 				@itemselect='onItemSelect'
@@ -19,6 +21,7 @@
 		.col
 			typeahead-input(
 				:dataSource='dataSource',
+				:data='province',
 				target='province',
 				:label='provinceLabel',
 				@itemselect='onItemSelect'
@@ -26,6 +29,7 @@
 		.col
 			typeahead-input(
 				:dataSource='dataSource',
+				:data='zipcode',
 				target='zipcode',
 				:label='zipcodeLabel',
 				@itemselect='onItemSelect'
@@ -64,13 +68,21 @@ import TypeaheadInput from './TypeaheadInput.vue';
 	},
 	data() {
 		return {
-			dataSource: []
+			dataSource: [],
+			district: '',
+			amphoe: '',
+			province: '',
+			zipcode: ''
 		};
 	}
 })
 export default class AddressForm extends Vue {
 	// Data
 	dataSource: AddressEntry[];
+	district: string;
+	amphoe: string;
+	province: string;
+	zipcode: string;
 
 	// Props
 	subdistrictLabel: string;
@@ -85,7 +97,10 @@ export default class AddressForm extends Vue {
 
 	// Methods
 	onItemSelect(item: AddressEntry) {
-		console.log(item);
+		this.district = item.district;
+		this.amphoe = item.amphoe;
+		this.province = item.province;
+		this.zipcode = item.zipcode.toString();
 	}
 }
 </script>
