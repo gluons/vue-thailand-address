@@ -91,8 +91,8 @@ export default class AddressForm extends Vue {
 	zipcodeLabel: string;
 
 	// Hooks
-	async created() {
-		this.dataSource = await loadDataSource();
+	created() {
+		this.dataSource = loadDataSource();
 	}
 
 	// Methods
