@@ -2,12 +2,11 @@
 	"compilerOptions": {
 		"lib": [
 			"dom",
-			"es5",
 			"es2015"
 		],
-		"moduleResolution": "node",
-		"module": "esnext",
 		"target": "es5",
+		"module": "es2015",
+		"moduleResolution": "node",
 		"experimentalDecorators": true,
 		"outDir": "./dist/",
 		"baseUrl": ".",
