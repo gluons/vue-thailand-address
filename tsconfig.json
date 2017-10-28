@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
 		"lib": [
 			"dom",
 			"es5",
