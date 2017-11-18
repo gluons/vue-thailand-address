@@ -25,7 +25,7 @@
     "dev": "poi",
     "sync:db": "ts-node ./scripts/sync-db.ts",
     "sync": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} npm-run-all sync:*",
-    "test:single": "npm run lint && karma start --single-run",
+    "test:watch": "npm run lint && karma start --no-single-run",
     "test": "npm run lint && karma start"
   },
   "repository": {
