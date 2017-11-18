@@ -1,4 +1,4 @@
-import Vue, { PluginFunction } from 'vue';
+import Vue, { VueConstructor } from 'vue';
 
 import AddressForm from '@/components/AddressForm.vue';
 
@@ -14,7 +14,7 @@ declare global {
  *
  * @param {typeof Vue} vue Vue instance.
  */
-function install(vue: typeof Vue): void {
+function install(vue: VueConstructor<Vue>): void {
 	vue.component('address-form', AddressForm);
 }
 
@@ -23,5 +23,5 @@ if ((typeof window !== 'undefined') && window.Vue) {
 }
 
 export default {
-	install: install as PluginFunction<void>
+	install
 };
