@@ -1,4 +1,3 @@
-import AddressEntry from '@/interface/AddressEntry';
 import highlightQuery from './highlight-query';
 
 export const SEPARATOR: string = '»';

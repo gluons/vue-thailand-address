@@ -1,4 +1,3 @@
-import AddressEntry from '@/interface/AddressEntry';
 import * as stringSimilarity from 'string-similarity';
 
 /**

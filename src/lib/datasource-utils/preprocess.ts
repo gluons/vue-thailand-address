@@ -1,5 +1,3 @@
-import AddressEntry from '@/interface/AddressEntry';
-
 /**
  * Preprocess data from JSON database.
  *
@@ -13,17 +11,7 @@ function preprocess(data): AddressEntry[] {
 	let words = [];
 	let expanded = [];
 	let useLookup = false;
-	let t;
-
-	if (data.lookup && data.words) {
-		// compact with dictionary and lookup
-		useLookup = true;
-		lookup = data.lookup.split('|');
-		words = data.words.split('|');
-		data = data.data;
-	}
-
-	t = text => {
+	let t = text => {
 		function repl(m) {
 			let ch = m.charCodeAt(0);
 			return words[ch < 97 ? ch - 65 : 26 + ch - 97];
@@ -36,6 +24,14 @@ function preprocess(data): AddressEntry[] {
 		}
 		return text.replace(/[A-Z]/ig, repl);
 	};
+
+	if (data.lookup && data.words) {
+		// compact with dictionary and lookup
+		useLookup = true;
+		lookup = data.lookup.split('|');
+		words = data.words.split('|');
+		data = data.data;
+	}
 
 	if (!data[0].length) {
 		// non-compacted database

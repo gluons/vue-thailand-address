@@ -37,5 +37,3 @@ interface AddressEntry {
 	amphoe_code?: any;
 	province_code?: any;
 }
-
-export default AddressEntry;

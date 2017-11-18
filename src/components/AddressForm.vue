@@ -2,49 +2,105 @@
 .typeahead-address-form
 	.row
 		.col
-			typeahead-input(target='district', :label='subdistrictLabel')
+			typeahead-input(
+				:dataSource='dataSource',
+				:data='district',
+				target='district',
+				:label='subdistrictLabel',
+				@itemselect='onItemSelect'
+			)
 		.col
-			typeahead-input(target='amphoe', :label='districtLabel')
+			typeahead-input(
+				:dataSource='dataSource',
+				:data='amphoe',
+				target='amphoe',
+				:label='districtLabel',
+				@itemselect='onItemSelect'
+			)
 	.row
 		.col
-			typeahead-input(target='province', :label='provinceLabel')
+			typeahead-input(
+				:dataSource='dataSource',
+				:data='province',
+				target='province',
+				:label='provinceLabel',
+				@itemselect='onItemSelect'
+			)
 		.col
-			typeahead-input(target='zipcode', :label='zipcodeLabel')
+			typeahead-input(
+				:dataSource='dataSource',
+				:data='zipcode',
+				target='zipcode',
+				:label='zipcodeLabel',
+				@itemselect='onItemSelect'
+			)
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
 
-import store from '@/store';
-
-import AddressEntry from '@/interface/AddressEntry';
 import { loadDataSource } from '@/lib/datasource-utils';
 import TypeaheadInput from './TypeaheadInput.vue';
 
 @Component({
 	name: 'address-form',
+	props: {
+		subdistrictLabel: {
+			type: String,
+			default: 'ตำบล/แขวง'
+		},
+		districtLabel: {
+			type: String,
+			default: 'อำเภอ/เขต'
+		},
+		provinceLabel: {
+			type: String,
+			default: 'จังหวัด'
+		},
+		zipcodeLabel: {
+			type: String,
+			default: 'รหัสไปรษณีย์'
+		}
+	},
 	components: {
 		TypeaheadInput
 	},
-	store
+	data() {
+		return {
+			dataSource: [],
+			district: '',
+			amphoe: '',
+			province: '',
+			zipcode: ''
+		};
+	}
 })
 export default class AddressForm extends Vue {
+	// Data
+	dataSource: AddressEntry[];
+	district: string;
+	amphoe: string;
+	province: string;
+	zipcode: string;
+
 	// Props
-	@Prop({ default: 'ตำบล/แขวง' })
 	subdistrictLabel: string;
-	@Prop({ default: 'อำเภอ/เขต' })
 	districtLabel: string;
-	@Prop({ default: 'จังหวัด' })
 	provinceLabel: string;
-	@Prop({ default: 'รหัสไปรษณีย์' })
 	zipcodeLabel: string;
 
 	// Hooks
 	created() {
-		let dataSource: AddressEntry[] = loadDataSource();
-		this.$store.dispatch('updateDataSource', dataSource);
+		this.dataSource = loadDataSource();
+	}
+
+	// Methods
+	onItemSelect(item: AddressEntry) {
+		this.district = item.district;
+		this.amphoe = item.amphoe;
+		this.province = item.province;
+		this.zipcode = item.zipcode.toString();
 	}
 }
 </script>

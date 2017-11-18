@@ -1,5 +1,4 @@
 import database from '@/data/db.json';
-import AddressEntry from '@/interface/AddressEntry';
 import preprocess from './preprocess';
 
 /**
