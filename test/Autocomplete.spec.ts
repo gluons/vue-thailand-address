@@ -13,16 +13,14 @@ describe('Autocomplete', () => {
 	});
 
 	describe('Props', () => {
-		let propsData: any = wrapper.propsData();
-
 		it(`should has 'target' prop with expected value`, () => {
-			expect(propsData.target).to.equal('amphoe');
+			expect(wrapper.getProp('target')).to.equal('amphoe');
 		});
 		it(`should has 'maxHeight' prop with expected value`, () => {
-			expect(propsData.maxHeight).to.equal(500);
+			expect(wrapper.getProp('maxHeight')).to.equal(500);
 		});
 		it(`should has 'selectedIndex' prop with default value`, () => {
-			expect(propsData.selectedIndex).to.equal(-1);
+			expect(wrapper.getProp('selectedIndex')).to.equal(-1);
 		});
 	});
 	describe('Computed', () => {
@@ -39,13 +37,13 @@ describe('Autocomplete', () => {
 		});
 	});
 	describe('Methods', () => {
-		let methods: any = wrapper.methods();
+		let vm: any = wrapper.vm;
 
 		it(`should has 'onItemClick' method`, () => {
-			expect(typeof methods.onItemClick).to.equal('function');
+			expect(typeof vm.onItemClick).to.equal('function');
 		});
 		it(`should has 'changeSelectedIndex' method`, () => {
-			expect(typeof methods.changeSelectedIndex).to.equal('function');
+			expect(typeof vm.changeSelectedIndex).to.equal('function');
 		});
 	});
 });
