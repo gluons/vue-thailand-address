@@ -1,6 +1,7 @@
 <template lang="pug">
 ul.typeahead-autocomplete(:style='style', v-if='hasData')
 	li(
+		ref='autocomplete-list'
 		v-for='(item, index) in autocompleteList',
 		:class='{ active: selectedIndex === index }'
 		:key='item.text',
@@ -32,6 +33,24 @@ import { addressToString, getDataItemKeys } from '@/lib/utils';
 		selectedIndex: {
 			type: Number,
 			default: -1
+		}
+	},
+	watch: {
+		selectedIndex(newIndex) {
+			/*
+			 * Scroll to the selected item when use keyboard.
+			 */
+			if (this.$el && this.$refs['autocomplete-list'] && this.$refs['autocomplete-list'][newIndex]) {
+				let listContainer: HTMLUListElement = this.$el;
+				let selectItem: HTMLLIElement = this.$refs['autocomplete-list'][newIndex];
+
+				let itemBottom = selectItem.offsetTop + selectItem.offsetHeight;
+				if (selectItem.offsetTop < listContainer.scrollTop) {
+					listContainer.scrollTop = selectItem.offsetTop;
+				} else if ((itemBottom - listContainer.scrollTop) > listContainer.offsetHeight) {
+					listContainer.scrollTop = selectItem.offsetTop - (listContainer.offsetHeight - selectItem.offsetHeight);
+				}
+			}
 		}
 	}
 })

@@ -10,10 +10,10 @@
 				v-model='query',
 				@input='onInput',
 				@blur='closeAutocomplete(false)',
-				@keyup.esc='closeAutocomplete',
-				@keyup.up='moveSelectedIndex(-1)',
-				@keyup.down='moveSelectedIndex(1)',
-				@keyup.enter.prevent='selectItemData'
+				@keydown.esc='closeAutocomplete',
+				@keydown.up='moveSelectedIndex(-1, $event)',
+				@keydown.down='moveSelectedIndex(1, $event)',
+				@keydown.enter.prevent='selectItemData'
 			)
 		autocomplete(
 			:query='query',
@@ -30,10 +30,10 @@
 			v-model='query',
 			@input='onInput',
 			@blur='closeAutocomplete(false)',
-			@keyup.esc='closeAutocomplete',
-			@keyup.up='moveSelectedIndex(-1)',
-			@keyup.down='moveSelectedIndex(1)',
-			@keyup.enter.prevent='selectItemData'
+			@keydown.esc='closeAutocomplete',
+			@keydown.up='moveSelectedIndex(-1, $event)',
+			@keydown.down='moveSelectedIndex(1, $event)',
+			@keydown.enter.prevent='selectItemData'
 		)
 		autocomplete(
 			:query='query',
@@ -57,7 +57,7 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 @Component({
 	name: 'typeahead-input',
 	props: {
-		data: String,
+		data: String, // A prop to inject input value from parent.
 		dataSource: {
 			type: Array,
 			required: true
@@ -121,7 +121,13 @@ export default class TypeaheadInput extends Vue {
 			this.possibles = [];
 		}, immediate ? 0 : AUTOCOMPLETE_CLOSE_DELAY);
 	}
-	moveSelectedIndex(indicator: number) {
+	moveSelectedIndex(indicator: number, e: KeyboardEvent) {
+		e.preventDefault();
+
+		if (indicator == 1) {
+			this.onInput();
+		}
+
 		if (
 			(this.autocompleteCount > 0)
 			&&
