@@ -1,47 +1,23 @@
 <template lang="pug">
 .typeahead-container
-	//- When have label
-	template(v-if='hasLabel')
-		label.typeahead-label
-			.label-text {{ label }}
-			input.typeahead-input(
-				type='text',
-				autocomplete='off',
-				v-model='query',
-				@input='onInput',
-				@blur='closeAutocomplete(false)',
-				@keydown.esc='closeAutocomplete',
-				@keydown.up='moveSelectedIndex(-1, $event)',
-				@keydown.down='moveSelectedIndex(1, $event)',
-				@keydown.enter.prevent='selectItemData'
-			)
-		autocomplete(
-			:query='query',
-			:possibles='possibles',
-			:target='target',
-			:selectedIndex.sync='selectedIndex',
-			@itemclick='onItemClick'
-		)
-	//- When no label
-	template(v-else)
-		input.typeahead-input(
-			type='text',
-			autocomplete='off',
-			v-model='query',
-			@input='onInput',
-			@blur='closeAutocomplete(false)',
-			@keydown.esc='closeAutocomplete',
-			@keydown.up='moveSelectedIndex(-1, $event)',
-			@keydown.down='moveSelectedIndex(1, $event)',
-			@keydown.enter.prevent='selectItemData'
-		)
-		autocomplete(
-			:query='query',
-			:possibles='possibles',
-			:target='target',
-			:selectedIndex.sync='selectedIndex',
-			@itemclick='onItemClick'
-		)
+	input.typeahead-input(
+		type='text',
+		autocomplete='off',
+		v-model='query',
+		@input='onInput',
+		@blur='closeAutocomplete(false)',
+		@keydown.esc='closeAutocomplete',
+		@keydown.up='moveSelectedIndex(-1, $event)',
+		@keydown.down='moveSelectedIndex(1, $event)',
+		@keydown.enter.prevent='selectItemData'
+	)
+	autocomplete(
+		:query='query',
+		:possibles='possibles',
+		:target='target',
+		:selectedIndex.sync='selectedIndex',
+		@itemclick='onItemClick'
+	)
 </template>
 
 <script lang="ts">
@@ -56,6 +32,9 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 
 @Component({
 	name: 'typeahead-input',
+	components: {
+		Autocomplete
+	},
 	props: {
 		data: String, // A prop to inject input value from parent.
 		dataSource: {
@@ -65,16 +44,12 @@ const AUTOCOMPLETE_CLOSE_DELAY = 250;
 		target: {
 			type: String,
 			required: true
-		},
-		label: String
+		}
 	},
 	watch: {
 		data(newData: string) {
 			this.query = newData;
 		}
-	},
-	components: {
-		Autocomplete
 	},
 	data() {
 		return {
@@ -95,12 +70,6 @@ export default class TypeaheadInput extends Vue {
 	// Props
 	dataSource: AddressEntry[];
 	target: string; // Name. It's an actual property name in address data.
-	label: string; // Input label.
-
-	// Computed
-	get hasLabel(): boolean {
-		return (this.label != null) && (this.label.length > 0);
-	}
 
 	// Methods
 	onInput() {
@@ -124,6 +93,7 @@ export default class TypeaheadInput extends Vue {
 	moveSelectedIndex(indicator: number, e: KeyboardEvent) {
 		e.preventDefault();
 
+		// Trigget show autocomplete when press down button.
 		if (indicator == 1) {
 			this.onInput();
 		}
@@ -155,14 +125,6 @@ export default class TypeaheadInput extends Vue {
 </script>
 
 <style lang="scss">
-.typeahead-container {
-	position: relative;
-}
-label.typeahead-label {
-	.label-text {
-		margin-bottom: 5px;
-	}
-}
 input.typeahead-input {
 	background-color: white;
 	border: 1px solid #d5d5d5;

@@ -2,7 +2,7 @@
 .typeahead-address-form
 	.row
 		.col
-			typeahead-input(
+			input-container(
 				:dataSource='dataSource',
 				:data='district',
 				target='district',
@@ -10,7 +10,7 @@
 				@itemselect='onItemSelect'
 			)
 		.col
-			typeahead-input(
+			input-container(
 				:dataSource='dataSource',
 				:data='amphoe',
 				target='amphoe',
@@ -19,7 +19,7 @@
 			)
 	.row
 		.col
-			typeahead-input(
+			input-container(
 				:dataSource='dataSource',
 				:data='province',
 				target='province',
@@ -27,7 +27,7 @@
 				@itemselect='onItemSelect'
 			)
 		.col
-			typeahead-input(
+			input-container(
 				:dataSource='dataSource',
 				:data='zipcode',
 				target='zipcode',
@@ -41,10 +41,13 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import { loadDataSource } from '@/lib/datasource-utils';
-import TypeaheadInput from './TypeaheadInput.vue';
+import InputContainer from './InputContainer.vue';
 
 @Component({
 	name: 'address-form',
+	components: {
+		InputContainer
+	},
 	props: {
 		subdistrictLabel: {
 			type: String,
@@ -62,9 +65,6 @@ import TypeaheadInput from './TypeaheadInput.vue';
 			type: String,
 			default: 'รหัสไปรษณีย์'
 		}
-	},
-	components: {
-		TypeaheadInput
 	},
 	data() {
 		return {
