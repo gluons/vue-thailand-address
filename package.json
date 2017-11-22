@@ -53,7 +53,7 @@
     "last 3 versions"
   ],
   "peerDependencies": {
-    "vue": ">=2.3.0"
+    "vue": ">=2.4.0"
   },
   "devDependencies": {
     "@types/chai": "^4.0.3",
