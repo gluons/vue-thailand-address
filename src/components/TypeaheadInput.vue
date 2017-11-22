@@ -25,7 +25,6 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import { getPossibles } from '@/lib/datasource-utils';
-import { getDataItemKeys } from '@/lib/utils';
 import Autocomplete from './Autocomplete.vue';
 
 const AUTOCOMPLETE_CLOSE_DELAY = 250;
