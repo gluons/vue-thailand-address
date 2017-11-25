@@ -4,6 +4,7 @@
   "description": "Thai address input for Vue.",
   "main": "./dist/vue-thailand-address.common.js",
   "module": "./dist/vue-thailand-address.esm.js",
+  "jsdelivr": "./dist/vue-thailand-address.min.js",
   "unpkg": "./dist/vue-thailand-address.min.js",
   "browser": "./dist/vue-thailand-address.min.js",
   "style": "./dist/vue-thailand-address.css",
