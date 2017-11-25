@@ -1,6 +1,6 @@
 # 🇹🇭 Vue Thailand Address
 [![license](https://img.shields.io/github/license/gluons/vue-thailand-address.svg?style=flat-square)](./LICENSE)
-[![vue 2](https://img.shields.io/badge/vue-2-42b983.svg?style=flat-square)](https://vuejs.org)
+[![vue >=2.4](https://img.shields.io/badge/vue-%3E%3D2.4-42b983.svg?style=flat-square)](https://vuejs.org)
 [![npm](https://img.shields.io/npm/v/vue-thailand-address.svg?style=flat-square)](https://www.npmjs.com/package/vue-thailand-address)
 [![npm](https://img.shields.io/npm/dt/vue-thailand-address.svg?style=flat-square)](https://www.npmjs.com/package/vue-thailand-address)
 [![Codacy grade](https://img.shields.io/codacy/grade/f12ddf1f1a9f40dd834a28a65b2c1727.svg?style=flat-square)](https://www.codacy.com/app/gluons/vue-thailand-address)
