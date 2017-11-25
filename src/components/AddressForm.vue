@@ -41,6 +41,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import { loadDataSource } from '@/lib/datasource-utils';
+import { AddressFormModel } from '@/lib/interfaces';
 import InputContainer from './InputContainer.vue';
 
 @Component({
@@ -134,7 +135,7 @@ export default class AddressForm extends Vue {
 			district: item.amphoe,
 			subdistrict: item.district,
 			province: item.province,
-			zipcode: item.zipcode.toString()
+			zipcode: item.zipcode
 		}
 
 		this.$emit('itemselect', value);

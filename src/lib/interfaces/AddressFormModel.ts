@@ -1,6 +1,5 @@
 /**
- * A model for Address Form.
- * (Used for `v-model`)
+ * Address Form's `v-model` value.
  *
  * @interface AddressFormModel
  */
@@ -11,26 +10,28 @@ interface AddressFormModel {
 	 * @type {string}
 	 * @memberof AddressFormModel
 	 */
-	district: string,
+	district: string;
 	/**
 	 * ตำบล
 	 *
 	 * @type {string}
 	 * @memberof AddressFormModel
 	 */
-	subdistrict: string,
+	subdistrict: string;
 	/**
 	 * จังหวัด
 	 *
 	 * @type {string}
 	 * @memberof AddressFormModel
 	 */
-	province: string,
+	province: string;
 	/**
 	 * รหัสไปรษณีย์
 	 *
 	 * @type {string}
 	 * @memberof AddressFormModel
 	 */
-	zipcode: string
+	zipcode: number;
 }
+
+export default AddressFormModel;
