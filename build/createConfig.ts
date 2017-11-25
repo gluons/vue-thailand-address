@@ -4,6 +4,15 @@ import * as webpack from 'webpack';
 
 import { createCSSUse, createSCSSUse } from './utils';
 
+const pkg = require('../package.json');
+const banner = `
+Vue Thailand Address v${pkg.version}
+Created by Saran Tanpituckpong
+Released under the MIT License.
+
+Address database from jquery.Thailand.js by Thanarat Kuawattanaphan
+`.trim();
+
 /**
  * Create webpack config.
  * @param {boolean} [minimize=false] Enable minimization.
@@ -58,6 +67,7 @@ function createConfig(minimize = false): webpack.Configuration {
 			new webpack.DefinePlugin({
 				'process.env.NODE_ENV': JSON.stringify('production')
 			}),
+			new webpack.BannerPlugin(banner),
 			...(minimize ? [new webpack.optimize.UglifyJsPlugin({ sourceMap: true })] : [])
 		],
 		resolve: {
