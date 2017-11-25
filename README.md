@@ -36,18 +36,34 @@ yarn add vue-thailand-address
 ```javascript
 import Vue from 'vue';
 import VueThailandAddress from 'vue-thailand-address';
+import App from './App.vue';
 
 // เพิ่ม stylesheet ของ Vue Thailand Address เข้าไป
 import 'vue-thailand-address/dist/vue-thailand-address.css';
 
 // ใช้ Plugin
 Vue.use(VueThailandAddress);
+
+new Vue({
+	el: '#app',
+	data() {
+		return {
+			formData: {
+				subdistrict: null, // ตำบล/แขวง
+				district: null, // อำเภอ/เขต
+				province: null, // จังหวัด
+				zipcode: null // รหัสไปรษณีย์
+			}
+		};
+	},
+	render: h => h(App)
+});
 ```
 
 ```vue
 <template>
 	<div id="app">
-		<address-form></address-form>
+		<address-form v-model='formData'></address-form>
 	</div>
 </template>
 ```
@@ -92,11 +108,19 @@ Vue.use(VueThailandAddress);
 <body>
 	<div id="app">
 		<!-- Vue Thailand Address component -->
-		<address-form></address-form>
+		<address-form v-model='formData'></address-form>
 	</div>
 	<script>
 	let app = new Vue({
-		el: '#app'
+		el: '#app',
+		data: {
+			formData: {
+				subdistrict: null, // ตำบล/แขวง
+				district: null, // อำเภอ/เขต
+				province: null, // จังหวัด
+				zipcode: null // รหัสไปรษณีย์
+			}
+		}
 	});
 	</script>
 </body>
