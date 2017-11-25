@@ -48,6 +48,10 @@ import InputContainer from './InputContainer.vue';
 	components: {
 		InputContainer
 	},
+	model: {
+		prop: 'value',
+		event: 'itemselect'
+	},
 	props: {
 		subdistrictLabel: {
 			type: String,
@@ -64,6 +68,29 @@ import InputContainer from './InputContainer.vue';
 		zipcodeLabel: {
 			type: String,
 			default: 'รหัสไปรษณีย์'
+		},
+		value: {
+			validator(value) {
+				let hasOwnProperty = Object.prototype.hasOwnProperty;
+
+				return (
+					hasOwnProperty.call(value, 'district')
+					&&
+					hasOwnProperty.call(value, 'subdistrict')
+					&&
+					hasOwnProperty.call(value, 'province')
+					&&
+					hasOwnProperty.call(value, 'zipcode')
+				);
+			},
+			default(): AddressFormModel {
+				return {
+					district: null,
+					subdistrict: null,
+					province: null,
+					zipcode: null
+				};
+			}
 		}
 	},
 	data() {
@@ -89,6 +116,7 @@ export default class AddressForm extends Vue {
 	districtLabel: string;
 	provinceLabel: string;
 	zipcodeLabel: string;
+	value: AddressFormModel
 
 	// Hooks
 	created() {
@@ -101,6 +129,15 @@ export default class AddressForm extends Vue {
 		this.amphoe = item.amphoe;
 		this.province = item.province;
 		this.zipcode = item.zipcode.toString();
+
+		let value: AddressFormModel = {
+			district: item.amphoe,
+			subdistrict: item.district,
+			province: item.province,
+			zipcode: item.zipcode.toString()
+		}
+
+		this.$emit('itemselect', value);
 	}
 }
 </script>
