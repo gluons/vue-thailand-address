@@ -4,7 +4,7 @@
 		.col
 			input-container(
 				:dataSource='dataSource',
-				:data='district',
+				:data='subdistrict',
 				target='district',
 				:label='subdistrictLabel',
 				@itemselect='onItemSelect'
@@ -12,7 +12,7 @@
 		.col
 			input-container(
 				:dataSource='dataSource',
-				:data='amphoe',
+				:data='district',
 				target='amphoe',
 				:label='districtLabel',
 				@itemselect='onItemSelect'
@@ -96,21 +96,13 @@ import InputContainer from './InputContainer.vue';
 	},
 	data() {
 		return {
-			dataSource: [],
-			district: '',
-			amphoe: '',
-			province: '',
-			zipcode: ''
+			dataSource: []
 		};
 	}
 })
 export default class AddressForm extends Vue {
 	// Data
 	dataSource: AddressEntry[];
-	district: string;
-	amphoe: string;
-	province: string;
-	zipcode: string;
 
 	// Props
 	subdistrictLabel: string;
@@ -124,13 +116,22 @@ export default class AddressForm extends Vue {
 		this.dataSource = loadDataSource();
 	}
 
+	// Computed
+	get subdistrict(): string {
+		return this.value.subdistrict;
+	}
+	get district(): string {
+		return this.value.district;
+	}
+	get province(): string {
+		return this.value.province;
+	}
+	get zipcode(): string {
+		return (typeof this.value.zipcode === 'number') ? this.value.zipcode.toString() : this.value.zipcode;
+	}
+
 	// Methods
 	onItemSelect(item: AddressEntry) {
-		this.district = item.district;
-		this.amphoe = item.amphoe;
-		this.province = item.province;
-		this.zipcode = item.zipcode.toString();
-
 		let value: AddressFormModel = {
 			district: item.amphoe,
 			subdistrict: item.district,

@@ -67,8 +67,17 @@ export default class TypeaheadInput extends Vue {
 	autocompleteCount: number;
 
 	// Props
+	data: string;
 	dataSource: AddressEntry[];
 	target: string; // Name. It's an actual property name in address data.
+
+	// Hooks
+	created() {
+		// Set input value from `data` on created when it's available.
+		if (this.data) {
+			this.query = this.data;
+		}
+	}
 
 	// Methods
 	onInput() {

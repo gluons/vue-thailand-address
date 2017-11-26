@@ -28,10 +28,10 @@ interface AddressFormModel {
 	/**
 	 * รหัสไปรษณีย์
 	 *
-	 * @type {string}
+	 * @type {(number | string)}
 	 * @memberof AddressFormModel
 	 */
-	zipcode: number;
+	zipcode: number | string;
 }
 
 export default AddressFormModel;

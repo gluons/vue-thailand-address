@@ -2,6 +2,8 @@
 #app
 	.title Address Form
 	address-form(v-model='formData')
+	.button-container
+		button(type='button' @click='clear') Clear
 	hr
 	.title Result
 	.result
@@ -19,12 +21,22 @@ export default {
 	data() {
 		return {
 			formData: {
-				district: null,
+				subdistrict: 'ควนทอง',
+				district: 'ขนอม',
+				province: 'นครศรีธรรมราช',
+				zipcode: '80210'
+			}
+		};
+	},
+	methods: {
+		clear() {
+			this.formData = {
 				subdistrict: null,
+				district: null,
 				province: null,
 				zipcode: null
 			}
-		};
+		}
 	}
 };
 </script>
@@ -42,6 +54,9 @@ export default {
 		font-size: 1.25em;
 		font-weight: bold;
 		margin-bottom: 1em;
+	}
+	.button-container {
+		margin: 1em 0;
 	}
 	.result {
 		display: grid;
