@@ -24,9 +24,8 @@ const config: webpack.Configuration = merge(baseConfig, {
 	],
 	externals: {
 		'array-filter': 'array-filter',
-		'string-similarity': 'string-similarity',
+		'leven': 'leven',
 		'vue': 'vue',
-		'vuex': 'vuex',
 		'@/data/db.json': './db.json'
 	}
 });

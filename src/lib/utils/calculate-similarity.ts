@@ -1,4 +1,4 @@
-import * as stringSimilarity from 'string-similarity';
+import * as leven from 'leven';
 
 /**
  * Calculate similarity between query and address data.
@@ -10,13 +10,13 @@ import * as stringSimilarity from 'string-similarity';
 function calculateSimilarity(query: string, addressData: AddressEntry): number {
 	let { district, amphoe, province, zipcode } = addressData;
 	let similarities = [
-		stringSimilarity.compareTwoStrings(query, district),
-		stringSimilarity.compareTwoStrings(query, amphoe),
-		stringSimilarity.compareTwoStrings(query, province),
-		stringSimilarity.compareTwoStrings(query, zipcode.toString())
+		leven(query, district),
+		leven(query, amphoe),
+		leven(query, province),
+		leven(query, zipcode.toString())
 	];
 
-	return Math.max(...similarities);
+	return Math.min(...similarities);
 }
 
 export default calculateSimilarity;
