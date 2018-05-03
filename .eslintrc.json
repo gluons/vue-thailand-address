@@ -1,5 +1,4 @@
 {
 	"root": true,
-	"parser": "babel-eslint",
 	"extends": "gluons/vue"
 }
