@@ -65,17 +65,6 @@ module.exports = function (config) {
 			'FirefoxHeadless'
 		],
 
-		customLaunchers: {
-			FirefoxHeadless: {
-				base: 'Firefox',
-				flags: ['-headless']
-			},
-			FirefoxNightlyHeadless: {
-				base: 'FirefoxNightly',
-				flags: ['-headless']
-			}
-		},
-
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
 		singleRun: true,
