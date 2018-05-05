@@ -1,5 +1,5 @@
 import { calculateSimilarity } from '@/lib/utils';
-import * as filter from 'array-filter';
+import filter from 'array-filter';
 
 /**
  * Get possibles that target property match search query.

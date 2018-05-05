@@ -1,5 +1,5 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
+import path from 'path';
+import webpack from 'webpack';
 
 import { createCSSUse, createSCSSUse } from './utils';
 

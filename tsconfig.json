@@ -9,6 +9,7 @@
 		"target": "es5",
 		"module": "es2015",
 		"moduleResolution": "node",
+		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"outDir": "./dist/",
 		"baseUrl": ".",

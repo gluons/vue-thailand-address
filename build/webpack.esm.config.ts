@@ -1,8 +1,8 @@
-import * as CopyWebpackPlugin from 'copy-webpack-plugin';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as merge from 'webpack-merge';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import path from 'path';
+import webpack from 'webpack';
+import merge from 'webpack-merge';
 
 import createConfig from './createConfig';
 const baseConfig: webpack.Configuration = createConfig();

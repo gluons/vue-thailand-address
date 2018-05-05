@@ -1,4 +1,4 @@
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import { NewLoader, OldLoader } from 'webpack';
 
 type Loader = string | OldLoader | NewLoader;
