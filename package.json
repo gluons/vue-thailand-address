@@ -19,7 +19,7 @@
     "lint:ts": "tslint -p .",
     "lint": "npm-run-all lint:*",
     "prebuild": "rimraf ./dist/* ./types/*",
-    "build": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} webpack --config ./build/webpack.config.ts",
+    "build": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} webpack --config ./config/webpack.config.ts",
     "dev": "poi",
     "sync:db": "ts-node -O {\\\"module\\\":\\\"commonjs\\\"} ./scripts/sync-db.ts",
     "sync": "npm-run-all sync:*",
