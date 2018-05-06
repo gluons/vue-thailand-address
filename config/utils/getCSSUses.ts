@@ -6,11 +6,16 @@ import { Loader } from 'webpack';
  *
  * @param {boolean} minimize Minimize CSS?
  * @param {number} [importLoaders=1] `css-loader`'s `importLoaders`.
+ * @param {boolean} [isDev=false] Is in development mode?
  * @returns {Loader[]}
  */
-export default function getCSSUses(minimize: boolean, importLoaders: number = 1): Loader[] {
+export default function getCSSUses(
+	minimize: boolean,
+	importLoaders: number = 1,
+	isDev: boolean = false
+): Loader[] {
 	return [
-		MiniCssExtractPlugin.loader,
+		(isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader),
 		{
 			loader: 'css-loader',
 			options: {
