@@ -1,6 +1,6 @@
-import chalk from 'chalk';
 import clipboardy from 'clipboardy';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { resolve } from 'path';
 import PostCompile from 'post-compile-webpack-plugin';
@@ -9,9 +9,14 @@ import { VueLoaderPlugin } from 'vue-loader';
 import { Configuration, HotModuleReplacementPlugin } from 'webpack';
 import WebpackBar from 'webpackbar';
 
-import { clearScreen, getCSSUses } from './utils';
+import { getCSSUses } from './utils';
 
-const { cyan, magenta } = chalk;
+const devServerUrl = 'http://localhost:5555';
+const devServerLink: string = terminalLink('Vue Thailand Address', devServerUrl, {
+	fallback() {
+		return devServerUrl;
+	}
+});
 
 const config: Configuration = {
 	mode: 'development',
@@ -75,18 +80,14 @@ const config: Configuration = {
 			}
 		}),
 		new WebpackBar(),
+		new FriendlyErrorsWebpackPlugin({
+			compilationSuccessInfo: {
+				messages: [`Vue Thailand Address is running at ${devServerLink}`],
+				notes: ['URL copied.']
+			}
+		}),
 		new PostCompile(() => {
-			const url = 'http://localhost:5555';
-			const link = magenta(terminalLink('Vue Thailand Address', url, {
-				fallback() {
-					return url;
-				}
-			}));
-
-			clearScreen();
-			console.log(cyan(`Vue Thailand Address is running at ${link}`));
-			console.log(cyan('URL copied.'));
-			clipboardy.writeSync(url);
+			clipboardy.writeSync(devServerUrl);
 		})
 	],
 	resolve: {
