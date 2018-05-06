@@ -1,4 +1,4 @@
 {
 	"root": true,
-	"extends": "gluons/vue"
+	"extends": "gluons/vue-babel"
 }

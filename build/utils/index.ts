@@ -1,7 +1,5 @@
-import createCSSUse from './create-css-use';
-import createSCSSUse from './create-scss-use';
+import getCSSUses from './getCSSUses';
 
 export {
-	createCSSUse,
-	createSCSSUse
+	getCSSUses
 };

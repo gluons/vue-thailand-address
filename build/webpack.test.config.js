@@ -1,4 +1,6 @@
 const path = require('path');
+const { VueLoaderPlugin } = require('vue-loader');
+const WebpackBar = require('webpackbar');
 const webpack = require('webpack');
 
 module.exports = {
@@ -8,32 +10,29 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
-			},
-			{
 				test: /\.ts$/,
 				loader: 'ts-loader',
 				options: {
-					appendTsSuffixTo: [/\.vue$/],
-					compilerOptions: {
-					}
+					appendTsSuffixTo: [/\.vue$/]
 				}
 			},
 			{
 				test: /\.vue$/,
-				loader: 'vue-loader',
-				options: {
-					optimizeSSR: false
-				}
+				loader: 'vue-loader'
 			},
 			{
 				test: /\.css$/,
 				use: [
-					'style-loader',
+					'vue-style-loader',
 					{
 						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+							importLoaders: 1
+						}
+					},
+					{
+						loader: 'postcss-loader',
 						options: {
 							sourceMap: true
 						}
@@ -43,9 +42,16 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				use: [
-					'style-loader',
+					'vue-style-loader',
 					{
 						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+							importLoaders: 2
+						}
+					},
+					{
+						loader: 'postcss-loader',
 						options: {
 							sourceMap: true
 						}
@@ -57,10 +63,16 @@ module.exports = {
 						}
 					}
 				]
+			},
+			{
+				test: /\.pug$/,
+				loader: 'pug-plain-loader'
 			}
 		]
 	},
 	plugins: [
+		new VueLoaderPlugin(),
+		...(process.env.CI ? [] : [new WebpackBar()]),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('testing')
 		}),
