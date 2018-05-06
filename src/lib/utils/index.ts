@@ -1,6 +1,6 @@
-import addressToString from './address-to-string';
-import calculateSimilarity from './calculate-similarity';
-import highlightQuery from './highlight-query';
+import addressToString from './addressToString';
+import calculateSimilarity from './calculateSimilarity';
+import highlightQuery from './highlightQuery';
 
 export {
 	addressToString,
