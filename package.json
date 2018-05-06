@@ -81,8 +81,6 @@
     "mocha": "^5.1.1",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
-    "poi": "^9.2.4",
-    "poi-preset-typescript": "^9.0.1",
     "postcss-loader": "^2.1.5",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",

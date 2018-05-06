@@ -159,8 +159,7 @@ new Vue({
   yarn
   ```
 
-- เปิดหน้าตัวอย่างที่ใช้พัฒนา  
-  > (🙇 ขอขอบคุณ [⚡ Poi](https://github.com/egoist/poi) สำหรับ hot reload ที่ไม่ต้องเขียน config ให้ยุ่งยาก)
+- เปิดหน้าตัวอย่างที่ใช้พัฒนา
 
   ```bash
   npm run dev
