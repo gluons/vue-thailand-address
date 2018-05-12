@@ -1,0 +1,10 @@
+{
+	"extends": "./tsconfig",
+	"compilerOptions": {
+		"declaration": true
+	},
+	"exclude": [
+		"./dev/**/*",
+		"./test/**/*"
+	]
+}

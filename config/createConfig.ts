@@ -31,7 +31,8 @@ export default function createConfig(
 					test: /\.ts$/,
 					loader: 'ts-loader',
 					options: {
-						appendTsSuffixTo: [/\.vue$/]
+						appendTsSuffixTo: [/\.vue$/],
+						configFile: resolve(__dirname, '../tsconfig.prod.json')
 					}
 				},
 				{
