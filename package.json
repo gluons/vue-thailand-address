@@ -106,6 +106,7 @@
     "webpack-cli": "^2.1.2",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.7.2",
     "webpack-stylish": "^0.1.8",
     "webpackbar": "^2.6.1"
   },

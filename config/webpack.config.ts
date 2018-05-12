@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { resolve } from 'path';
 import { Configuration } from 'webpack';
 import merge from 'webpack-merge';
+import nodeExternals from 'webpack-node-externals';
 import StylishReporter from 'webpack-stylish';
 import WebpackBar from 'webpackbar';
 
@@ -34,12 +35,18 @@ const baseConfig: Configuration = merge(createConfig(stylish), {
 			filename: '[name].css'
 		})
 	],
-	externals: {
-		'array-filter': 'array-filter',
-		'leven': 'leven',
-		'vue': 'vue',
-		'@/data/db.json': './db.json'
-	},
+	externals: [
+		nodeExternals(),
+		(context, request, callback) => {
+			// tslint:disable-next-line:no-unused-expression
+			context; // Fake use. Prevent TypeScript's `noUnusedParameters` error.
+
+			if (/data\/db\.json$/.test(request)) {
+				return callback(null, 'commonjs ./db.json');
+			}
+			callback(undefined, undefined);
+		}
+	],
 	target: 'node'
 });
 
@@ -48,10 +55,11 @@ const baseConfig: Configuration = merge(createConfig(stylish), {
  */
 const partialWebConfig: Configuration = {
 	output: {
-		library: 'VueThailandAddress'
+		library: 'VueThailandAddress',
+		libraryExport: 'default'
 	},
 	externals: {
-		vue: 'vue'
+		vue: 'Vue'
 	},
 	optimization: {
 		splitChunks: {
