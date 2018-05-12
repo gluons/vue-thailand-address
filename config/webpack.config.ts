@@ -23,6 +23,11 @@ const baseConfig: Configuration = merge(createConfig(stylish), {
 			{
 				context: resolve(__dirname, '../src/data'),
 				from: 'db.json'
+			},
+			{
+				context: resolve(__dirname, '../src'),
+				from: 'AddressEntry.d.ts',
+				to: 'types/'
 			}
 		]),
 		new MiniCssExtractPlugin({
