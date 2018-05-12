@@ -70,10 +70,7 @@ export default function createConfig(
 			stylish
 		],
 		resolve: {
-			extensions: ['.js', '.json', '.ts', '.vue'],
-			alias: {
-				'@': resolve(__dirname, '../src')
-			}
+			extensions: ['.js', '.json', '.ts', '.vue']
 		},
 		devtool: 'source-map',
 		stats: 'none'

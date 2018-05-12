@@ -11,12 +11,6 @@
 		"moduleResolution": "node",
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
-		"baseUrl": ".",
-		"paths": {
-			"@/*": [
-				"./src/*"
-			]
-		},
 		"sourceMap": true
 	},
 	"include": [

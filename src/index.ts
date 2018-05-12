@@ -1,6 +1,6 @@
 import Vue, { VueConstructor } from 'vue';
 
-import AddressForm from '@/components/AddressForm.vue';
+import AddressForm from './components/AddressForm.vue';
 
 /* tslint:disable: no-namespace */
 declare global {

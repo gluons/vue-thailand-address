@@ -15,7 +15,7 @@ ul.typeahead-autocomplete(:style='style', v-if='hasData')
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { addressToString } from '@/lib/utils';
+import { addressToString } from '../lib/utils';
 
 @Component({
 	name: 'autocomplete',
