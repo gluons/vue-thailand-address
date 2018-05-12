@@ -203,6 +203,12 @@
     source-map "^0.5.6"
     vue-template-es2015-compiler "^1.6.0"
 
+"@vue/test-utils@^1.0.0-beta.16":
+  version "1.0.0-beta.16"
+  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-1.0.0-beta.16.tgz#dcf7a30304391422e382b5f97db6eb9508112906"
+  dependencies:
+    lodash "^4.17.4"
+
 "@webassemblyjs/ast@1.4.2":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.4.2.tgz#ab715aa1fec9dd23c025204dba39690c119418ea"
@@ -695,13 +701,6 @@ autoprefixer@^8.4.1:
     num2fraction "^1.2.2"
     postcss "^6.0.22"
     postcss-value-parser "^3.2.3"
-
-avoriaz@^6.0.1:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/avoriaz/-/avoriaz-6.3.0.tgz#ede148cf0be06f792ff8253a68e0e0483b27c2de"
-  dependencies:
-    lodash "^4.17.4"
-    vue-add-globals "^2.0.0"
 
 aws-sign2@~0.6.0:
   version "0.6.0"
@@ -8788,10 +8787,6 @@ vm-browserify@0.0.4:
 void-elements@^2.0.0, void-elements@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
-
-vue-add-globals@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/vue-add-globals/-/vue-add-globals-2.0.1.tgz#c9fba6faac44f679ec15d5a9637f518b181fc44d"
 
 vue-class-component@^6.0.0:
   version "6.2.0"
