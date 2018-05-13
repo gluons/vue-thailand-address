@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils';
 import { expect } from 'chai';
 
-import TypeaheadInput from '@/components/TypeaheadInput.vue';
+import TypeaheadInput from '../src/components/TypeaheadInput.vue';
 
 describe('TypeaheadInput', () => {
 	const wrapper = mount(TypeaheadInput, {

@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils';
 import { expect } from 'chai';
 
-import Autocomplete from '@/components/Autocomplete.vue';
+import Autocomplete from '../src/components/Autocomplete.vue';
 
 describe('Autocomplete', () => {
 	const wrapper = mount(Autocomplete, {

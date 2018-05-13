@@ -3,7 +3,7 @@ import { mount, ThisTypedMountOptions } from '@vue/test-utils';
 import { expect } from 'chai';
 import Vue from 'vue';
 
-import InputContainer from '@/components/InputContainer.vue';
+import InputContainer from '../src/components/InputContainer.vue';
 
 interface MountOptionsWithBetterAttrs<V extends Vue> extends ThisTypedMountOptions<V> {
 	attrs: Record<string, any>; // `attrs` value can also be non-string.

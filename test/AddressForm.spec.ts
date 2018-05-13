@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils';
 import { expect } from 'chai';
 
-import AddressForm from '@/components/AddressForm.vue';
+import AddressForm from '../src/components/AddressForm.vue';
 
 describe('AddressForm', () => {
 	const wrapper = mount(AddressForm);

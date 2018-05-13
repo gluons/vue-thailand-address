@@ -1,4 +1,3 @@
-const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const WebpackBar = require('webpackbar');
 const webpack = require('webpack');
@@ -81,10 +80,7 @@ module.exports = {
 		})
 	],
 	resolve: {
-		extensions: ['.js', '.json', '.ts', '.vue'],
-		alias: {
-			'@': path.resolve(__dirname, '../src')
-		}
+		extensions: ['.js', '.json', '.ts', '.vue']
 	},
 	devtool: 'inline-source-map'
 };
