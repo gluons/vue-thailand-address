@@ -115,6 +115,6 @@
   "resolutions": {
     "@types/webpack": "^4.1.6",
     "css-loader/cssnano/autoprefixer": "^8.4.1",
-    "css-loader/**/browserslist": "^3.2.6"
+    "css-loader/**/browserslist": "^3.2.7"
   }
 }
