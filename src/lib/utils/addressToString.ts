@@ -1,4 +1,4 @@
-import highlightQuery from './highlight-query';
+import highlightQuery from './highlightQuery';
 
 export const SEPARATOR: string = '»';
 

@@ -1,4 +1,4 @@
-import * as leven from 'leven';
+import leven from 'leven';
 
 /**
  * Calculate similarity between query and address data.

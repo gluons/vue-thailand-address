@@ -1,8 +1,7 @@
 import Vue, { VueConstructor } from 'vue';
 
-import AddressForm from '@/components/AddressForm.vue';
+import AddressForm from './components/AddressForm.vue';
 
-/* tslint:disable: no-namespace */
 declare global {
 	interface Window {
 		Vue: typeof Vue;
@@ -22,6 +21,11 @@ if ((typeof window !== 'undefined') && window.Vue) {
 	install(window.Vue);
 }
 
+export {
+	AddressForm
+};
+
 export default {
-	install
+	install,
+	AddressForm
 };

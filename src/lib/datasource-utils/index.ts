@@ -1,5 +1,5 @@
-import getPossibles from './get-possibles';
-import loadDataSource from './load-data-source';
+import getPossibles from './getPossibles';
+import loadDataSource from './loadDataSource';
 import preprocess from './preprocess';
 
 export {

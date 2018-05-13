@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Mon Aug 14 2017 12:20:36 GMT+0700 (ICT)
 
-const webpackConfig = require('./build/webpack.test.config');
+const webpackConfig = require('./config/webpack.config.test');
 
 module.exports = function (config) {
 	config.set({
@@ -62,19 +62,8 @@ module.exports = function (config) {
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
 		browsers: [
-			process.env.CI ? 'FirefoxHeadless' : 'FirefoxNightlyHeadless'
+			'FirefoxHeadless'
 		],
-
-		customLaunchers: {
-			FirefoxHeadless: {
-				base: 'Firefox',
-				flags: ['-headless']
-			},
-			FirefoxNightlyHeadless: {
-				base: 'FirefoxNightly',
-				flags: ['-headless']
-			}
-		},
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits

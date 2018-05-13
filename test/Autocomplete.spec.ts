@@ -1,12 +1,13 @@
 /* tslint:disable:no-unused-expression */
-import { mount } from 'avoriaz';
+import { mount } from '@vue/test-utils';
 import { expect } from 'chai';
 
-import Autocomplete from '@/components/Autocomplete.vue';
+import Autocomplete from '../src/components/Autocomplete.vue';
 
 describe('Autocomplete', () => {
 	const wrapper = mount(Autocomplete, {
 		propsData: {
+			possibles: [],
 			target: 'amphoe',
 			maxHeight: 500
 		}
@@ -14,26 +15,31 @@ describe('Autocomplete', () => {
 
 	describe('Props', () => {
 		it(`should has 'target' prop with expected value`, () => {
-			expect(wrapper.getProp('target')).to.equal('amphoe');
+			expect(wrapper.props().target).to.exist;
+			expect(wrapper.props().target).to.equal('amphoe');
 		});
 		it(`should has 'maxHeight' prop with expected value`, () => {
-			expect(wrapper.getProp('maxHeight')).to.equal(500);
+			expect(wrapper.props().maxHeight).to.exist;
+			expect(wrapper.props().maxHeight).to.equal(500);
 		});
 		it(`should has 'selectedIndex' prop with default value`, () => {
-			expect(wrapper.getProp('selectedIndex')).to.equal(-1);
+			let vm: any = wrapper.vm;
+
+			expect(vm.selectedIndex).to.exist;
+			expect(vm.selectedIndex).to.equal(-1);
 		});
 	});
 	describe('Computed', () => {
-		let computed: any = wrapper.computed();
+		let vm: any = wrapper.vm;
 
 		it(`should has 'style' computed`, () => {
-			expect(computed.style).to.exist;
+			expect(vm.style).to.exist;
 		});
 		it(`should has 'hasData' computed`, () => {
-			expect(computed.hasData).to.exist;
+			expect(vm.hasData).to.exist;
 		});
 		it(`should has 'autocompleteList' computed`, () => {
-			expect(computed.autocompleteList).to.exist;
+			expect(vm.autocompleteList).to.exist;
 		});
 	});
 	describe('Methods', () => {

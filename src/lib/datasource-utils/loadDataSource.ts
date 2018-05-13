@@ -1,4 +1,4 @@
-import database from '@/data/db.json';
+import database from '../../data/db.json';
 import preprocess from './preprocess';
 
 /**

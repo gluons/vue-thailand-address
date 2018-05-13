@@ -6,7 +6,7 @@
  * @param {any} data Data from JSON database.
  * @returns Processed data.
  */
-function preprocess(data): AddressEntry[] {
+function preprocess(data: any): AddressEntry[] {
 	let lookup = [];
 	let words = [];
 	let expanded = [];

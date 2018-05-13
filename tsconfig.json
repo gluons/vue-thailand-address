@@ -1,5 +1,7 @@
 {
 	"compilerOptions": {
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 		"lib": [
 			"dom",
 			"es2015"
@@ -7,17 +9,9 @@
 		"target": "es5",
 		"module": "es2015",
 		"moduleResolution": "node",
+		"esModuleInterop": true,
 		"experimentalDecorators": true,
-		"outDir": "./dist/",
-		"baseUrl": ".",
-		"paths": {
-			"@/*": [
-				"./src/*"
-			]
-		},
-		"sourceMap": true,
-		"declaration": true,
-		"declarationDir": "../types"
+		"sourceMap": true
 	},
 	"include": [
 		"./src/**/*",

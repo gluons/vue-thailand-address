@@ -40,8 +40,8 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { loadDataSource } from '@/lib/datasource-utils';
-import { AddressFormModel } from '@/lib/interfaces';
+import { loadDataSource } from '../lib/datasource-utils';
+import { AddressFormModel } from '../lib/interfaces';
 import InputContainer from './InputContainer.vue';
 
 @Component({
