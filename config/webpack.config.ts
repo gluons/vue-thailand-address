@@ -101,7 +101,7 @@ let commonConfig: Configuration = merge(baseConfig, {
  */
 let esmConfig: Configuration = merge(baseConfig, {
 	output: {
-		filename: '[name].esm.js'
+		filename: '[name].es.js'
 	},
 	plugins: [
 		new WebpackBar({
