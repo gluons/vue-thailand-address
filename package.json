@@ -2,17 +2,15 @@
   "name": "vue-thailand-address",
   "version": "2.0.2",
   "description": "Thai address input for Vue.",
-  "main": "./dist/vue-thailand-address.common.js",
-  "module": "./dist/vue-thailand-address.esm.js",
+  "main": "./dist/vue-thailand-address.cjs.js",
+  "module": "./dist/vue-thailand-address.es.js",
   "jsdelivr": "./dist/vue-thailand-address.min.js",
   "unpkg": "./dist/vue-thailand-address.min.js",
   "browser": "./dist/vue-thailand-address.min.js",
   "style": "./dist/vue-thailand-address.css",
-  "typings": "./types/src/index.d.ts",
+  "typings": "./dist/types/index.d.ts",
   "files": [
-    "tsconfig.json",
-    "dist",
-    "types"
+    "dist"
   ],
   "scripts": {
     "lint:js": "eslint .",
