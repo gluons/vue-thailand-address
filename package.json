@@ -95,7 +95,7 @@
     "ts-node": "^7.0.0",
     "tslint": "^5.6.0",
     "tslint-config-gluons": "^2.0.0",
-    "typescript": "^2.4.2",
+    "typescript": "^3.0.0",
     "vue": "^2.5.5",
     "vue-class-component": "^6.0.0",
     "vue-loader": "^15.0.9",
