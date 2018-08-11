@@ -66,7 +66,7 @@
     "clipboardy": "^1.2.3",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
-    "css-loader": "^0.28.4",
+    "css-loader": "^1.0.0",
     "ejs-loader": "^0.3.1",
     "eslint": "^4.4.1",
     "eslint-config-gluons": "^4.0.0",
