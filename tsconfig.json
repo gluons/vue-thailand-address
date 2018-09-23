@@ -12,8 +12,7 @@
 		"sourceMap": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"declaration": true,
-		"declarationDir": "types"
+		"declaration": true
 	},
 	"include": [
 		"src"

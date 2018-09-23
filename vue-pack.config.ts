@@ -56,7 +56,7 @@ const config: Configuration = {
 						{
 							context: resolve(__dirname, './src/'),
 							from: 'AddressEntry.d.ts',
-							to: resolve(__dirname, './types/')
+							to: resolve(__dirname, './dist/')
 						}
 					]]
 				)
