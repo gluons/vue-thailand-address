@@ -1,5 +1,6 @@
 import AddressEntry from '#/AddressEntry';
 import Target from '#/Target';
+import translateTarget from '@utils/translateTarget';
 import highlightQuery from './highlightQuery';
 
 export const SEPARATOR: string = '»';
@@ -15,10 +16,11 @@ export const SEPARATOR: string = '»';
  */
 export default function addressToString(addressData: AddressEntry, currentTarget: Target, query: string): string {
 	// Clone item to `addressComponents`. Do not mutate the original item.
-	let addressComponents = Object.assign({}, addressData);
+	const addressComponents = Object.assign({}, addressData);
+	const key = translateTarget(currentTarget);
 
-	if (addressComponents[currentTarget]) {
-		addressComponents[currentTarget] = highlightQuery(query, `${addressComponents[currentTarget]}`);
+	if (addressComponents[key]) {
+		addressComponents[key] = highlightQuery(query, `${addressComponents[key]}`);
 	}
 
 	return [

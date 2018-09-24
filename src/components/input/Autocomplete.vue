@@ -12,57 +12,41 @@ ul.typeahead-autocomplete(:style='style', v-if='hasData')
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 
 import AddressEntry from '#/AddressEntry';
 import Target from '#/Target';
 import addressToString from '@utils/addressToString';
 
 @Component({
-	name: 'autocomplete',
-	props: {
-		query: String,
-		possibles: Array,
-		target: {
-			type: String,
-			required: true
-		},
-		maxHeight: {
-			type: Number,
-			default: 200
-		},
-		selectedIndex: {
-			type: Number,
-			default: -1
-		}
-	},
-	watch: {
-		selectedIndex(newIndex) {
-			/*
-			 * Scroll to the selected item when use keyboard.
-			 */
-			if (this.$el && this.$refs['autocomplete-list'] && this.$refs['autocomplete-list'][newIndex]) {
-				let listContainer: HTMLUListElement = this.$el;
-				let selectItem: HTMLLIElement = this.$refs['autocomplete-list'][newIndex];
-
-				let itemBottom = selectItem.offsetTop + selectItem.offsetHeight;
-				if (selectItem.offsetTop < listContainer.scrollTop) {
-					listContainer.scrollTop = selectItem.offsetTop;
-				} else if ((itemBottom - listContainer.scrollTop) > listContainer.offsetHeight) {
-					listContainer.scrollTop = selectItem.offsetTop - (listContainer.offsetHeight - selectItem.offsetHeight);
-				}
-			}
-		}
-	}
+	name: 'Autocomplete'
 })
 export default class Autocomplete extends Vue {
 	// Props
-	query: string;
-	possibles: AddressEntry[];
-	target: Target; // A property name in data item.
-	maxHeight: number; // Max autocomplete height.
-	selectedIndex: number;
+	@Prop(String) query: string;
+	@Prop(Array) possibles: AddressEntry[];
+	@Prop({ type: String, required: true }) target: Target; // A property name in data item.
+	@Prop({ type: Number, default: 200 }) maxHeight: number; // Max autocomplete height.
+	@Prop({ type: Number, default: -1 }) selectedIndex: number;
+
+	// Watch
+	@Watch('selectedIndex')
+	onSelectedIndexChange(newIndex: number) {
+		/*
+		 * Scroll to the selected item when use keyboard.
+		 */
+		if (this.$el && this.$refs['autocomplete-list'] && this.$refs['autocomplete-list'][newIndex]) {
+			const listContainer: HTMLUListElement = this.$el as HTMLUListElement;
+			const selectItem: HTMLLIElement = this.$refs['autocomplete-list'][newIndex];
+
+			const itemBottom = selectItem.offsetTop + selectItem.offsetHeight;
+			if (selectItem.offsetTop < listContainer.scrollTop) {
+				listContainer.scrollTop = selectItem.offsetTop;
+			} else if ((itemBottom - listContainer.scrollTop) > listContainer.offsetHeight) {
+				listContainer.scrollTop = selectItem.offsetTop - (listContainer.offsetHeight - selectItem.offsetHeight);
+			}
+		}
+	}
 
 	// Computed
 	get style() {

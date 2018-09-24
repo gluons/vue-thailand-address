@@ -60,6 +60,7 @@
     "typescript": "^3.0.3",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^7.1.1",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {

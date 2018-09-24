@@ -3,6 +3,7 @@ import filter from 'array-filter';
 import AddressEntry from '#/AddressEntry';
 import Target from '#/Target';
 import calculateSimilarity from '@utils/calculateSimilarity';
+import translateTarget from '@utils/translateTarget';
 
 /**
  * Get possibles that target property match search query.
@@ -14,8 +15,10 @@ import calculateSimilarity from '@utils/calculateSimilarity';
  */
 function getPossibles(dataSource: AddressEntry[], target: Target, query: string): AddressEntry[] {
 	dataSource = dataSource.slice(0); // Prevent mutate the original data source. Clone it!
-	let pattern = new RegExp(`^${query}`);
-	let possibles: AddressEntry[] = filter(dataSource, item => (item[target] ? pattern.test(item[target]) : false));
+
+	const key = translateTarget(target);
+	const pattern = new RegExp(`^${query}`);
+	const possibles: AddressEntry[] = filter(dataSource, (item: AddressEntry) => (item[key] ? pattern.test(`${item[key]}`) : false));
 	possibles.sort((a, b) => {
 		let aSimilarity = calculateSimilarity(query, a);
 		let bSimilarity = calculateSimilarity(query, b);

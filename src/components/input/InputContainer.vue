@@ -7,25 +7,21 @@ typeahead-input(v-else, v-bind='$attrs', @itemselect='onItemSelect')
 
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import AddressEntry from '#/AddressEntry';
 import TypeaheadInput from './TypeaheadInput.vue';
 
 @Component({
-	name: 'input-container',
+	name: 'InputContainer',
 	components: {
 		TypeaheadInput
 	},
-	inheritAttrs: false,
-	props: {
-		label: String
-	}
+	inheritAttrs: false
 })
 export default class InputContainer extends Vue {
 	// Props
-	label: string; // Input label.
+	@Prop(String) label: string; // Input label.
 
 	// Computed
 	get hasLabel(): boolean {

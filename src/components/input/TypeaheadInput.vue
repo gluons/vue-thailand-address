@@ -7,8 +7,8 @@
 		@input='onInput',
 		@blur='closeAutocomplete(false)',
 		@keydown.esc='closeAutocomplete',
-		@keydown.up='moveSelectedIndex(-1, $event)',
-		@keydown.down='moveSelectedIndex(1, $event)',
+		@keydown.up.prevent='moveSelectedIndex(-1)',
+		@keydown.down.prevent='moveSelectedIndex(1)',
 		@keydown.enter.prevent='selectItemData'
 	)
 	autocomplete(
@@ -21,70 +21,58 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 
 import AddressEntry from '#/AddressEntry';
+import AddressModel from '#/AddressModel';
 import Target from '#/Target';
 import getPossibles from '@lib/getPossibles';
+import { AUTOCOMPLETE_CLOSE_DELAY } from '@lib/constants';
+import { Bus, dataSource, setValue } from '@data/dataStore';
+import addressEntryToModel from '@utils/addressEntryToModel';
 import Autocomplete from './Autocomplete.vue';
 
-const AUTOCOMPLETE_CLOSE_DELAY = 250;
-
 @Component({
-	name: 'typeahead-input',
+	name: 'TypeaheadInput',
 	components: {
 		Autocomplete
-	},
-	props: {
-		data: String, // A prop to inject input value from parent.
-		dataSource: {
-			type: Array,
-			required: true
-		},
-		target: {
-			type: String,
-			required: true
-		}
-	},
-	watch: {
-		data(newData: string) {
-			this.query = newData;
-		}
-	},
-	data() {
-		return {
-			query: '',
-			possibles: [],
-			selectedIndex: -1,
-			autocompleteCount: 0
-		};
 	}
 })
 export default class TypeaheadInput extends Vue {
-	// Data
-	query: string;
-	possibles: AddressEntry[];
-	selectedIndex: number;
-	autocompleteCount: number;
-
 	// Props
-	data: string;
-	dataSource: AddressEntry[];
-	target: Target; // Name. It's an actual property name in address data.
+	@Prop(String) value: string;
+	@Prop({ type: String, required: true }) target: Target; // Name. It's an actual property name in address data.
+
+	// Watch
+	@Watch('value')
+	onValueChange(newValue: string) {
+		this.query = newValue;
+	}
+
+	// Data
+	query: string = '';
+	possibles: AddressEntry[] = [];
+	selectedIndex: number = -1;
+	autocompleteCount: number = 0;
 
 	// Hooks
 	created() {
-		// Set input value from `data` on created when it's available.
-		if (this.data) {
-			this.query = this.data;
+		// Set input value from `value` on created when it's available.
+		if (this.value) {
+			this.query = this.value;
 		}
+
+		Bus.$on('datasource-update', (newModelValue: AddressModel) => {
+			const inputValue = newModelValue[this.target];
+
+			this.query = `${inputValue}`;
+		});
 	}
 
 	// Methods
 	onInput() {
 		if (this.query.length > 0) {
-			let possibles = getPossibles(this.dataSource, this.target, this.query);
+			let possibles = getPossibles(dataSource, this.target, this.query);
 			this.autocompleteCount = possibles.length;
 			this.possibles = possibles;
 		} else {
@@ -100,9 +88,7 @@ export default class TypeaheadInput extends Vue {
 			this.possibles = [];
 		}, immediate ? 0 : AUTOCOMPLETE_CLOSE_DELAY);
 	}
-	moveSelectedIndex(indicator: number, e: KeyboardEvent) {
-		e.preventDefault();
-
+	moveSelectedIndex(indicator: number) {
 		// Trigget show autocomplete when press down button.
 		if (indicator == 1) {
 			this.onInput();
@@ -121,15 +107,21 @@ export default class TypeaheadInput extends Vue {
 		}
 	}
 	selectItemData() {
-		let selectedIndex = this.selectedIndex;
+		const selectedIndex = this.selectedIndex;
 		if (this.possibles[selectedIndex]) {
-			let selectedItem = Object.assign({}, this.possibles[selectedIndex]); // Shallow Clone
-			this.$emit('itemselect', selectedItem);
+			const selectedItem: AddressEntry = Object.assign({}, this.possibles[selectedIndex]); // Shallow Clone
+			const addressModel: AddressModel = addressEntryToModel(selectedItem);
+
+			setValue(addressModel);
+			this.$emit('itemselect', addressModel);
 		}
 		this.closeAutocomplete(true);
 	}
 	onItemClick(item: AddressEntry) {
-		this.$emit('itemselect', item);
+		const addressModel: AddressModel = addressEntryToModel(item);
+
+		setValue(addressModel);
+		this.$emit('itemselect', addressModel);
 	}
 }
 </script>

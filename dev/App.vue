@@ -1,18 +1,21 @@
 <template lang="pug">
 #app
 	.title Address Form
-	address-form(v-model='formData')
+	subdistrict-input(:value='subdistrict', @itemselect='onSelectItem')
+	district-input(:value='district', @itemselect='onSelectItem')
+	province-input(:value='province', @itemselect='onSelectItem')
+	zipcode-input(:value='zipcode', @itemselect='onSelectItem')
 	.button-container
 		button(type='button' @click='clear') Clear
 	hr
 	.title Result
 	.result
 		.row
-			.col #[b ตำบล/แขวง:] {{ formData.subdistrict }}
-			.col #[b อำเภอ/เขต:] {{ formData.district }}
+			.col #[b ตำบล/แขวง:] {{ subdistrict }}
+			.col #[b อำเภอ/เขต:] {{ district }}
 		.row
-			.col #[b จังหวัด:] {{ formData.province }}
-			.col #[b รหัสไปรษณีย์:] {{ formData.zipcode }}
+			.col #[b จังหวัด:] {{ province }}
+			.col #[b รหัสไปรษณีย์:] {{ zipcode }}
 </template>
 
 <script>
@@ -20,22 +23,24 @@ export default {
 	name: 'app',
 	data() {
 		return {
-			formData: {
-				subdistrict: 'ควนทอง',
-				district: 'ขนอม',
-				province: 'นครศรีธรรมราช',
-				zipcode: '80210'
-			}
+			subdistrict: 'ควนทอง',
+			district: 'ขนอม',
+			province: 'นครศรีธรรมราช',
+			zipcode: '80210'
 		};
 	},
 	methods: {
 		clear() {
-			this.formData = {
-				subdistrict: null,
-				district: null,
-				province: null,
-				zipcode: null
-			}
+			this.subdistrict = null;
+			this.district = null;
+			this.province = null;
+			this.zipcode = null;
+		},
+		onSelectItem(item) {
+			this.subdistrict = item.subdistrict;
+			this.district = item.district;
+			this.province = item.province;
+			this.zipcode = item.zipcode;
 		}
 	}
 };

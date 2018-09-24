@@ -1,8 +1,8 @@
-import AddressEntry from './AddressEntry';
+import AddressModel from './AddressModel';
 
 /**
  * Address property target.
  */
-type Target = Exclude<keyof AddressEntry, 'district_code' | 'amphoe_code' | 'province_code'>;
+type Target = keyof AddressModel;
 
 export default Target;

@@ -1,31 +1,38 @@
-import Vue, { VueConstructor } from 'vue';
+import Vue, { PluginFunction, PluginObject } from 'vue';
 
-import AddressForm from '@comp/AddressForm.vue';
-
-declare global {
-	interface Window {
-		Vue: typeof Vue;
-	}
-}
+import DistrictInput from '@comp/DistrictInput.vue';
+import ProvinceInput from '@comp/ProvinceInput.vue';
+import SubDistrictInput from '@comp/SubDistrictInput.vue';
+import ZipCodeInput from '@comp/ZipCodeInput.vue';
 
 /**
- * Install as Vue plugin.
+ * Install Vue Thailand Address plugin.
  *
- * @param {typeof Vue} vue Vue instance.
+ * @param {typeof Vue} vue Vue class.
  */
-function install(vue: VueConstructor<Vue>): void {
-	vue.component('address-form', AddressForm);
-}
+const install: PluginFunction<never> = (vue: typeof Vue): void => {
+	vue.component('subdistrict-input', SubDistrictInput);
+	vue.component('district-input', DistrictInput);
+	vue.component('province-input', ProvinceInput);
+	vue.component('zipcode-input', ZipCodeInput);
+};
 
 if ((typeof window !== 'undefined') && window.Vue) {
 	install(window.Vue);
 }
 
-export {
-	AddressForm
+/**
+ * Vue Thailand Address plugin.
+ */
+const plugin: PluginObject<never> = {
+	install
 };
 
-export default {
-	install,
-	AddressForm
+export {
+	SubDistrictInput,
+	DistrictInput,
+	ProvinceInput,
+	ZipCodeInput
 };
+
+export default plugin;
