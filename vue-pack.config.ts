@@ -71,6 +71,7 @@ const config: Configuration = {
 	],
 	dev: {
 		entry: resolve(__dirname, './dev/main.ts'),
+		open: true,
 		htmlTitle: 'Vue Thailand Address'
 	}
 };

@@ -2,18 +2,18 @@
 # yarn lockfile v1
 
 
-"@gluons/vue-pack-banner-plugin@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-banner-plugin/-/vue-pack-banner-plugin-1.11.0.tgz#1ad641250f1fbf03ecf735ee75a2d79df468e2c7"
+"@gluons/vue-pack-banner-plugin@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-banner-plugin/-/vue-pack-banner-plugin-1.12.0.tgz#72dea8f6c79b016e81cbf6a349c2ba39a7267a05"
   dependencies:
     webpack "^4.19.0"
 
-"@gluons/vue-pack-cli@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-cli/-/vue-pack-cli-1.11.0.tgz#b195cb084ea16a995d8236ec2a6b5887adc24f52"
+"@gluons/vue-pack-cli@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-cli/-/vue-pack-cli-1.12.0.tgz#6c3a42b56de10f4f3a9113d9def9ae56077ed599"
   dependencies:
-    "@gluons/vue-pack" "^1.11.0"
-    "@gluons/vue-pack-dev" "^1.11.0"
+    "@gluons/vue-pack" "^1.12.0"
+    "@gluons/vue-pack-dev" "^1.12.0"
     "@gluons/vue-pack-load-config" "^1.10.0"
     "@gluons/vue-pack-types" "^1.9.0"
     aggregate-error "^1.0.0"
@@ -24,10 +24,11 @@
     nvl "^1.1.1"
     yargs "^12.0.0"
 
-"@gluons/vue-pack-dev@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-dev/-/vue-pack-dev-1.11.0.tgz#4593820bb6aa5858fbf95ce4cd39a0a2cdbdeec2"
+"@gluons/vue-pack-dev@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-dev/-/vue-pack-dev-1.12.0.tgz#5c92b664cb7f51ce854e996cb52adbee1e691d41"
   dependencies:
+    "@types/opn" "^5.1.0"
     autoprefixer "^9.1.3"
     browserslist-config-vue "^1.0.3"
     clipboardy "^1.2.3"
@@ -36,6 +37,7 @@
     html-webpack-plugin "^3.2.0"
     moren "^2.0.0"
     node-sass "^4.9.3"
+    opn "^5.4.0"
     postcss-loader "^3.0.0"
     pug "^2.0.3"
     pug-loader "^2.4.0"
@@ -59,9 +61,9 @@
   optionalDependencies:
     joycon-ts-loader "^3.0.0"
 
-"@gluons/vue-pack-splitchunks-plugin@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-splitchunks-plugin/-/vue-pack-splitchunks-plugin-1.11.0.tgz#32948fd34dba31fe44d17ff5c161d5f474f4f23d"
+"@gluons/vue-pack-splitchunks-plugin@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-splitchunks-plugin/-/vue-pack-splitchunks-plugin-1.12.0.tgz#60db209d16519501f0813aed68a4fa67b37bb704"
 
 "@gluons/vue-pack-types@^1.9.0":
   version "1.9.0"
@@ -69,9 +71,9 @@
   dependencies:
     "@types/webpack" "^4.4.11"
 
-"@gluons/vue-pack@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack/-/vue-pack-1.11.0.tgz#db01e3df583cbe131264c8fdadf880cde224ff4b"
+"@gluons/vue-pack@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack/-/vue-pack-1.12.0.tgz#09b647681686d5cc3a9da8ecdf24b10a62c6c859"
   dependencies:
     "@gluons/vue-pack-load-config" "^1.10.0"
     "@gluons/vue-pack-types" "^1.9.0"
@@ -152,6 +154,12 @@
 "@types/node@8":
   version "8.10.30"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.30.tgz#2c82cbed5f79d72280c131d2acffa88fbd8dd353"
+
+"@types/opn@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@types/opn/-/opn-5.1.0.tgz#bff7bc371677f4bdbb37884400e03fd81f743927"
+  dependencies:
+    "@types/node" "*"
 
 "@types/tapable@*":
   version "1.0.4"
@@ -3730,7 +3738,7 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-opn@^5.1.0:
+opn@^5.1.0, opn@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
   dependencies:
