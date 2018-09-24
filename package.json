@@ -40,9 +40,6 @@
     "url": "https://github.com/gluons/vue-thailand-address/issues"
   },
   "homepage": "https://gluons.github.io/vue-thailand-address/",
-  "browserslist": [
-    "extends browserslist-config-vue"
-  ],
   "peerDependencies": {
     "vue": ">=2.4.0"
   },
