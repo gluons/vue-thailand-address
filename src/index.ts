@@ -1,6 +1,6 @@
 import Vue, { VueConstructor } from 'vue';
 
-import AddressForm from './components/AddressForm.vue';
+import AddressForm from '@comp/AddressForm.vue';
 
 declare global {
 	interface Window {

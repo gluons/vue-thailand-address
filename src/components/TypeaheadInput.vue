@@ -24,7 +24,9 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { getPossibles } from '../lib/datasource-utils';
+import AddressEntry from '#/AddressEntry';
+import Target from '#/Target';
+import getPossibles from '@lib/getPossibles';
 import Autocomplete from './Autocomplete.vue';
 
 const AUTOCOMPLETE_CLOSE_DELAY = 250;
@@ -69,7 +71,7 @@ export default class TypeaheadInput extends Vue {
 	// Props
 	data: string;
 	dataSource: AddressEntry[];
-	target: string; // Name. It's an actual property name in address data.
+	target: Target; // Name. It's an actual property name in address data.
 
 	// Hooks
 	created() {

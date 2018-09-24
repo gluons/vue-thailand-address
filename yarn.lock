@@ -143,6 +143,10 @@
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@types/cp-file/-/cp-file-4.2.0.tgz#2b12186b50dad407b11021284627bdf4adb87a87"
 
+"@types/leven@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@types/leven/-/leven-2.1.1.tgz#7cdc02ec636f80dc0bb0a53d8ee7eff2d8e8e1d8"
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"

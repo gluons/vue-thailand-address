@@ -1,13 +1,14 @@
-import database from '../../data/db.json';
+import AddressEntry from '#/AddressEntry';
+
+import database from '@data/db.json';
 import preprocess from './preprocess';
 
 /**
  * Load data source.
  *
+ * @exports
  * @returns {AddressEntry[]} Processed data source.
  */
-function loadDataSource(): AddressEntry[] {
+export default function loadDataSource(): AddressEntry[] {
 	return preprocess(database);
 }
-
-export default loadDataSource;

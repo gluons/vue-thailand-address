@@ -40,8 +40,9 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { loadDataSource } from '../lib/datasource-utils';
-import { AddressFormModel } from '../lib/interfaces';
+import AddressEntry from '#/AddressEntry';
+import AddressModel from '#/AddressModel';
+import loadDataSource from '@utils/db/loadDataSource';
 import InputContainer from './InputContainer.vue';
 
 @Component({
@@ -84,7 +85,7 @@ import InputContainer from './InputContainer.vue';
 					hasOwnProperty.call(value, 'zipcode')
 				);
 			},
-			default(): AddressFormModel {
+			default(): AddressModel {
 				return {
 					district: null,
 					subdistrict: null,
@@ -109,7 +110,7 @@ export default class AddressForm extends Vue {
 	districtLabel: string;
 	provinceLabel: string;
 	zipcodeLabel: string;
-	value: AddressFormModel
+	value: AddressModel
 
 	// Hooks
 	created() {
@@ -132,7 +133,7 @@ export default class AddressForm extends Vue {
 
 	// Methods
 	onItemSelect(item: AddressEntry) {
-		let value: AddressFormModel = {
+		let value: AddressModel = {
 			district: item.amphoe,
 			subdistrict: item.district,
 			province: item.province,

@@ -1,9 +1,10 @@
 /**
- * Address Entry
+ * Address database entry
  *
+ * @export
  * @interface AddressEntry
  */
-interface AddressEntry {
+export default interface AddressEntry {
 	/**
 	 * ตำบล
 	 *

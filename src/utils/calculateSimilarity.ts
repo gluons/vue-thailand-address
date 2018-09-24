@@ -1,5 +1,7 @@
 import leven from 'leven';
 
+import AddressEntry from '#/AddressEntry';
+
 /**
  * Calculate similarity between query and address data.
  *
@@ -8,12 +10,12 @@ import leven from 'leven';
  * @returns {number} Similarity ratio.
  */
 function calculateSimilarity(query: string, addressData: AddressEntry): number {
-	let { district, amphoe, province, zipcode } = addressData;
-	let similarities = [
+	const { district, amphoe, province, zipcode } = addressData;
+	const similarities = [
 		leven(query, district),
 		leven(query, amphoe),
 		leven(query, province),
-		leven(query, zipcode.toString())
+		leven(query, `${zipcode}`)
 	];
 
 	return Math.min(...similarities);

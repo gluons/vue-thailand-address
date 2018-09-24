@@ -8,11 +8,21 @@
 			"es2015"
 		],
 		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true,
 		"sourceMap": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"declaration": true
+		"declaration": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"],
+			"#/*": ["src/types/*"],
+			"@data/*": ["src/data/*"],
+			"@comp/*": ["src/components/*"],
+			"@lib/*": ["src/lib/*"],
+			"@utils/*": ["src/utils/*"]
+		}
 	},
 	"include": [
 		"src"

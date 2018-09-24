@@ -1,8 +1,6 @@
 import { Configuration } from '@gluons/vue-pack';
 import banner from '@gluons/vue-pack-banner-plugin';
 import splitChunks from '@gluons/vue-pack-splitchunks-plugin';
-
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { resolve } from 'path';
 import nodeExternals from 'webpack-node-externals';
 
@@ -29,6 +27,13 @@ const config: Configuration = {
 	entry: resolve(__dirname, './src/index.ts'),
 	libraryName: 'VueThailandAddress',
 	outDir: resolve(__dirname, './dist'),
+	alias: {
+		'#': resolve(__dirname, './src/types/'),
+		'@data': resolve(__dirname, './src/data/'),
+		'@comp': resolve(__dirname, './src/components/'),
+		'@lib': resolve(__dirname, './src/lib/'),
+		'@utils': resolve(__dirname, './src/utils/')
+	},
 	externals: {
 		module: [
 			nodeExternals(),
@@ -39,29 +44,6 @@ const config: Configuration = {
 				callback(void 0, void 0);
 			}
 		]
-	},
-	chainWebpack(webpackConfigGroup) {
-		Object.keys(webpackConfigGroup).forEach(key => {
-			const webpackChainConfig = webpackConfigGroup[key];
-
-			webpackChainConfig
-				.plugin('copy')
-				.use(
-					CopyWebpackPlugin,
-					[[
-						{
-							context: resolve(__dirname, './src/data/'),
-							from: 'db.json'
-						},
-						{
-							context: resolve(__dirname, './src/'),
-							from: 'AddressEntry.d.ts',
-							to: resolve(__dirname, './dist/')
-						}
-					]]
-				)
-			;
-		});
 	},
 	plugins: [
 		banner(bannerStr),

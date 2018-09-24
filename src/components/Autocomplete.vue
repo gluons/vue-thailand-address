@@ -15,7 +15,9 @@ ul.typeahead-autocomplete(:style='style', v-if='hasData')
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { addressToString } from '../lib/utils';
+import AddressEntry from '#/AddressEntry';
+import Target from '#/Target';
+import addressToString from '@utils/addressToString';
 
 @Component({
 	name: 'autocomplete',
@@ -58,7 +60,7 @@ export default class Autocomplete extends Vue {
 	// Props
 	query: string;
 	possibles: AddressEntry[];
-	target: string; // A property name in data item.
+	target: Target; // A property name in data item.
 	maxHeight: number; // Max autocomplete height.
 	selectedIndex: number;
 

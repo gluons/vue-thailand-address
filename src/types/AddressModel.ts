@@ -1,37 +1,36 @@
 /**
- * Address Form's `v-model` value.
+ * Address model.
  *
- * @interface AddressFormModel
+ * @export
+ * @interface AddressModel
  */
-interface AddressFormModel {
+export default interface AddressModel {
 	/**
 	 * อำเภอ
 	 *
 	 * @type {string}
-	 * @memberof AddressFormModel
+	 * @memberof AddressModel
 	 */
 	district: string;
 	/**
 	 * ตำบล
 	 *
 	 * @type {string}
-	 * @memberof AddressFormModel
+	 * @memberof AddressModel
 	 */
 	subdistrict: string;
 	/**
 	 * จังหวัด
 	 *
 	 * @type {string}
-	 * @memberof AddressFormModel
+	 * @memberof AddressModel
 	 */
 	province: string;
 	/**
 	 * รหัสไปรษณีย์
 	 *
 	 * @type {(number | string)}
-	 * @memberof AddressFormModel
+	 * @memberof AddressModel
 	 */
 	zipcode: number | string;
 }
-
-export default AddressFormModel;

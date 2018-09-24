@@ -1,12 +1,15 @@
+import AddressEntry from '#/AddressEntry';
+
 /**
  * Preprocess data from JSON database.
  *
  * @author earthchie
  * @see https://github.com/earthchie/jquery.Thailand.js/blob/master/jquery.Thailand.js/src/jquery.Thailand.js
+ * @exports
  * @param {any} data Data from JSON database.
- * @returns Processed data.
+ * @returns {AddressEntry[]} Processed data.
  */
-function preprocess(data: any): AddressEntry[] {
+export default function preprocess(data: any): AddressEntry[] {
 	let lookup = [];
 	let words = [];
 	let expanded = [];
@@ -67,5 +70,3 @@ function preprocess(data: any): AddressEntry[] {
 	});
 	return expanded;
 }
-
-export default preprocess;

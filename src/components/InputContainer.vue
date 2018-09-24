@@ -10,6 +10,7 @@ typeahead-input(v-else, v-bind='$attrs', @itemselect='onItemSelect')
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import AddressEntry from '#/AddressEntry';
 import TypeaheadInput from './TypeaheadInput.vue';
 
 @Component({
