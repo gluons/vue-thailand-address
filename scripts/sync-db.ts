@@ -1,12 +1,19 @@
-import { copyFileSync } from 'fs';
+import chalk from 'chalk';
+import cpFile from 'cp-file';
+import { EOL } from 'os';
 import { resolve } from 'path';
 
-const green = '\x1b[32m';
-const reset = '\x1b[0m';
+const srcPath = resolve(__dirname, '../dependencies/jquery.Thailand.js/jquery.Thailand.js/database/db.json');
+const destPath = resolve(__dirname, '../src/data/db.json');
 
-const srcPath: string = resolve(__dirname, '../dependencies/jquery.Thailand.js/jquery.Thailand.js/database/db.json');
-const destPath: string = resolve(__dirname, '../src/data/db.json');
-
-copyFileSync(srcPath, destPath);
-
-console.log(`${green}Sync success.${reset}`);
+(async () => {
+	try {
+		await cpFile(srcPath, destPath, { overwrite: true });
+		console.log(chalk.green('Sync success.'));
+	} catch (err) {
+		let errMsg = `Sync failed.${EOL}${EOL}`;
+		errMsg += err.message ? err.message : err.toString();
+		console.error(chalk.red(errMsg));
+		process.exit(1);
+	}
+})();
