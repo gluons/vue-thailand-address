@@ -26,9 +26,9 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import AddressEntry from '#/AddressEntry';
 import AddressModel from '#/AddressModel';
 import Target from '#/Target';
+import DataStore, { defaultStore } from '@data/DataStore';
 import getPossibles from '@lib/getPossibles';
 import { AUTOCOMPLETE_CLOSE_DELAY } from '@lib/constants';
-import { Bus, dataSource, setValue } from '@data/dataStore';
 import addressEntryToModel from '@utils/addressEntryToModel';
 import Autocomplete from './Autocomplete.vue';
 
@@ -40,6 +40,7 @@ import Autocomplete from './Autocomplete.vue';
 })
 export default class TypeaheadInput extends Vue {
 	// Props
+	@Prop({ type: DataStore, default: () => defaultStore }) store: DataStore;
 	@Prop(String) value: string;
 	@Prop({ type: String, required: true }) target: Target; // Name. It's an actual property name in address data.
 
@@ -60,9 +61,10 @@ export default class TypeaheadInput extends Vue {
 		// Set input value from `value` on created when it's available.
 		if (this.value) {
 			this.query = this.value;
+			this.store.setValueProp(this.target, this.value); // Pass initial value into store's value.
 		}
 
-		Bus.$on('datasource-update', (newModelValue: AddressModel) => {
+		this.store.onValueChange((newModelValue: AddressModel) => {
 			const inputValue = newModelValue[this.target];
 
 			this.query = `${inputValue}`;
@@ -71,6 +73,7 @@ export default class TypeaheadInput extends Vue {
 
 	// Methods
 	onInput() {
+		const dataSource = this.store.dataSource;
 		if (this.query.length > 0) {
 			let possibles = getPossibles(dataSource, this.target, this.query);
 			this.autocompleteCount = possibles.length;
@@ -112,7 +115,7 @@ export default class TypeaheadInput extends Vue {
 			const selectedItem: AddressEntry = Object.assign({}, this.possibles[selectedIndex]); // Shallow Clone
 			const addressModel: AddressModel = addressEntryToModel(selectedItem);
 
-			setValue(addressModel);
+			this.store.value = addressModel;
 			this.$emit('itemselect', addressModel);
 		}
 		this.closeAutocomplete(true);
@@ -120,7 +123,7 @@ export default class TypeaheadInput extends Vue {
 	onItemClick(item: AddressEntry) {
 		const addressModel: AddressModel = addressEntryToModel(item);
 
-		setValue(addressModel);
+		this.store.value = addressModel;
 		this.$emit('itemselect', addressModel);
 	}
 }
