@@ -1,13 +1,13 @@
 <template lang="pug">
 ul.th-address-autocomplete(v-show='hasData')
 	li(
-		ref='autocomplete-list'
-		v-for='(item, index) in itemList',
+		ref='autocomplete-item'
+		v-for='(item, index) in itemList'
 		:class='{ active: selectedIndex === index }'
-		:key='item.text',
-		v-html='item.text',
-		@click='onItemClick(item.data)',
-		@mouseover='changeSelectedIndex(index)'
+		:key='item.text'
+		v-html='item.text'
+		@click='onItemClick(item.data)'
+		@mouseenter='changeSelectedIndex(index)'
 	)
 </template>
 
@@ -26,18 +26,23 @@ export default class Autocomplete extends Vue {
 	@Prop(String) query: string;
 	@Prop(Array) items: AddressEntry[];
 	@Prop({ type: String, required: true }) target: Target; // A property name in data item.
-	@Prop({ type: Number, default: 200 }) maxHeight: number; // Max autocomplete height.
 	@Prop({ type: Number, default: -1 }) selectedIndex: number;
 
 	// Watch
 	@Watch('selectedIndex')
 	onSelectedIndexChange(newIndex: number) {
+		if (newIndex === -1) {
+			this.$el && (this.$el.scrollTop = 0); // Reset scroll position when close
+
+			return;
+		}
+
 		/*
 		 * Scroll to the selected item when use keyboard.
 		 */
-		if (this.$el && this.$refs['autocomplete-list'] && this.$refs['autocomplete-list'][newIndex]) {
+		if (this.$el && this.$refs['autocomplete-item'] && this.$refs['autocomplete-item'][newIndex]) {
 			const listContainer: HTMLUListElement = this.$el as HTMLUListElement;
-			const selectItem: HTMLLIElement = this.$refs['autocomplete-list'][newIndex];
+			const selectItem: HTMLLIElement = this.$refs['autocomplete-item'][newIndex];
 
 			const itemBottom = selectItem.offsetTop + selectItem.offsetHeight;
 			if (selectItem.offsetTop < listContainer.scrollTop) {

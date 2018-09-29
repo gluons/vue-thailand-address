@@ -2,20 +2,20 @@
 .th-address-container
 	input.th-address-input(
 		type='text',
-		autocomplete='off',
-		v-model='query',
-		@input='search',
-		@blur='clearAutocomplete',
-		@keydown.esc='clearAutocomplete',
-		@keydown.up.prevent='moveUp',
-		@keydown.down.prevent='moveDown',
+		autocomplete='off'
+		v-model='query'
+		@input='search'
+		@blur='closeAutocomplete'
+		@keydown.esc='clearAutocomplete'
+		@keydown.up.prevent='moveUp'
+		@keydown.down.prevent='moveDown'
 		@keydown.enter.prevent='pickCurrentItem'
 	)
 	autocomplete(
-		:query='query',
-		:items='possibles',
-		:target='target',
-		:selectedIndex.sync='selectedIndex',
+		:query='query'
+		:items='possibles'
+		:target='target'
+		:selectedIndex.sync='selectedIndex'
 		@itemclick='commitItem'
 	)
 </template>
@@ -31,6 +31,8 @@ import getPossibles from '@lib/getPossibles';
 import addressEntryToModel from '@utils/addressEntryToModel';
 import Autocomplete from './Autocomplete.vue';
 
+const AUTOCOMPLETE_CLOSE_DELAY = 250;
+
 @Component({
 	name: 'TypeaheadInput',
 	components: {
@@ -40,13 +42,14 @@ import Autocomplete from './Autocomplete.vue';
 export default class TypeaheadInput extends Vue {
 	// Props
 	@Prop({ type: DataStore, default: () => defaultStore }) store: DataStore;
-	@Prop(String) value: string;
+	@Prop({ type: String, default: '' }) value: string;
 	@Prop({ type: String, required: true }) target: Target; // Name. It's an actual property name in address data.
 
 	// Watch
 	@Watch('value')
 	onValueChange(newValue: string) {
 		this.query = newValue;
+		this.store.setValueProp(this.target, newValue);
 	}
 
 	// Data
@@ -57,10 +60,8 @@ export default class TypeaheadInput extends Vue {
 	// Hooks
 	created() {
 		// Set input value from `value` on created when it's available.
-		if (this.value) {
-			this.query = this.value;
-			this.store.setValueProp(this.target, this.value); // Pass initial value into store's value.
-		}
+		this.query = this.value;
+		this.store.setValueProp(this.target, this.value); // Pass initial value into store's value.
 
 		this.store.onValueChange((newModelValue: AddressModel) => {
 			const inputValue = newModelValue[this.target];
@@ -79,6 +80,13 @@ export default class TypeaheadInput extends Vue {
 		} else {
 			this.clearAutocomplete();
 		}
+	}
+	closeAutocomplete() {
+		// Prevent DOM elements destroyed before process complete
+		setTimeout(
+			() => this.clearAutocomplete(),
+			AUTOCOMPLETE_CLOSE_DELAY
+		);
 	}
 	clearAutocomplete() {
 		this.selectedIndex = -1;
