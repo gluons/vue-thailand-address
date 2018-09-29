@@ -3,7 +3,7 @@ input-container(
 	:value='value'
 	target='zipcode'
 	:label='label'
-	@itemselect='$emit("itemselect", $event)'
+	v-on='$listeners'
 )
 </template>
 

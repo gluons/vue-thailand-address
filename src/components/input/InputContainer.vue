@@ -2,15 +2,14 @@
 .th-address
 	label.th-address-label(v-if='hasLabel')
 		.label-text {{ label }}
-		typeahead-input(v-bind='$attrs', @itemselect='onItemSelect')
-	typeahead-input(v-else, v-bind='$attrs', @itemselect='onItemSelect')
+		typeahead-input(v-bind='$attrs', v-on='$listeners')
+	typeahead-input(v-else, v-bind='$attrs', v-on='$listeners')
 </template>
 
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
-import AddressEntry from '#/AddressEntry';
 import TypeaheadInput from './TypeaheadInput.vue';
 
 @Component({
@@ -27,11 +26,6 @@ export default class InputContainer extends Vue {
 	// Computed
 	get hasLabel(): boolean {
 		return (this.label != null) && (this.label.length > 0);
-	}
-
-	// Methods
-	onItemSelect(item: AddressEntry) {
-		this.$emit('itemselect', item);
 	}
 }
 </script>

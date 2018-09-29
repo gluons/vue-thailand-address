@@ -10,6 +10,7 @@
 		@keydown.up.prevent='moveUp'
 		@keydown.down.prevent='moveDown'
 		@keydown.enter.prevent='pickCurrentItem'
+		v-on='$listeners'
 	)
 	autocomplete(
 		:query='query'
