@@ -4,19 +4,19 @@
 		type='text',
 		autocomplete='off',
 		v-model='query',
-		@input='onInput',
-		@blur='closeAutocomplete(false)',
-		@keydown.esc='closeAutocomplete',
-		@keydown.up.prevent='moveSelectedIndex(-1)',
-		@keydown.down.prevent='moveSelectedIndex(1)',
-		@keydown.enter.prevent='selectItemData'
+		@input='search',
+		@blur='clearAutocomplete',
+		@keydown.esc='clearAutocomplete',
+		@keydown.up.prevent='moveUp',
+		@keydown.down.prevent='moveDown',
+		@keydown.enter.prevent='pickCurrentItem'
 	)
 	autocomplete(
 		:query='query',
 		:items='possibles',
 		:target='target',
 		:selectedIndex.sync='selectedIndex',
-		@itemclick='onItemClick'
+		@itemclick='commitItem'
 	)
 </template>
 
@@ -28,7 +28,6 @@ import AddressModel from '#/AddressModel';
 import Target from '#/Target';
 import DataStore, { defaultStore } from '@data/DataStore';
 import getPossibles from '@lib/getPossibles';
-import { AUTOCOMPLETE_CLOSE_DELAY } from '@lib/constants';
 import addressEntryToModel from '@utils/addressEntryToModel';
 import Autocomplete from './Autocomplete.vue';
 
@@ -54,7 +53,6 @@ export default class TypeaheadInput extends Vue {
 	query: string = '';
 	possibles: AddressEntry[] = [];
 	selectedIndex: number = -1;
-	autocompleteCount: number = 0;
 
 	// Hooks
 	created() {
@@ -72,55 +70,53 @@ export default class TypeaheadInput extends Vue {
 	}
 
 	// Methods
-	onInput() {
-		const dataSource = this.store.dataSource;
-		if (this.query.length > 0) {
-			let possibles = getPossibles(dataSource, this.target, this.query);
-			this.autocompleteCount = possibles.length;
-			this.possibles = possibles;
+	search() {
+		if (this.query && (this.query.length > 0)) {
+			const { dataSource } = this.store;
+
+			this.possibles = getPossibles(dataSource, this.target, this.query);
+			this.selectedIndex = 0;
 		} else {
-			this.selectedIndex = -1;
-			this.autocompleteCount = 0;
-			this.possibles = [];
+			this.clearAutocomplete();
 		}
 	}
-	closeAutocomplete(immediate: boolean) {
-		setTimeout(() => {
-			this.selectedIndex = -1;
-			this.autocompleteCount = 0;
-			this.possibles = [];
-		}, immediate ? 0 : AUTOCOMPLETE_CLOSE_DELAY);
+	clearAutocomplete() {
+		this.selectedIndex = -1;
+		this.possibles = [];
 	}
-	moveSelectedIndex(indicator: number) {
-		// Trigget show autocomplete when press down button.
-		if (indicator == 1) {
-			this.onInput();
+	moveUp() {
+		if (this.possibles.length === 0) {
+			return;
 		}
 
-		if (
-			(this.autocompleteCount > 0)
-			&&
-			((this.selectedIndex + indicator) >= 0)
-			&&
-			((this.selectedIndex + indicator) < this.autocompleteCount)
-		) {
-			this.selectedIndex += indicator;
+		if ((this.selectedIndex - 1) >= 0) {
+			this.selectedIndex -= 1;
 		} else {
-			this.selectedIndex = ((this.selectedIndex + indicator) >= this.autocompleteCount) ? 0 : (this.autocompleteCount - 1);
+			this.selectedIndex = this.possibles.length - 1; // Go to last item when at first item
 		}
 	}
-	selectItemData() {
-		const selectedIndex = this.selectedIndex;
-		if (this.possibles[selectedIndex]) {
-			const selectedItem: AddressEntry = Object.assign({}, this.possibles[selectedIndex]); // Shallow Clone
-			const addressModel: AddressModel = addressEntryToModel(selectedItem);
+	moveDown() {
+		if (this.possibles.length === 0) {
+			this.search(); // Start searching when no items
 
-			this.store.value = addressModel;
-			this.$emit('itemselect', addressModel);
+			return;
 		}
-		this.closeAutocomplete(true);
+
+		if ((this.selectedIndex + 1) < this.possibles.length) {
+			this.selectedIndex += 1;
+		} else {
+			this.selectedIndex = 0; // Go to first item when last item
+		}
 	}
-	onItemClick(item: AddressEntry) {
+	pickCurrentItem() {
+		if (this.possibles[this.selectedIndex]) {
+			const selectedItem: AddressEntry = Object.assign({}, this.possibles[this.selectedIndex]); // Shallow Clone
+
+			this.commitItem(selectedItem);
+		}
+		this.clearAutocomplete();
+	}
+	commitItem(item: AddressEntry) {
 		const addressModel: AddressModel = addressEntryToModel(item);
 
 		this.store.value = addressModel;

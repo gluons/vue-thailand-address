@@ -1,1 +1,0 @@
-export const AUTOCOMPLETE_CLOSE_DELAY = 250;
