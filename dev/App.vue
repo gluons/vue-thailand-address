@@ -60,7 +60,7 @@ export default {
 		font-weight: bold;
 		margin-bottom: 1em;
 	}
-	.button-container {
+	.th-address, .button-container {
 		margin: 1em 0;
 	}
 	.result {

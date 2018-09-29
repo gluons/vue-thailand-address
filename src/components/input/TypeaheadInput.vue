@@ -1,6 +1,6 @@
 <template lang="pug">
-.typeahead-container
-	input.typeahead-input(
+.th-address-container
+	input.th-address-input(
 		type='text',
 		autocomplete='off',
 		v-model='query',
@@ -13,7 +13,7 @@
 	)
 	autocomplete(
 		:query='query',
-		:possibles='possibles',
+		:items='possibles',
 		:target='target',
 		:selectedIndex.sync='selectedIndex',
 		@itemclick='onItemClick'
@@ -130,23 +130,28 @@ export default class TypeaheadInput extends Vue {
 </script>
 
 <style lang="scss">
-input.typeahead-input {
-	background-color: white;
-	border: 1px solid #d5d5d5;
+@import '../../style/variable';
+
+.th-address-container {
+	position: relative;
+}
+input.th-address-input {
+	background-color: $bg-color;
+	border: 1px solid $border-color;
 	box-sizing: border-box;
-	color: #666;
+	color: $text-color;
 	display: inline-block;
 	font-size: 16px;
 	height: 40px;
 	line-height: 38px;
 	padding: 8px 6px;
-	transition-property: color, background-color, border;
+	transition-property: border;
 	transition: 0.2s ease-in-out;
 	width: 100%;
 
 	&:focus {
 		outline: 0;
-		border-color: #1e87f0;
+		border-color: $border-focus-color;
 	}
 }
 </style>

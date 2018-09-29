@@ -1,8 +1,9 @@
 <template lang="pug">
-label.typeahead-label(v-if='hasLabel')
-	.label-text {{ label }}
+.th-address
+	label.th-address-label(v-if='hasLabel')
+		.label-text {{ label }}
 		typeahead-input(v-bind='$attrs', @itemselect='onItemSelect')
-typeahead-input(v-else, v-bind='$attrs', @itemselect='onItemSelect')
+	typeahead-input(v-else, v-bind='$attrs', @itemselect='onItemSelect')
 </template>
 
 
@@ -36,10 +37,7 @@ export default class InputContainer extends Vue {
 </script>
 
 <style lang="scss">
-.typeahead-container {
-	position: relative;
-}
-label.typeahead-label {
+label.th-address-label {
 	.label-text {
 		margin-bottom: 5px;
 	}

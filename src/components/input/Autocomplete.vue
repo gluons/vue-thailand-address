@@ -1,8 +1,8 @@
 <template lang="pug">
-ul.typeahead-autocomplete(:style='style', v-if='hasData')
+ul.th-address-autocomplete(v-show='hasData')
 	li(
 		ref='autocomplete-list'
-		v-for='(item, index) in autocompleteList',
+		v-for='(item, index) in itemList',
 		:class='{ active: selectedIndex === index }'
 		:key='item.text',
 		v-html='item.text',
@@ -24,7 +24,7 @@ import addressToString from '@utils/addressToString';
 export default class Autocomplete extends Vue {
 	// Props
 	@Prop(String) query: string;
-	@Prop(Array) possibles: AddressEntry[];
+	@Prop(Array) items: AddressEntry[];
 	@Prop({ type: String, required: true }) target: Target; // A property name in data item.
 	@Prop({ type: Number, default: 200 }) maxHeight: number; // Max autocomplete height.
 	@Prop({ type: Number, default: -1 }) selectedIndex: number;
@@ -49,16 +49,11 @@ export default class Autocomplete extends Vue {
 	}
 
 	// Computed
-	get style() {
-		return {
-			'max-height': `${this.maxHeight}px`
-		};
-	}
 	get hasData(): boolean {
-		return this.possibles && (this.possibles.length > 0);
+		return this.items && (this.items.length > 0);
 	}
-	get autocompleteList() {
-		let autocomplete: AddressEntry[] = this.possibles;
+	get itemList() {
+		let autocomplete: AddressEntry[] = this.items;
 
 		return autocomplete.map(item => {
 			return {
@@ -73,7 +68,7 @@ export default class Autocomplete extends Vue {
 		this.$emit('itemclick', item);
 	}
 	changeSelectedIndex(index: number): void {
-		if ((index >= 0) && (index < this.autocompleteList.length)) {
+		if ((index >= 0) && (index < this.itemList.length)) {
 			this.$emit('update:selectedIndex', index);
 		}
 	}
@@ -81,8 +76,10 @@ export default class Autocomplete extends Vue {
 </script>
 
 <style lang="scss">
-.typeahead-autocomplete {
-	border: 1px solid #d5d5d5;
+@import '../../style/variable';
+
+.th-address-autocomplete {
+	border: 1px solid $border-color;
 	box-sizing: border-box;
 	list-style: none;
 	margin: 0;
@@ -90,18 +87,21 @@ export default class Autocomplete extends Vue {
 	padding: 0;
 	position: absolute;
 	width: 100%;
+	height: $autocomplete-height;
 	z-index: 100;
 
 	li {
-		background: white;
+		background: $bg-color;
 		cursor: pointer;
+		box-sizing: border-box;
 		padding: 10px 5px;
+		height: $autocomplete-item-height;
 
 		&:hover, &.active {
-			background-color: #f5f5f5;
+			background-color: $bg-hover-color;
 		}
 		&:not(:last-child) {
-			border-bottom: 1px solid #d5d5d5;
+			border-bottom: 1px solid $border-color;
 		}
 	}
 }
