@@ -126,7 +126,7 @@ export default class TypeaheadInput extends Vue {
 </script>
 
 <style lang="scss">
-@import '../../style/variable';
+@import '~$style/variable';
 
 .th-address-container {
 	position: relative;

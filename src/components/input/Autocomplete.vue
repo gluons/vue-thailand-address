@@ -76,7 +76,7 @@ export default class Autocomplete extends Vue {
 </script>
 
 <style lang="scss">
-@import '../../style/variable';
+@import '~$style/variable';
 
 .th-address-autocomplete {
 	border: 1px solid $border-color;

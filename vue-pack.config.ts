@@ -32,7 +32,8 @@ const config: Configuration = {
 		'@data': resolve(__dirname, './src/data/'),
 		'@comp': resolve(__dirname, './src/components/'),
 		'@lib': resolve(__dirname, './src/lib/'),
-		'@utils': resolve(__dirname, './src/utils/')
+		'@utils': resolve(__dirname, './src/utils/'),
+		'$style': resolve(__dirname, './src/style/')
 	},
 	externals: {
 		module: [
