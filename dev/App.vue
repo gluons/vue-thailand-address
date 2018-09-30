@@ -24,11 +24,27 @@
 		.title Address Form
 		.showcase.input
 			.row
-				addressinput-subdistrict(:store='newStore' @itemselect='onSelectItem2')
-				addressinput-district(:store='newStore' @itemselect='onSelectItem2')
+				addressinput-subdistrict(
+					:store='newStore'
+					:value='data2.subdistrict'
+					@itemselect='onSelectItem2'
+				)
+				addressinput-district(
+					:store='newStore'
+					:value='data2.district'
+					@itemselect='onSelectItem2'
+				)
 			.row
-				addressinput-province(:store='newStore' @itemselect='onSelectItem2')
-				addressinput-zipcode(:store='newStore' @itemselect='onSelectItem2')
+				addressinput-province(
+					:store='newStore'
+					:value='data2.province'
+					@itemselect='onSelectItem2'
+				)
+				addressinput-zipcode(
+					:store='newStore'
+					:value='data2.zipcode'
+					@itemselect='onSelectItem2'
+				)
 		.button-container
 			button(type='button' @click='clear2') Clear
 		.divider
