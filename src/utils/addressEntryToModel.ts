@@ -1,5 +1,5 @@
-import AddressEntry from '#/AddressEntry';
-import AddressModel from '#/AddressModel';
+import AddressEntry from '../types/AddressEntry';
+import AddressModel from '../types/AddressModel';
 
 /**
  * Convert `AddressEntry` to `AddressModel`.

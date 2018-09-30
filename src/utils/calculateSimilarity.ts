@@ -1,6 +1,6 @@
 import leven from 'leven';
 
-import AddressEntry from '#/AddressEntry';
+import AddressEntry from '../types/AddressEntry';
 
 /**
  * Calculate similarity between query and address data.

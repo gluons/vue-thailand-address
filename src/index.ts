@@ -1,15 +1,15 @@
 import Vue, { PluginFunction, PluginObject } from 'vue';
 
-import AddressEntry from '#/AddressEntry';
-import AddressModel from '#/AddressModel';
-import Target from '#/Target';
+import AddressEntry from './types/AddressEntry';
+import AddressModel from './types/AddressModel';
+import Target from './types/Target';
 
-import DistrictInput from '@comp/DistrictInput.vue';
-import ProvinceInput from '@comp/ProvinceInput.vue';
-import SubDistrictInput from '@comp/SubDistrictInput.vue';
-import ZipCodeInput from '@comp/ZipCodeInput.vue';
+import DistrictInput from './components/DistrictInput.vue';
+import ProvinceInput from './components/ProvinceInput.vue';
+import SubDistrictInput from './components/SubDistrictInput.vue';
+import ZipCodeInput from './components/ZipCodeInput.vue';
 
-import DataStore, { defaultStore } from '@data/DataStore';
+import DataStore, { defaultStore } from './data/DataStore';
 
 /**
  * Install Vue Thailand Address plugin.

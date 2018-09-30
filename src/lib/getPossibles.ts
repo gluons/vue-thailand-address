@@ -1,7 +1,7 @@
-import AddressEntry from '#/AddressEntry';
-import Target from '#/Target';
-import calculateSimilarity from '@utils/calculateSimilarity';
-import translateTarget from '@utils/translateTarget';
+import AddressEntry from '../types/AddressEntry';
+import Target from '../types/Target';
+import calculateSimilarity from '../utils/calculateSimilarity';
+import translateTarget from '../utils/translateTarget';
 
 /**
  * Get possibles that target property match search query.

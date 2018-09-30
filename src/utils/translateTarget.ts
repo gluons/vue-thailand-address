@@ -1,5 +1,5 @@
-import AddressEntry from '#/AddressEntry';
-import Target from '#/Target';
+import AddressEntry from '../types/AddressEntry';
+import Target from '../types/Target';
 
 type AddressEntryKeys = Exclude<keyof AddressEntry, 'district_code' | 'amphoe_code' | 'province_code'>;
 

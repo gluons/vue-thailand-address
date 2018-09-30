@@ -1,7 +1,7 @@
-import AddressEntry from '#/AddressEntry';
-import Target from '#/Target';
-import translateTarget from '@utils/translateTarget';
+import AddressEntry from '../types/AddressEntry';
+import Target from '../types/Target';
 import highlightQuery from './highlightQuery';
+import translateTarget from './translateTarget';
 
 export const SEPARATOR: string = '»';
 

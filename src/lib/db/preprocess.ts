@@ -1,4 +1,4 @@
-import AddressEntry from '#/AddressEntry';
+import AddressEntry from '../../types/AddressEntry';
 
 /**
  * Preprocess data from JSON database.

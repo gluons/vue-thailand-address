@@ -13,16 +13,7 @@
 		"sourceMap": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"declaration": true,
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["src/*"],
-			"#/*": ["src/types/*"],
-			"@data/*": ["src/data/*"],
-			"@comp/*": ["src/components/*"],
-			"@lib/*": ["src/lib/*"],
-			"@utils/*": ["src/utils/*"]
-		}
+		"declaration": true
 	},
 	"include": [
 		"src"

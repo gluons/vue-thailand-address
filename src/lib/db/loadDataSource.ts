@@ -1,6 +1,6 @@
-import AddressEntry from '#/AddressEntry';
+import AddressEntry from '../../types/AddressEntry';
 
-import database from '@data/db.json';
+import database from '../../data/db.json';
 import preprocess from './preprocess';
 
 /**

@@ -1,7 +1,8 @@
-import AddressEntry from '#/AddressEntry';
-import AddressModel from '#/AddressModel';
-import Target from '#/Target';
-import loadDataSource from '@lib/db/loadDataSource';
+import AddressEntry from '../types/AddressEntry';
+import AddressModel from '../types/AddressModel';
+import Target from '../types/Target';
+
+import loadDataSource from '../lib/db/loadDataSource';
 
 /**
  * On address value change event handler.

@@ -14,9 +14,9 @@ ul.th-address-autocomplete(v-show='hasData')
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 
-import AddressEntry from '#/AddressEntry';
-import Target from '#/Target';
-import addressToString from '@utils/addressToString';
+import AddressEntry from '../../types/AddressEntry';
+import Target from '../../types/Target';
+import addressToString from '../../utils/addressToString';
 
 @Component({
 	name: 'Autocomplete'

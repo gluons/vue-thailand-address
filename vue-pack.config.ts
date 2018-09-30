@@ -28,12 +28,7 @@ const config: Configuration = {
 	libraryName: 'VueThailandAddress',
 	outDir: resolve(__dirname, './dist'),
 	alias: {
-		'#': resolve(__dirname, './src/types/'),
-		'@data': resolve(__dirname, './src/data/'),
-		'@comp': resolve(__dirname, './src/components/'),
-		'@lib': resolve(__dirname, './src/lib/'),
-		'@utils': resolve(__dirname, './src/utils/'),
-		'$style': resolve(__dirname, './src/style/')
+		$style: resolve(__dirname, './src/style/')
 	},
 	externals: {
 		module: [
