@@ -1,6 +1,5 @@
 <template lang="pug">
 input-container(
-	:value='value'
 	target='subdistrict'
 	:label='label'
 	v-bind='$attrs'
@@ -22,6 +21,5 @@ import InputContainer from './input/InputContainer.vue';
 })
 export default class SubDistrictInput extends Vue {
 	@Prop({ type: String, default: 'ตำบล/แขวง' }) label: string;
-	@Prop(String) value: string;
 }
 </script>

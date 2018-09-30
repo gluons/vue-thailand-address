@@ -1,6 +1,5 @@
 <template lang="pug">
 input-container(
-	:value='value'
 	target='zipcode'
 	:label='label'
 	v-bind='$attrs'
@@ -22,6 +21,5 @@ import InputContainer from './input/InputContainer.vue';
 })
 export default class ZipCodeInput extends Vue {
 	@Prop({ type: String, default: 'รหัสไปรษณีย์' }) label: string;
-	@Prop(String) value: string;
 }
 </script>
