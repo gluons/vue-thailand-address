@@ -92,7 +92,7 @@ export default class Autocomplete extends Vue {
 	padding: 0;
 	position: absolute;
 	width: 100%;
-	height: $autocomplete-height;
+	max-height: $autocomplete-height;
 	z-index: 100;
 
 	li {
