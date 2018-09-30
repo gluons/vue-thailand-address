@@ -1,9 +1,14 @@
 import Vue, { PluginFunction, PluginObject } from 'vue';
 
+import AddressEntry from '#/AddressEntry';
+import AddressModel from '#/AddressModel';
+import Target from '#/Target';
+
 import DistrictInput from '@comp/DistrictInput.vue';
 import ProvinceInput from '@comp/ProvinceInput.vue';
 import SubDistrictInput from '@comp/SubDistrictInput.vue';
 import ZipCodeInput from '@comp/ZipCodeInput.vue';
+
 import DataStore, { defaultStore } from '@data/DataStore';
 
 /**
@@ -30,6 +35,9 @@ const plugin: PluginObject<never> = {
 };
 
 export {
+	AddressEntry,
+	AddressModel,
+	Target,
 	SubDistrictInput,
 	DistrictInput,
 	ProvinceInput,
