@@ -1,5 +1,3 @@
-import filter from 'array-filter';
-
 import AddressEntry from '#/AddressEntry';
 import Target from '#/Target';
 import calculateSimilarity from '@utils/calculateSimilarity';
@@ -18,7 +16,9 @@ function getPossibles(dataSource: ReadonlyArray<AddressEntry>, target: Target, q
 
 	const key = translateTarget(target);
 	const pattern = new RegExp(`^${query}`);
-	const possibles: AddressEntry[] = filter(newDataSource, (item: AddressEntry) => (item[key] ? pattern.test(`${item[key]}`) : false));
+	const possibles: AddressEntry[] = newDataSource.filter(item => {
+		return item[key] ? pattern.test(`${item[key]}`) : false;
+	});
 	possibles.sort((a, b) => {
 		let aSimilarity = calculateSimilarity(query, a);
 		let bSimilarity = calculateSimilarity(query, b);

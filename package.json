@@ -65,7 +65,6 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "array-filter": "^1.0.0",
     "leven": "^2.1.0",
     "lodash.pick": "^4.4.0"
   }
