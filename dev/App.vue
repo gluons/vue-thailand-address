@@ -1,10 +1,10 @@
 <template lang="pug">
 #app
 	.title Address Form
-	subdistrict-input(:value='subdistrict' @itemselect='onSelectItem')
-	district-input(:value='district' @itemselect='onSelectItem')
-	province-input(:value='province' @itemselect='onSelectItem')
-	zipcode-input(:value='zipcode' @itemselect='onSelectItem')
+	addressinput-subdistrict(:value='subdistrict' @itemselect='onSelectItem')
+	addressinput-district(:value='district' @itemselect='onSelectItem')
+	addressinput-province(:value='province' @itemselect='onSelectItem')
+	addressinput-zipcode(:value='zipcode' @itemselect='onSelectItem')
 	.button-container
 		button(type='button' @click='clear') Clear
 	hr

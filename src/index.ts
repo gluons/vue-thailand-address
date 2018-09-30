@@ -11,10 +11,10 @@ import ZipCodeInput from '@comp/ZipCodeInput.vue';
  * @param {typeof Vue} vue Vue class.
  */
 const install: PluginFunction<never> = (vue: typeof Vue): void => {
-	vue.component('subdistrict-input', SubDistrictInput);
-	vue.component('district-input', DistrictInput);
-	vue.component('province-input', ProvinceInput);
-	vue.component('zipcode-input', ZipCodeInput);
+	vue.component('addressinput-subdistrict', SubDistrictInput);
+	vue.component('addressinput-district', DistrictInput);
+	vue.component('addressinput-province', ProvinceInput);
+	vue.component('addressinput-zipcode', ZipCodeInput);
 };
 
 if ((typeof window !== 'undefined') && window.Vue) {
