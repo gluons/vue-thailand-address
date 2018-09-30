@@ -49,6 +49,7 @@
     "@types/copy-webpack-plugin": "^4.4.2",
     "@types/cp-file": "^4.2.0",
     "@types/leven": "^2.1.1",
+    "@types/lodash.pick": "^4.4.4",
     "@types/node": "8",
     "@types/webpack-node-externals": "^1.6.3",
     "chalk": "^2.4.1",
@@ -65,6 +66,7 @@
   },
   "dependencies": {
     "array-filter": "^1.0.0",
-    "leven": "^2.1.0"
+    "leven": "^2.1.0",
+    "lodash.pick": "^4.4.0"
   }
 }

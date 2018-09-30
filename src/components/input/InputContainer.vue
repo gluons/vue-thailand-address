@@ -2,8 +2,15 @@
 .th-address
 	label.th-address-label(v-if='hasLabel')
 		.label-text {{ label }}
-		typeahead-input(v-bind='$attrs', v-on='$listeners')
-	typeahead-input(v-else, v-bind='$attrs', v-on='$listeners')
+		typeahead-input(
+			v-bind='$attrs'
+			v-on='$listeners'
+		)
+	typeahead-input(
+		v-else
+		v-bind='$attrs'
+		v-on='$listeners'
+	)
 </template>
 
 

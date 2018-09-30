@@ -3,6 +3,7 @@ input-container(
 	:value='value'
 	target='province'
 	:label='label'
+	v-bind='$attrs'
 	v-on='$listeners'
 )
 </template>
@@ -16,7 +17,8 @@ import InputContainer from './input/InputContainer.vue';
 	name: 'ProvinceInput',
 	components: {
 		InputContainer
-	}
+	},
+	inheritAttrs: false
 })
 export default class ProvinceInput extends Vue {
 	@Prop({ type: String, default: 'จังหวัด' }) label: string;

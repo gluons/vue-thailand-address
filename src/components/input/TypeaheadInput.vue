@@ -10,6 +10,7 @@
 		@keydown.up.prevent='moveUp'
 		@keydown.down.prevent='moveDown'
 		@keydown.enter.prevent='pickCurrentItem'
+		v-bind='filteredAttrs'
 		v-on='$listeners'
 	)
 	autocomplete(
@@ -23,22 +24,23 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import pick from 'lodash.pick';
 
 import AddressEntry from '#/AddressEntry';
 import AddressModel from '#/AddressModel';
 import Target from '#/Target';
 import DataStore, { defaultStore } from '@data/DataStore';
+import { AUTOCOMPLETE_CLOSE_DELAY, ALLOWED_ATTRS } from '@lib/constants';
 import getPossibles from '@lib/getPossibles';
 import addressEntryToModel from '@utils/addressEntryToModel';
 import Autocomplete from './Autocomplete.vue';
-
-const AUTOCOMPLETE_CLOSE_DELAY = 250;
 
 @Component({
 	name: 'TypeaheadInput',
 	components: {
 		Autocomplete
-	}
+	},
+	inheritAttrs: false
 })
 export default class TypeaheadInput extends Vue {
 	// Props
@@ -69,6 +71,11 @@ export default class TypeaheadInput extends Vue {
 
 			this.query = `${inputValue}`;
 		});
+	}
+
+	// Computed
+	get filteredAttrs() {
+		return pick(this.$attrs, ALLOWED_ATTRS);
 	}
 
 	// Methods

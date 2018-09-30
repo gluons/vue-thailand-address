@@ -3,6 +3,7 @@ input-container(
 	:value='value'
 	target='district'
 	:label='label'
+	v-bind='$attrs'
 	v-on='$listeners'
 )
 </template>
@@ -16,7 +17,8 @@ import InputContainer from './input/InputContainer.vue';
 	name: 'DistrictInput',
 	components: {
 		InputContainer
-	}
+	},
+	inheritAttrs: false
 })
 export default class DistrictInput extends Vue {
 	@Prop({ type: String, default: 'อำเภอ/เขต' }) label: string;
