@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { defaultStore } from '../src';
+
 export default {
 	name: 'app',
 	data() {
@@ -31,10 +33,12 @@ export default {
 	},
 	methods: {
 		clear() {
-			this.subdistrict = null;
-			this.district = null;
-			this.province = null;
-			this.zipcode = null;
+			this.subdistrict = '';
+			this.district = '';
+			this.province = '';
+			this.zipcode = '';
+
+			defaultStore.resetValue();
 		},
 		onSelectItem(item) {
 			this.subdistrict = item.subdistrict;

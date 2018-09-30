@@ -30,12 +30,7 @@ export default class DataStore {
 	private _valueChangeHandlers: OnChangeHandler[];
 
 	constructor() {
-		this._currentValue = {
-			district: null,
-			subdistrict: null,
-			province: null,
-			zipcode: null
-		};
+		this.resetValue();
 		this._valueChangeHandlers = [];
 	}
 	get value(): AddressModel {
@@ -48,6 +43,14 @@ export default class DataStore {
 
 		this._currentValue = newValue;
 		this._valueChangeHandlers.forEach(handler => handler(newValue));
+	}
+	resetValue() {
+		this._currentValue = {
+			district: '',
+			subdistrict: '',
+			province: '',
+			zipcode: ''
+		};
 	}
 	setValueProp(target: Target, propValue: string): void {
 		this._currentValue[target] = propValue;

@@ -4,6 +4,7 @@ import DistrictInput from '@comp/DistrictInput.vue';
 import ProvinceInput from '@comp/ProvinceInput.vue';
 import SubDistrictInput from '@comp/SubDistrictInput.vue';
 import ZipCodeInput from '@comp/ZipCodeInput.vue';
+import DataStore, { defaultStore } from '@data/DataStore';
 
 /**
  * Install Vue Thailand Address plugin.
@@ -32,7 +33,9 @@ export {
 	SubDistrictInput,
 	DistrictInput,
 	ProvinceInput,
-	ZipCodeInput
+	ZipCodeInput,
+	DataStore,
+	defaultStore
 };
 
 export default plugin;
