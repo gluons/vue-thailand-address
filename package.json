@@ -58,7 +58,7 @@
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-gluons": "^2.0.3",
-    "typescript": "^3.0.3",
+    "typescript": "^3.1.1",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.1.1",
