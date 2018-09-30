@@ -84,7 +84,11 @@ export default class TypeaheadInput extends Vue {
 			const { dataSource } = this.store;
 
 			this.possibles = getPossibles(dataSource, this.target, this.query);
-			this.selectedIndex = 0;
+
+			// If autocomplete list contains items, set index to first item
+			if (this.possibles.length > 0) {
+				this.selectedIndex = 0;
+			}
 		} else {
 			this.clearAutocomplete();
 		}
