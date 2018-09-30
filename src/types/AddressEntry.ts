@@ -1,5 +1,7 @@
 /**
- * Address database entry
+ * Address database entry.
+ *
+ * (For storing raw data from address database)
  *
  * @export
  * @interface AddressEntry
