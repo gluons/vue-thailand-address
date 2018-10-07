@@ -2,22 +2,22 @@
 # yarn lockfile v1
 
 
-"@gluons/vue-pack-banner-plugin@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-banner-plugin/-/vue-pack-banner-plugin-1.12.2.tgz#4aefc750c4e8d8f42121a24c3a33b458a61366e4"
-  integrity sha512-8l3jwT5Iu0XlbUJcz2VhOUwKcDtvJ3l1KIVmB/iDwrSS4+DHhI3bacq1Ho9A4coZS57TC2wyCezZH6nROwdFBA==
+"@gluons/vue-pack-banner-plugin@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-banner-plugin/-/vue-pack-banner-plugin-1.13.0.tgz#a0ebeec0627000bcd3c897c9d267258668f93959"
+  integrity sha512-xRskl9+UxvWYFIU2X9mLlKZyiawzDQRZB2FOBan1FKiLXtxDhO/cpIHE/pVi2852vf8i+cNLgGGWkdToMzp2NQ==
   dependencies:
     webpack "^4.20.2"
 
-"@gluons/vue-pack-cli@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-cli/-/vue-pack-cli-1.12.2.tgz#a99975dfaee1f8e0db07ffc822a2e3bd394c4dc9"
-  integrity sha512-DiiXd7UdWWwydASGSYDZIjMHKOLtZASMX5CNTgZ2STnX4G/lPAQKiaeSmtOErDIWXfkeINVpOtcalGQi99woww==
+"@gluons/vue-pack-cli@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-cli/-/vue-pack-cli-1.13.0.tgz#5ed7b476e7b56b7b1f34704e711158116ec94b64"
+  integrity sha512-WZYJonVJPJgN8yZ4o7oLfDRHCJoi3IqyouSJscl6vwJ3ZlcW2b1z+LqoSmSu8QYWoh11p9ldlZbfQO5uTdynHg==
   dependencies:
-    "@gluons/vue-pack" "^1.12.2"
+    "@gluons/vue-pack" "^1.13.0"
     "@gluons/vue-pack-dev" "^1.12.2"
-    "@gluons/vue-pack-load-config" "^1.12.2"
-    "@gluons/vue-pack-types" "^1.12.2"
+    "@gluons/vue-pack-load-config" "^1.13.0"
+    "@gluons/vue-pack-types" "^1.13.0"
     aggregate-error "^1.0.0"
     chalk "^2.4.1"
     lodash.isnil "^4.0.0"
@@ -53,37 +53,37 @@
     webpack-dev-server "^3.1.9"
     webpackbar "^2.6.2"
 
-"@gluons/vue-pack-load-config@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-load-config/-/vue-pack-load-config-1.12.2.tgz#928262cdf338b35441784187cdde67b19cee7c5e"
-  integrity sha512-S4N4MLkHlOQ70qirbeNctwn73RWaZCXx4BEzcdAif+QUQpSgA5/9kZycEdCKzkZ7bGtyO/UPuPTBPayY3KwUxg==
+"@gluons/vue-pack-load-config@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-load-config/-/vue-pack-load-config-1.13.0.tgz#ce8b30aac06da9a2b4648ae2e026e4e10b54d289"
+  integrity sha512-sRZg7gkbld7NpZW5RARRvVseOgNb6/NWy/QTeP99DfDdSq0q2atKx6YtMUOUdZbA+33ja4DPdIr8sUzd9GjYGw==
   dependencies:
-    "@gluons/vue-pack-types" "^1.12.2"
+    "@gluons/vue-pack-types" "^1.13.0"
     joycon "^2.1.0"
     joycon-yaml-loader "^2.0.1"
     nvl "^1.1.1"
   optionalDependencies:
     joycon-ts-loader "^3.0.0"
 
-"@gluons/vue-pack-splitchunks-plugin@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-splitchunks-plugin/-/vue-pack-splitchunks-plugin-1.12.2.tgz#b0c461e8be7bfb6a37cffcfc4eaf7158bcd406cb"
-  integrity sha512-SW28A//acJ+Ef4/Ss7+/rYmdJxXkUR+HVjVKCsxcFLX9fFueKyqqUipdzMLUNcwTZWy4OTLg3Q5uAhkzpCExqQ==
+"@gluons/vue-pack-splitchunks-plugin@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-splitchunks-plugin/-/vue-pack-splitchunks-plugin-1.13.0.tgz#66dd25acf601f758139f20e43abd58c7c91d81db"
+  integrity sha512-EYbbsGdv8SXAMc7Z1wsGCv5bV1dDSQxhQQOKhQWPLgWxo0DzGZKN4Lc3nYbTOBnY/9qZ06mEuNKnw+IboYGQAw==
 
-"@gluons/vue-pack-types@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-types/-/vue-pack-types-1.12.2.tgz#64e8000584fbb3a23ff2260e9d41c5f601c7d971"
-  integrity sha512-Rnodiu4iso+5u/J5sNcHLu2m4tFG0zrOgK0XPzOLDIPMcJ3jxdT7uRJmrlVLqnZbxztrQ1RYH8DtROxDXJirvA==
+"@gluons/vue-pack-types@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-types/-/vue-pack-types-1.13.0.tgz#f4f762eb87e7c1366e516349093c091c2f735771"
+  integrity sha512-ZEiVD8MelSgqBnLDuPgSr/dLJcHm62W18vLDwbljizvHr6FVNGkBhM5ZuzI8/slhmfvnphZXQspxE6uPaCPvfg==
   dependencies:
-    "@types/webpack" "^4.4.13"
+    "@types/webpack" "^4.4.14"
 
-"@gluons/vue-pack@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@gluons/vue-pack/-/vue-pack-1.12.2.tgz#93dad2c40ac1a0b69871749c834296b6a7a83c2d"
-  integrity sha512-83CjRekmu/5bxt2JtjjtwVW/+MH1uS8SOEMcrwK8elVg0bHyg0MzSf04k+amYx7MiInq/kUB1cz4f6QxbNsV1A==
+"@gluons/vue-pack@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack/-/vue-pack-1.13.0.tgz#45e3a831ba3a9db1a73825711966c9a54f66b224"
+  integrity sha512-A6RmwXGkErXySv9QtfCL2Xt4/9q5oYqXDwxni1jJbLo29x1D3kaTE+N9NynKUqOiHyLUUYaolUYW+pp2YW5lCw==
   dependencies:
-    "@gluons/vue-pack-load-config" "^1.12.2"
-    "@gluons/vue-pack-types" "^1.12.2"
+    "@gluons/vue-pack-load-config" "^1.13.0"
+    "@gluons/vue-pack-types" "^1.13.0"
     "@intervolga/optimize-cssnano-plugin" "^1.0.5"
     "@sindresorhus/slugify" "^0.3.0"
     "@types/aggregate-error" "^1.0.0"
@@ -106,7 +106,7 @@
     vue-loader "^15.4.0"
     vue-template-compiler "2"
     webpack "^4.20.2"
-    webpack-chain "^4.12.0"
+    webpack-chain "^4.12.1"
     webpack-node-externals "^1.7.2"
     webpackbar "^2.6.1"
 
@@ -225,10 +225,10 @@
     "@types/uglify-js" "*"
     source-map "^0.6.0"
 
-"@types/webpack@^4.4.13":
-  version "4.4.13"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.4.13.tgz#828d3a8f7743a12692aa0f65d083f30d25bf34eb"
-  integrity sha512-N6ge9VfI98kI467oXAxJiX4436Kg3GHWtcHxtjkpFBrajqAtBWnq+ardbUN/9+mX3dmEs+mVmsdua7YGTNd4vg==
+"@types/webpack@^4.4.14":
+  version "4.4.14"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.4.14.tgz#05b73c955c2216b2f3d8af67d99cb3d2ce003bf1"
+  integrity sha512-Fl1zzJF07Lzx4uE4+T/zRJk4mXQVQ5OuOUWzlruxnf/wmJG9tJzKHdKyE02sMagiHZ9918zaruV9udV7buIkCA==
   dependencies:
     "@types/node" "*"
     "@types/tapable" "*"
@@ -6722,10 +6722,10 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-webpack-chain@^4.12.0:
-  version "4.12.0"
-  resolved "https://registry.yarnpkg.com/webpack-chain/-/webpack-chain-4.12.0.tgz#2b73189c9155d11afad6ed1b990ac1942a571deb"
-  integrity sha512-Yrf42u0q0VNELOpk2r7JIoodq/Bc5TBV5AzU+sF5/HUFggyDE17mJXv5rAHCksb+09l8M+UNm1GM5m4R4gHbzg==
+webpack-chain@^4.12.1:
+  version "4.12.1"
+  resolved "https://registry.yarnpkg.com/webpack-chain/-/webpack-chain-4.12.1.tgz#6c8439bbb2ab550952d60e1ea9319141906c02a6"
+  integrity sha512-BCfKo2YkDe2ByqkEWe1Rw+zko4LsyS75LVr29C6xIrxAg9JHJ4pl8kaIZ396SUSNp6b4815dRZPSTAS8LlURRQ==
   dependencies:
     deepmerge "^1.5.2"
     javascript-stringify "^1.6.0"

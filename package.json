@@ -42,10 +42,10 @@
     "vue": ">=2.4.0"
   },
   "devDependencies": {
-    "@gluons/vue-pack": "^1.12.2",
-    "@gluons/vue-pack-banner-plugin": "^1.12.2",
-    "@gluons/vue-pack-cli": "^1.12.2",
-    "@gluons/vue-pack-splitchunks-plugin": "^1.12.2",
+    "@gluons/vue-pack": "^1.13.0",
+    "@gluons/vue-pack-banner-plugin": "^1.13.0",
+    "@gluons/vue-pack-cli": "^1.13.0",
+    "@gluons/vue-pack-splitchunks-plugin": "^1.13.0",
     "@types/copy-webpack-plugin": "^4.4.2",
     "@types/cp-file": "^4.2.0",
     "@types/leven": "^2.1.1",
