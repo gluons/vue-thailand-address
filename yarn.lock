@@ -26,6 +26,14 @@
     nvl "^1.1.1"
     yargs "^12.0.0"
 
+"@gluons/vue-pack-copy-plugin@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@gluons/vue-pack-copy-plugin/-/vue-pack-copy-plugin-1.13.0.tgz#7971ce3a751e875d4c34a877d1aa7bf3ea5bd1a7"
+  integrity sha512-QJAwJwDn4O87mvRXtxwsSbOfwWmg0hLBDenkaJyKd0R/H+GltS3nKlaeW8JK/0ot3v3NqHIKJkpPE9q2mPTO1A==
+  dependencies:
+    "@types/minimatch" "^3.0.3"
+    copy-webpack-plugin "^4.5.2"
+
 "@gluons/vue-pack-dev@^1.12.2":
   version "1.12.2"
   resolved "https://registry.yarnpkg.com/@gluons/vue-pack-dev/-/vue-pack-dev-1.12.2.tgz#b4ff725db0f69b055c94787c630e0240bfd6cd36"
@@ -174,7 +182,7 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.116.tgz#5ccf215653e3e8c786a58390751033a9adca0eb9"
   integrity sha512-lRnAtKnxMXcYYXqOiotTmJd74uawNWuPnsnPrrO7HiFuE3npE2iQhfABatbYDyxTNqZNuXzcKGhw37R7RjBFLg==
 
-"@types/minimatch@*":
+"@types/minimatch@*", "@types/minimatch@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==

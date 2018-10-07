@@ -1,5 +1,6 @@
 import { Configuration } from '@gluons/vue-pack';
 import banner from '@gluons/vue-pack-banner-plugin';
+import copy from '@gluons/vue-pack-copy-plugin';
 import splitChunks from '@gluons/vue-pack-splitchunks-plugin';
 import { resolve } from 'path';
 import nodeExternals from 'webpack-node-externals';
@@ -45,7 +46,13 @@ const config: Configuration = {
 		banner(bannerStr),
 		splitChunks({
 			tapWeb: () => webSplitChunks
-		})
+		}),
+		copy([
+			{
+				context: resolve(__dirname, './src/data/'),
+				from: 'db.json'
+			}
+		])
 	],
 	dev: {
 		entry: resolve(__dirname, './dev/main.ts'),
