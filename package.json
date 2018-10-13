@@ -17,6 +17,7 @@
     "build": "vue-pack",
     "dev": "vue-pack dev",
     "sync": "ts-node -O {\\\"module\\\":\\\"commonjs\\\"} ./scripts/sync-db.ts",
+    "pretest": "npm run sync",
     "test": "npm run lint && jest -c jest.config.json --verbose"
   },
   "repository": {
