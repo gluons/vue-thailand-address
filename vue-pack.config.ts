@@ -1,9 +1,8 @@
-import { Configuration } from '@gluons/vue-pack';
+import { Configuration, nodeExternals } from '@gluons/vue-pack';
 import banner from '@gluons/vue-pack-banner-plugin';
 import copy from '@gluons/vue-pack-copy-plugin';
 import splitChunks from '@gluons/vue-pack-splitchunks-plugin';
 import { resolve } from 'path';
-import nodeExternals from 'webpack-node-externals';
 
 import bannerStr from './config/banner';
 
