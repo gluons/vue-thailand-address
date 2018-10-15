@@ -16,6 +16,7 @@
 				| การติดตั้ง
 			p: strong ด้วย #[Link(:url='npmLink') npm]:
 			highlight-code(lang='bash') npm install vue-thailand-address
+			Divider/
 			p: strong ด้วย #[Link(:url='yarnLink') Yarn]:
 			highlight-code(lang='bash') yarn add vue-thailand-address
 	Row: Col(span='20' offset='2')
@@ -29,15 +30,19 @@
 				)
 				|
 				| วิธีใช้
+			h3 ในไฟล์ entry
 			highlight-code(lang='js')
 				include ../snippets/GetStarted/main.js
 			Divider/
-			Tabs(type='card' value='simple')
-				TabPane(name='simple' label='การใช้งานแบบง่ายๆ')
-					highlight-code(lang='vue')
+			h3 ในไฟล์ Vue
+			Collapse(v-model='usageValue' accordion)
+				Panel(name='simple')
+					| การใช้งานอย่างง่าย
+					highlight-code(lang='vue' slot='content')
 						include:escape-html ../snippets/GetStarted/usage1.vue
-				TabPane(name='advance' label='ใช้ DataStore แยก สำหรับเก็บที่อยู่แยกชุด')
-					highlight-code(lang='vue')
+				Panel(name='advance')
+					| ใช้ DataStore แยก สำหรับเก็บที่อยู่แยกชุด
+					highlight-code(lang='vue' slot='content')
 						include:escape-html ../snippets/GetStarted/usage2.vue
 </template>
 
@@ -51,6 +56,7 @@ export default class GetStarted extends Vue {
 	iconSize: string = '1.5';
 	npmLink: string = 'https://www.npmjs.com/';
 	yarnLink: string = 'https://yarnpkg.com/';
+	usageValue: string = '';
 }
 </script>
 
@@ -60,6 +66,9 @@ export default class GetStarted extends Vue {
 
 	h1 {
 		margin: 1rem 0;
+	}
+	h3 + .ivu-collapse {
+		margin-top: 1rem;
 	}
 	.ivu-card {
 		margin: .5rem 0;

@@ -42,12 +42,16 @@
 <script>
 import { DataStore } from 'vue-thailand-address';
 
+/*
+ * ข้อมูลที่อยู่จะเก็บอยู่ใน DataStore
+ */
+
 export default {
 	name: 'App',
 	data() {
 		return {
-			store1: new DataStore(),
-			store2: new DataStore(),
+			store1: new DataStore(), // DataStore สำหรับเก็บข้อมูลที่อยู่จาก input กลุ่มที่ 1
+			store2: new DataStore(), // DataStore สำหรับเก็บข้อมูลที่อยู่จาก input กลุ่มที่ 2
 			address1: {
 				subdistrict: '',
 				district: '',
