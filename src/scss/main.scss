@@ -11,3 +11,9 @@ blockquote {
 	padding: 1rem !important;
 	margin: 1rem 0 !important;
 }
+a:not([class^='ivu-'])[target='_blank']::after {
+	content: '\F3F2';
+	font-family: Ionicons;
+	color: #aaa;
+	margin-left: 3px;
+}
