@@ -3,7 +3,8 @@ Layout#app
 	Header.header
 		Brand
 		Nav
-	Content: router-view/
+	Content: transition(name='slide' mode='out-in')
+		router-view
 </template>
 
 <script lang="ts">
@@ -29,6 +30,21 @@ export default class App extends Vue {}
 
 	.header {
 		padding: 0 !important;
+	}
+	.slide {
+		&-leave-to {
+			opacity: 0;
+			transform: translateX(-999px);
+		}
+		&-enter-to, &-leave {
+			transform: translateX(0);
+		}
+		&-enter {
+			transform: translateX(999px);
+		}
+		&-enter-active, &-leave-active {
+			transition: opacity 0.2s ease, transform 0.4s ease;
+		}
 	}
 }
 </style>
