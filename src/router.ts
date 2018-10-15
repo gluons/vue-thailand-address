@@ -14,7 +14,7 @@ export const routes: RouteConfig[] = [
 	{
 		path: '/get-started',
 		name: 'get-started',
-		component: () => import('./views/GetStarted.vue')
+		component: () => import(/* webpackChunkName: "get-started" */ './views/GetStarted.vue')
 	}
 ];
 
