@@ -16,6 +16,11 @@ export const routes: RouteConfig[] = [
 		name: 'get-started',
 		component: () => import(/* webpackChunkName: "get-started" */ './views/GetStarted.vue')
 	}
+	// {
+	// 	path: '/api',
+	// 	name: 'api',
+	// 	component: () => import(/* webpackChunkName: "api" */ './views/API.vue')
+	// }
 ];
 
 export default new Router({

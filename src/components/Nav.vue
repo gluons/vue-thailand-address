@@ -6,7 +6,10 @@ Menu(theme='dark' mode='horizontal' :active-name='currentRouteName')
 		:name='route.name'
 		:to='route.path'
 	)
-		Icon(:type='menuItems[route.name].icon')
+		FAIcon(
+			:type='menuItems[route.name].icon.type'
+			:name='menuItems[route.name].icon.name'
+		)
 		| {{ menuItems[route.name].title }}
 </template>
 

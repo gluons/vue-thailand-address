@@ -11,6 +11,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.4.1",
     "flag-icon-css": "^3.2.0",
     "highlight.js": "^9.13.0",
     "iview": "^3.1.3",

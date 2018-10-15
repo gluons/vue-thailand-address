@@ -6,7 +6,12 @@
 	Row: Col(span='20' offset='2')
 		Card
 			h2(slot='title')
-				Icon(type='md-construct' color='green' :size='iconSize')
+				FAIcon(
+					type='solid'
+					name='cog'
+					:size='iconSize'
+					color='green'
+				)
 				|
 				| การติดตั้ง
 			p: strong ด้วย #[Link(:url='npmLink') npm]:
@@ -16,7 +21,12 @@
 	Row: Col(span='20' offset='2')
 		Card
 			h2(slot='title')
-				Icon(type='md-book' color='purple' :size='iconSize')
+				FAIcon(
+					type='solid'
+					name='book'
+					:size='iconSize'
+					color='purple'
+				)
 				|
 				| วิธีใช้
 			highlight-code(lang='js')
@@ -38,7 +48,7 @@ import { Component, Vue } from 'vue-property-decorator';
 	name: 'GetStarted'
 })
 export default class GetStarted extends Vue {
-	iconSize: string = '30';
+	iconSize: string = '1.5';
 	npmLink: string = 'https://www.npmjs.com/';
 	yarnLink: string = 'https://yarnpkg.com/';
 }
@@ -53,6 +63,9 @@ export default class GetStarted extends Vue {
 	}
 	.ivu-card {
 		margin: .5rem 0;
+	}
+	i.fas {
+		vertical-align: middle;
 	}
 }
 </style>
