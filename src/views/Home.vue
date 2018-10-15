@@ -15,20 +15,15 @@ Row(type='flex' justify='space-around' align='middle')#home
 			Button(
 				type='primary'
 				icon='md-play'
+				to='/get-started'
 			) เริ่มต้น
 </template>
-
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import Link from '@/components/Link.vue';
-
 @Component({
-	name: 'Home',
-	components: {
-		Link
-	}
+	name: 'Home'
 })
 export default class Home extends Vue {
 	vueLink: string = 'https://vuejs.org/';

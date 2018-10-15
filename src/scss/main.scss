@@ -5,6 +5,7 @@ html {
 }
 body {
 	font-size: 16px !important;
+	padding-bottom: 2rem;
 }
 blockquote {
 	border-left: 10px solid #808695;
@@ -16,4 +17,14 @@ a:not([class^='ivu-'])[target='_blank']::after {
 	font-family: Ionicons;
 	color: #aaa;
 	margin-left: 3px;
+}
+code, kbd, pre, samp {
+	font-family: 'Fira Mono', monospace !important;
+}
+.hljs {
+	tab-size: 4;
+}
+span.code {
+	display: inline-block;
+	margin: 1rem 0;
 }
