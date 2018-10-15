@@ -766,14 +766,6 @@ aws4@^1.6.0, aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
 
-axios@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
-  integrity sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
-  dependencies:
-    follow-redirects "^1.3.0"
-    is-buffer "^1.1.5"
-
 babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
@@ -2742,7 +2734,7 @@ fn-name@^2.0.1:
   resolved "https://registry.yarnpkg.com/fn-name/-/fn-name-2.0.1.tgz#5214d7537a4d06a4a301c0cc262feb84188002e7"
   integrity sha1-UhTXU3pNBqSjAcDMJi/rhBiAAuc=
 
-follow-redirects@^1.0.0, follow-redirects@^1.3.0:
+follow-redirects@^1.0.0:
   version "1.5.9"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.9.tgz#c9ed9d748b814a39535716e531b9196a845d89c6"
   integrity sha512-Bh65EZI/RU8nx0wbYF9shkFZlqLP+6WT/5FnA3cE/djNSuKNHJEinGGZgu/cQEkeeb2GdFOgenAmn8qaqYke2w==
@@ -2795,11 +2787,6 @@ form-data@~2.3.1, form-data@~2.3.2:
     asynckit "^0.4.0"
     combined-stream "1.0.6"
     mime-types "^2.1.12"
-
-format-thousands@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/format-thousands/-/format-thousands-1.1.1.tgz#7975bee30338d9006390da5831db0b41c323fbfa"
-  integrity sha1-eXW+4wM42QBjkNpYMdsLQcMj+/o=
 
 format@^0.2.2:
   version "0.2.2"
@@ -7774,14 +7761,6 @@ vue-cli-plugin-pug@^1.0.7:
     pug "^2.0.3"
     pug-plain-loader "^1.0.0"
     raw-loader "^0.5.1"
-
-vue-github-buttons@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/vue-github-buttons/-/vue-github-buttons-2.1.1.tgz#da2f7f96415e16b52cdf996f09f2b0fd8dd67ea6"
-  integrity sha1-2i9/lkFeFrUs35lvCfKw/Y3WfqY=
-  dependencies:
-    axios "^0.18.0"
-    format-thousands "^1.1.1"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"

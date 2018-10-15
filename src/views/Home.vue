@@ -1,18 +1,21 @@
 <template lang="pug">
 Row(type='flex' justify='space-around' align='middle')#home
-	Col(:xs='18' :sm='12' :lg='12')
-		p.gh
-			gh-btns-star(slug='gluons/vue-thailand-address' show-count)
+	Col(:xs='18' :sm='14' :lg='12')
 		h1.title
 			Icon(custom='flag-icon flag-icon-th' size='30')
 			span Vue Thailand Address
 		p ตัวช่วยกรอกที่อยู่ของไทย สำหรับ #[Link(:url='vueLink') Vue] (ปราศจาก jQuery 🎉)
-		blockquote แนวความคิดและฐานข้อมูลที่อยู่จาก #[Link(:url='jqTHLink') jquery.Thailand.js]
-		p.get-started
+		p.credit แนวความคิดและฐานข้อมูลที่อยู่จาก #[Link(:url='jqTHLink') jquery.Thailand.js]
+		.btn-container
+			Link(
+				url='https://github.com/gluons/vue-thailand-address'
+				btn
+				btnIcon='logo-github'
+			) Star บน GitHub
 			Button(
 				type='primary'
 				icon='md-play'
-			).btn เริ่มต้น
+			) เริ่มต้น
 </template>
 
 
@@ -36,18 +39,19 @@ export default class Home extends Vue {
 <style lang="scss">
 #home {
 	height: 100%;
+	text-align: center;
 
 	@media (min-width: 576px) {
-		font-size: .9rem;
+		font-size: 0.9rem !important;
 	}
 	@media (min-width: 768px) {
-		font-size: 1rem;
+		font-size: 1.1rem !important;
 	}
 	@media (min-width: 992px) {
-		font-size: 1.3rem;
+		font-size: 1.2rem !important;
 	}
 	@media (min-width: 1200px) {
-		font-size: 1.5rem;
+		font-size: 1.5rem !important;
 	}
 	h1.title {
 		i {
@@ -57,27 +61,24 @@ export default class Home extends Vue {
 			vertical-align: middle;
 		}
 	}
-	.gh-button-container {
-		float: none !important;
+	.credit {
+		margin: 1rem 0;
+		padding: 1rem;
+		border: 3px solid #dcdee2;
+		border-radius: 3px;
 	}
-	.gh-button:hover {
-		color: initial !important;
-	}
-	p.gh {
-		padding: 1rem 0;
-		text-align: center;
-	}
-	p.get-started {
+	.btn-container {
 		margin-top: 3rem;
 		text-align: center;
 
-		.btn {
+		.ivu-btn {
 			padding: 1rem 2rem 1rem;
 			font-size: 1em;
+
+			& + .ivu-btn {
+				margin-left: 1rem;
+			}
 		}
-	}
-	blockquote {
-		margin-top: 3rem !important;
 	}
 }
 </style>
