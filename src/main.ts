@@ -6,15 +6,21 @@ import VueProgressBar from 'vue-progressbar';
 import App from './App.vue';
 import router from './router';
 
-// import FAIcon from './components/FAIcon.vue';
-import Link from './components/Link.vue';
-
 // Styles
 import 'buefy/dist/buefy.css';
 import 'bulma-divider';
 import 'flag-icon-css/css/flag-icon.css';
 import 'highlight.js/styles/monokai.css';
 import './scss/main.scss';
+
+// Components
+const requireComponent = require.context('./components/', false, /vue$/);
+requireComponent.keys().forEach(file => {
+	const componentName = file.replace(/^\.\/(.*)\.\w+$/, '$1');
+	const component = requireComponent(file);
+
+	Vue.component(componentName, component.default);
+});
 
 Vue.config.productionTip = false;
 
@@ -26,10 +32,6 @@ Vue.use(VueProgressBar, {
 	color: 'hsl(171, 100%, 41%)'
 });
 Vue.use(VueHighlightJS);
-
-// Components
-// Vue.component('FAIcon', FAIcon);
-Vue.component('Link', Link);
 
 new Vue({
 	el: '#app',

@@ -6,6 +6,10 @@ html {
 code, kbd, pre, samp {
 	font-family: 'Fira Mono', monospace !important;
 }
+pre {
+	background-color: initial;
+	padding: 0;
+}
 @for $i from 1 through 6 {
 	h#{$i} {
 		$margin: 1em * (1 - ($i / 10));

@@ -28,6 +28,9 @@
 				router-link.navbar-item(to='/get-started' exact)
 					b-icon(icon='play')
 					span เริ่มต้น
+				router-link.navbar-item(to='/api' exact)
+					b-icon(icon='swatchbook')
+					span API
 			.navbar-end
 				Link.navbar-item.is-hidden-touch(:url='repoLink')
 					b-icon(pack='fab' icon='github')
