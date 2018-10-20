@@ -1,13 +1,14 @@
 <template lang="pug">
 #home
 	section.hero.is-fullheight: .hero-body: .container.has-text-centered
-		h1.title.is-spaced.is-1
+		h1.title.is-spaced.is-size-1-desktop.is-size-2-touch
 			span.flag-icon.flag-icon-th
 			|
 			| Vue Thailand Address
-		h2.subtitle.is-2 ตัวช่วยกรอกที่อยู่ของไทย สำหรับ #[Link(:url='vueLink') Vue] (ปราศจาก jQuery 🎉)
+		h2.subtitle.is-size-2-desktop.is-size-3-touch
+			| ตัวช่วยกรอกที่อยู่ของไทย สำหรับ #[Link(:url='vueLink') Vue] (ปราศจาก jQuery 🎉)
 		.columns: .column.is-10.is-offset-1
-			.box.is-size-3 แนวความคิดและฐานข้อมูลที่อยู่จาก #[Link(:url='jqTHLink') jquery.Thailand.js]
+			.box.is-size-3-desktop.is-size-4-touch แนวความคิดและฐานข้อมูลที่อยู่จาก #[Link(:url='jqTHLink') jquery.Thailand.js]
 		.columns.is-centered: .column
 			.buttons.is-centered
 				Link.button.is-dark.is-rounded.is-medium(
@@ -36,8 +37,3 @@ export default class Home extends Vue {
 	jqTHLink: string = jqTHLink;
 }
 </script>
-
-<style lang="scss">
-#home {
-}
-</style>
