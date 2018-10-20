@@ -26,5 +26,6 @@ export const routes: RouteConfig[] = [
 export default new Router({
 	mode: 'history',
 	base: process.env.BASE_URL,
+	linkActiveClass: 'is-active',
 	routes
 });

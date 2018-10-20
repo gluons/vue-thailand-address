@@ -1,62 +1,46 @@
 <template lang="pug">
-#get-started
-	BackTop/
-	Row: Col(span='20' offset='2')
-		h1 เริ่มต้น
-	Row: Col(span='20' offset='2')
-		Card
-			h2(slot='title')
-				FAIcon(
-					type='solid'
-					name='cog'
-					:size='iconSize'
-					color='green'
-				)
-				|
-				| การติดตั้ง
-			p: strong ด้วย #[Link(:url='npmLink') npm]:
-			highlight-code(lang='bash') npm install vue-thailand-address
-			Divider/
-			p: strong ด้วย #[Link(:url='yarnLink') Yarn]:
-			highlight-code(lang='bash') yarn add vue-thailand-address
-	Row: Col(span='20' offset='2')
-		Card
-			h2(slot='title')
-				FAIcon(
-					type='solid'
-					name='book'
-					:size='iconSize'
-					color='purple'
-				)
-				|
-				| วิธีใช้
-			h3 ในไฟล์ entry
-			highlight-code(lang='js')
-				include ../snippets/GetStarted/main.js
-			Divider/
-			h3 ในไฟล์ Vue
-			Collapse(v-model='usageValue' accordion)
-				Panel(name='simple')
-					| การใช้งานอย่างง่าย
-					highlight-code(lang='vue' slot='content')
-						include:escape-html ../snippets/GetStarted/usage1.vue
-				Panel(name='advance')
-					| ใช้ DataStore แยก สำหรับเก็บที่อยู่แยกชุด
-					highlight-code(lang='vue' slot='content')
-						include:escape-html ../snippets/GetStarted/usage2.vue
+#get-started.container
+	h1.is-size-3 เริ่มต้น
+	h2.is-size-4
+		b-icon(type='is-primary' icon='cog')
+		span การติดตั้ง
+	p: strong ด้วย #[Link(:url='npmLink') npm]:
+	highlight-code.is-paddingless(lang='bash') npm install vue-thailand-address
+	p: strong ด้วย #[Link(:url='yarnLink') Yarn]:
+	highlight-code.is-paddingless(lang='bash') yarn add vue-thailand-address
+	.is-divider
+	h2.is-size-4
+		b-icon(type='is-success' icon='book')
+		span วิธีใช้
+	h3.is-size-5 ในไฟล์ entry
+	highlight-code.is-paddingless(lang='js'): include ../snippets/GetStarted/main.js
+	h3.is-size-5 ในไฟล์ Vue
+	b-tabs(
+		v-model='usageTab'
+		type='is-toggle'
+		expanded
+	)
+		b-tab-item(label='การใช้งานอย่างง่าย' icon='circle')
+			highlight-code.is-paddingless(lang='vue')
+				include:escape-html ../snippets/GetStarted/usage1.vue
+		b-tab-item(label='ใช้ DataStore แยก สำหรับเก็บที่อยู่แยกชุด' icon='shapes')
+			highlight-code.is-paddingless(lang='vue')
+				include:escape-html ../snippets/GetStarted/usage2.vue
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+
+import { npmLink, yarnLink } from '@/constants/links';
 
 @Component({
 	name: 'GetStarted'
 })
 export default class GetStarted extends Vue {
 	iconSize: string = '1.5';
-	npmLink: string = 'https://www.npmjs.com/';
-	yarnLink: string = 'https://yarnpkg.com/';
-	usageValue: string = '';
+	npmLink: string = npmLink;
+	yarnLink: string = yarnLink;
+	usageTab: number = 0;
 }
 </script>
 
@@ -64,17 +48,17 @@ export default class GetStarted extends Vue {
 #get-started {
 	margin-top: 1rem;
 
-	h1 {
-		margin: 1rem 0;
+	h2 {
+		.icon {
+			margin-right: 1rem;
+		}
+		& > * {
+			vertical-align: middle;
+		}
 	}
-	h3 + .ivu-collapse {
-		margin-top: 1rem;
-	}
-	.ivu-card {
-		margin: .5rem 0;
-	}
-	i.fas {
-		vertical-align: middle;
-	}
+	// .tabs ul {
+	// 	list-style: none !important;
+	// 	margin: 0 !important;
+	// }
 }
 </style>

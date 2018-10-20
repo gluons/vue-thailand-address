@@ -1,49 +1,82 @@
 <template lang="pug">
-Layout#app
-	Header.header
-		Brand
-		Nav
-	Content: transition(name='slide' mode='out-in')
-		router-view
+#app
+	vue-progress-bar/
+	nav.navbar.is-dark(role='navigation'): .container
+		.navbar-brand
+			router-link.navbar-item(
+				to='/'
+				active-class=''
+				exact-active-class=''
+			): strong
+				span.flag-icon.flag-icon-th.is-size-4
+				span Vue Thailand Address
+			a.navbar-burger(role='button' aria-label='menu' aria-expanded='false')
+				each i in [1, 2, 3]
+					span(aria-hidden='true')
+		.navbar-menu
+			.navbar-start
+				router-link.navbar-item(to='/'  exact)
+					b-icon(icon='home')
+					span หน้าแรก
+				router-link.navbar-item(to='/get-started' exact)
+					b-icon(icon='play')
+					span เริ่มต้น
+			.navbar-end
+				Link.navbar-item(:url='repoLink')
+					b-icon(pack='fab' icon='github')
+	transition(name='fade' mode='out-in')
+		router-view/
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import Brand from './components/Brand.vue';
-import Nav from './components/Nav.vue';
+import { repoLink } from '@/constants/links';
 
 @Component({
-	name: 'App',
-	components: {
-		Brand,
-		Nav
-	}
+	name: 'App'
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+	repoLink: string = repoLink;
+
+	created() {
+		this.$Progress.start();
+		this.$router.beforeEach((to, from, next) => {
+			this.$Progress.start();
+			next();
+		});
+		this.$router.afterEach(() => {
+			this.$Progress.finish();
+		});
+	}
+	mounted() {
+		this.$Progress.finish();
+	}
+}
 </script>
 
 
 <style lang="scss">
 #app {
-	min-height: 100vh;
-
-	.header {
-		padding: 0 !important;
+	a.navbar-item {
+		.flag-icon, .icon {
+			&:not(:last-child) {
+				margin-right: .5em;
+			}
+		}
 	}
-	.slide {
-		&-leave-to {
-			opacity: 0;
-			transform: translateX(-999px);
-		}
+	.navbar-brand * {
+		vertical-align: middle;
+	}
+	.fade {
 		&-enter-to, &-leave {
-			transform: translateX(0);
+			opacity: 1;
 		}
-		&-enter {
-			transform: translateX(999px);
+		&-enter, &-leave-to {
+			opacity: 0;
 		}
 		&-enter-active, &-leave-active {
-			transition: opacity 0.2s ease, transform 0.4s ease;
+			transition: opacity .2s ease;
 		}
 	}
 }

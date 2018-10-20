@@ -3,30 +3,20 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-body {
-	font-size: 16px !important;
-	padding-bottom: 2rem;
-}
-blockquote {
-	border-left: 10px solid #808695;
-	padding: 1rem !important;
-	margin: 1rem 0 !important;
-}
-a:not([class^='ivu-'])[target='_blank']::after {
-	content: '\f35d';
-	font-family: 'Font Awesome 5 Free';
-	font-weight: 900;
-	color: #aaa;
-	margin-left: 5px;
-	vertical-align: 3px;
-}
 code, kbd, pre, samp {
 	font-family: 'Fira Mono', monospace !important;
 }
+@for $i from 1 through 6 {
+	h#{$i} {
+		$margin: 1em * (1 - ($i / 10));
+
+		font-weight: 600;
+		margin: {
+			top: $margin;
+			bottom: $margin;
+		}
+	}
+}
 .hljs {
 	tab-size: 4;
-}
-span.code {
-	display: inline-block;
-	margin: 1rem 0;
 }
