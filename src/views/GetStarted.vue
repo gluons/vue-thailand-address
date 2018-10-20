@@ -15,16 +15,21 @@
 	h3.is-size-5 ในไฟล์ entry
 	highlight-code.is-paddingless(lang='js'): include ../snippets/GetStarted/main.js
 	h3.is-size-5 ในไฟล์ Vue
-	b-tabs(
-		v-model='usageTab'
-		type='is-toggle'
-		expanded
-	)
-		b-tab-item(label='การใช้งานอย่างง่าย' icon='circle')
-			highlight-code.is-paddingless(lang='vue')
+	b-collapse.card
+		.card-header(slot='trigger' slot-scope='props')
+			p.card-header-title การใช้งานอย่างง่าย
+			a.card-header-icon
+				b-icon(:icon='props.open ? "caret-down" : "caret-up"')
+		.card-content
+			highlight-code(lang='vue')
 				include:escape-html ../snippets/GetStarted/usage1.vue
-		b-tab-item(label='ใช้ DataStore แยก สำหรับเก็บที่อยู่แยกชุด' icon='shapes')
-			highlight-code.is-paddingless(lang='vue')
+	b-collapse.card(:open='false')
+		.card-header(slot='trigger' slot-scope='props')
+			p.card-header-title ใช้ DataStore แยก สำหรับเก็บที่อยู่แยกชุด
+			a.card-header-icon
+				b-icon(:icon='props.open ? "caret-down" : "caret-up"')
+		.card-content
+			highlight-code(lang='vue')
 				include:escape-html ../snippets/GetStarted/usage2.vue
 </template>
 

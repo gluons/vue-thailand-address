@@ -87,6 +87,8 @@ export default class App extends Vue {
 
 <style lang="scss">
 #app {
+	margin-bottom: 1rem;
+
 	a.navbar-item {
 		.flag-icon, .icon {
 			&:not(:last-child) {
