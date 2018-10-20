@@ -5,15 +5,15 @@
 		b-icon(type='is-primary' icon='cog')
 		span การติดตั้ง
 	p: strong ด้วย #[Link(:url='npmLink') npm]:
-	highlight-code.is-paddingless(lang='bash') npm install vue-thailand-address
+	highlight-code(lang='bash') npm install vue-thailand-address
 	p: strong ด้วย #[Link(:url='yarnLink') Yarn]:
-	highlight-code.is-paddingless(lang='bash') yarn add vue-thailand-address
+	highlight-code(lang='bash') yarn add vue-thailand-address
 	.is-divider
 	h2.is-size-4
 		b-icon(type='is-success' icon='book')
 		span วิธีใช้
 	h3.is-size-5 ในไฟล์ entry
-	highlight-code.is-paddingless(lang='js'): include ../snippets/GetStarted/main.js
+	highlight-code(lang='js'): include ../snippets/GetStarted/main.js
 	h3.is-size-5 ในไฟล์ Vue
 	b-collapse.card
 		.card-header(slot='trigger' slot-scope='props')
