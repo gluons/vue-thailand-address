@@ -6,6 +6,10 @@ import VueProgressBar from 'vue-progressbar';
 import App from './App.vue';
 import router from './router';
 
+// Fonts
+import '@fortawesome/fontawesome-free/css/all.css';
+import 'typeface-fira-mono';
+
 // Styles
 import 'buefy/dist/buefy.css';
 import 'bulma-divider';
