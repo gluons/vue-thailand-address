@@ -1,7 +1,8 @@
 <template lang="pug">
 .th-address-container
 	input.th-address-input(
-		type='text',
+		:class='inputClassList'
+		type='text'
 		autocomplete='off'
 		v-model='query'
 		@input='search'
@@ -47,6 +48,7 @@ export default class TypeaheadInput extends Vue {
 	@Prop({ type: DataStore, default: () => defaultStore }) store: DataStore;
 	@Prop({ type: String, default: '' }) value: string;
 	@Prop({ type: String, required: true }) target: Target; // Name. It's an actual property name in address data.
+	@Prop({ type: String, default: '' }) inputClass: string;
 
 	// Watch
 	@Watch('value')
@@ -76,6 +78,15 @@ export default class TypeaheadInput extends Vue {
 	// Computed
 	get filteredAttrs() {
 		return pick(this.$attrs, ALLOWED_ATTRS);
+	}
+	get inputClassList(): string[] {
+		if (!this.inputClass || !this.inputClass.trim()) {
+			return null;
+		}
+
+		const inputClasses = this.inputClass.split(/\s+/);
+
+		return inputClasses;
 	}
 
 	// Methods
