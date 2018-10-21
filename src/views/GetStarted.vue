@@ -61,9 +61,5 @@ export default class GetStarted extends Vue {
 			vertical-align: middle;
 		}
 	}
-	// .tabs ul {
-	// 	list-style: none !important;
-	// 	margin: 0 !important;
-	// }
 }
 </style>

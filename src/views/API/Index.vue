@@ -1,0 +1,41 @@
+<template lang="pug">
+section#api-list.section: .container.content.is-large
+	h1 API
+	h2 Component
+	p Vue Thailand Address ประกอบไปด้วย component 4 ชนิด ดังนี้
+	ul
+		li
+			router-link(:to='{ name: "api-subdistrict" }')
+				code= '<addressinput-subdistrict> - ตำบล/แขวง'
+		li
+			router-link(:to='{ name: "api-district" }')
+				code= '<addressinput-district> - อำเภอ/เขต'
+		li
+			router-link(:to='{ name: "api-province" }')
+				code= '<addressinput-province> - จังหวัด'
+		li
+			router-link(:to='{ name: "api-zipcode" }')
+				code= '<addressinput-zipcode> - รหัสไปรษณีย์'
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component({
+	name: 'APIIndex'
+})
+export default class APIIndex extends Vue {}
+</script>
+
+
+<style lang="scss">
+#api-list {
+	code {
+		color: inherit !important;
+		font-size: inherit !important;
+		font-weight: inherit !important;
+		background-color: inherit !important;
+		padding: 0;
+	}
+}
+</style>

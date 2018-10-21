@@ -1,15 +1,17 @@
 <template lang="pug">
 .api-component
-	h2.is-size-4.api-name: code {{ name }}
+	h2.api-name: code {{ name }}
 	slot
 	template(v-if='$slots.props')
-		h3.is-size-5.api-category
-			b-icon(icon='star' type='is-primary')
+		h3
+			span.icon.is-large.has-text-primary
+				i.fas.fa-star
 			span Props
 		slot(name='props')
 	template(v-if='$slots.events')
-		h3.is-size-5.api-category
-			b-icon(icon='bolt' type='is-warning')
+		h3
+			span.icon.is-large.has-text-warning
+				i.fas.fa-bolt
 			span Events
 		slot(name='events')
 </template>
@@ -28,12 +30,6 @@ export default class APIComponent extends Vue {
 
 <style lang="scss">
 .api-component {
-	margin: 2rem 0;
-
-	&:not(:last-of-type) {
-		padding-bottom: 2rem;
-		border-bottom: .1rem solid silver;
-	}
 	.api-name {
 		code {
 			color: inherit !important;
@@ -41,15 +37,6 @@ export default class APIComponent extends Vue {
 			font-weight: inherit !important;
 			background-color: inherit !important;
 			padding: 0;
-		}
-	}
-	.api-category {
-
-		.icon {
-			margin-right: .25rem;
-		}
-		span:not(.icon) {
-			vertical-align: .2rem;
 		}
 	}
 }

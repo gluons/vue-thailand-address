@@ -29,9 +29,31 @@
 				router-link.navbar-item(to='/get-started' exact)
 					b-icon(icon='play')
 					span เริ่มต้น
-				router-link.navbar-item(to='/api' exact)
-					b-icon(icon='swatchbook')
-					span API
+				.navbar-item.has-dropdown.is-hoverable
+					router-link.navbar-link(:to='{ name: "api-index" }')
+						b-icon(icon='swatchbook')
+						span API
+					.navbar-dropdown
+						router-link.navbar-item(
+							:to='{ name: "api-subdistrict" }'
+							exact
+						)
+							span= '<addressinput-subdistrict>'
+						router-link.navbar-item(
+							:to='{ name: "api-district" }'
+							exact
+						)
+							span= '<addressinput-district>'
+						router-link.navbar-item(
+							:to='{ name: "api-province" }'
+							exact
+						)
+							span= '<addressinput-province>'
+						router-link.navbar-item(
+							:to='{ name: "api-zipcode" }'
+							exact
+						)
+							span= '<addressinput-zipcode>'
 			.navbar-end
 				Link.navbar-item.is-hidden-touch(:url='repoLink')
 					b-icon(pack='fab' icon='github')
@@ -90,12 +112,9 @@ export default class App extends Vue {
 #app {
 	margin-bottom: 1rem;
 
-	a.navbar-item {
-		.flag-icon, .icon {
-			&:not(:last-child) {
-				margin-right: .5em;
-			}
-		}
+	.navbar-brand .brand-link .flag-icon,
+	.navbar-start a .icon {
+		margin-right: 0.5em;
 	}
 	.navbar-brand {
 		.brand-link * {
@@ -103,14 +122,17 @@ export default class App extends Vue {
 		}
 	}
 	.fade {
-		&-enter-to, &-leave {
+		&-enter-to,
+		&-leave {
 			opacity: 1;
 		}
-		&-enter, &-leave-to {
+		&-enter,
+		&-leave-to {
 			opacity: 0;
 		}
-		&-enter-active, &-leave-active {
-			transition: opacity .2s ease;
+		&-enter-active,
+		&-leave-active {
+			transition: opacity 0.2s ease;
 		}
 	}
 }

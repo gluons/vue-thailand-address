@@ -5,7 +5,7 @@ import Home from './views/Home.vue';
 
 Vue.use(Router);
 
-export const routes: RouteConfig[] = [
+const routes: RouteConfig[] = [
 	{
 		path: '/',
 		name: 'home',
@@ -14,12 +14,46 @@ export const routes: RouteConfig[] = [
 	{
 		path: '/get-started',
 		name: 'get-started',
-		component: () => import(/* webpackChunkName: "get-started" */ './views/GetStarted.vue')
+		component: () =>
+			import(/* webpackChunkName: "get-started" */ './views/GetStarted.vue')
 	},
 	{
 		path: '/api',
 		name: 'api',
-		component: () => import(/* webpackChunkName: "api" */ './views/API.vue')
+		component: () =>
+			import(/* webpackChunkName: "api" */ './views/API.vue'),
+		children: [
+			{
+				path: '',
+				name: 'api-index',
+				component: () =>
+					import(/* webpackChunkName: "api-index" */ './views/API/Index.vue')
+			},
+			{
+				path: 'subdistrict',
+				name: 'api-subdistrict',
+				component: () =>
+					import(/* webpackChunkName: "api-subdistrict" */ './views/API/Subdistrict.vue')
+			},
+			{
+				path: 'district',
+				name: 'api-district',
+				component: () =>
+					import(/* webpackChunkName: "api-district" */ './views/API/District.vue')
+			},
+			{
+				path: 'province',
+				name: 'api-province',
+				component: () =>
+					import(/* webpackChunkName: "api-province" */ './views/API/Province.vue')
+			},
+			{
+				path: 'zipcode',
+				name: 'api-zipcode',
+				component: () =>
+					import(/* webpackChunkName: "api-zipcode" */ './views/API/Zipcode.vue')
+			}
+		]
 	}
 ];
 

@@ -26,6 +26,13 @@ export default class GoToTop extends Vue {
 	}
 
 	detectScroll() {
+		// Don't show in home page
+		if (this.$route.name === 'home') {
+			this.visible = false;
+
+			return;
+		}
+
 		this.visible =
 			document.body.scrollTop > visiblePoint ||
 			document.documentElement.scrollTop > visiblePoint;
