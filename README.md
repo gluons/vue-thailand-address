@@ -31,4 +31,4 @@ yarn add vue-thailand-address
 
 ## 🛂 วิธีใช้
 
-🚧 Work In Progress
+สามารถอ่านได้ที่ https://vue-thailand-address.netlify.com
