@@ -54,6 +54,11 @@
 							exact
 						)
 							span= '<addressinput-zipcode>'
+						router-link.navbar-item(
+							:to='{ name: "api-address-model" }'
+							exact
+						)
+							span AddressModel
 			.navbar-end
 				Link.navbar-item.is-hidden-touch(:url='repoLink')
 					b-icon(pack='fab' icon='github')

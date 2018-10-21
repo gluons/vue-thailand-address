@@ -5,11 +5,13 @@
 			i.fas.fa-angle-right
 		span {{ name }}
 	p
-		strong.prop-label Type:
-		highlight-code(lang='js' inline) {{ type }}
+		strong.has-text-weight-semibold ประเถท:
+		| &nbsp;
+		highlight-code(lang='ts' inline) {{ type }}
 	p(v-if='defaultValue')
-		span.prop-label Default:
-		highlight-code(lang='js' inline) {{ defaultValue }}
+		span.has-text-weight-semibold ค่าเริ่มต้น:
+		| &nbsp;
+		highlight-code(lang='ts' inline) {{ defaultValue }}
 	p
 		slot
 </template>
@@ -34,10 +36,6 @@ export default class APIProp extends Vue {
 
 <style lang="scss">
 .api-prop {
-	.prop-label {
-		font-weight: 600;
-		margin-right: .5rem;
-	}
 	p {
 		margin-left: 1.75rem;
 	}

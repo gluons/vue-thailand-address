@@ -6,16 +6,16 @@ section#api-list.section: .container.content.is-large
 	ul
 		li
 			router-link(:to='{ name: "api-subdistrict" }')
-				code= '<addressinput-subdistrict> - ตำบล/แขวง'
+				code.plain= '<addressinput-subdistrict> - ตำบล/แขวง'
 		li
 			router-link(:to='{ name: "api-district" }')
-				code= '<addressinput-district> - อำเภอ/เขต'
+				code.plain= '<addressinput-district> - อำเภอ/เขต'
 		li
 			router-link(:to='{ name: "api-province" }')
-				code= '<addressinput-province> - จังหวัด'
+				code.plain= '<addressinput-province> - จังหวัด'
 		li
 			router-link(:to='{ name: "api-zipcode" }')
-				code= '<addressinput-zipcode> - รหัสไปรษณีย์'
+				code.plain= '<addressinput-zipcode> - รหัสไปรษณีย์'
 </template>
 
 <script lang="ts">
@@ -26,16 +26,3 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 export default class APIIndex extends Vue {}
 </script>
-
-
-<style lang="scss">
-#api-list {
-	code {
-		color: inherit !important;
-		font-size: inherit !important;
-		font-weight: inherit !important;
-		background-color: inherit !important;
-		padding: 0;
-	}
-}
-</style>

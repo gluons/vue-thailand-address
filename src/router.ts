@@ -52,6 +52,12 @@ const routes: RouteConfig[] = [
 				name: 'api-zipcode',
 				component: () =>
 					import(/* webpackChunkName: "api-zipcode" */ './views/API/Zipcode.vue')
+			},
+			{
+				path: 'address-model',
+				name: 'api-address-model',
+				component: () =>
+					import(/* webpackChunkName: "api-address-model" */ './views/API/AddressModel.vue')
 			}
 		]
 	}

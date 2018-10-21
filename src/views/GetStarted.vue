@@ -13,7 +13,7 @@
 		b-icon(type='is-success' icon='book')
 		span วิธีใช้
 	h3.is-size-5 ในไฟล์ entry
-	highlight-code(lang='js'): include ../snippets/GetStarted/main.js
+	highlight-code(lang='ts'): include ../snippets/GetStarted/main.js
 	h3.is-size-5 ในไฟล์ Vue
 	b-collapse.card
 		.card-header(slot='trigger' slot-scope='props')

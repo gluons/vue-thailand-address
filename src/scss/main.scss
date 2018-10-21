@@ -3,12 +3,21 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-code, kbd, pre, samp {
+code,
+kbd,
+pre,
+samp {
 	font-family: 'Fira Mono', monospace !important;
 }
 pre {
-	background-color: initial;
-	padding: 0;
+	background-color: initial !important;
+}
+code.plain {
+	color: inherit !important;
+	font-size: inherit !important;
+	font-weight: inherit !important;
+	background-color: inherit !important;
+	padding: 0 !important;
 }
 @for $i from 1 through 6 {
 	h#{$i} {

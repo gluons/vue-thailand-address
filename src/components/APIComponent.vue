@@ -1,6 +1,6 @@
 <template lang="pug">
 .api-component
-	h2.api-name: code {{ name }}
+	h2: code.plain {{ name }}
 	slot
 	template(v-if='$slots.props')
 		h3
@@ -27,17 +27,3 @@ export default class APIComponent extends Vue {
 	name: string;
 }
 </script>
-
-<style lang="scss">
-.api-component {
-	.api-name {
-		code {
-			color: inherit !important;
-			font-size: inherit !important;
-			font-weight: inherit !important;
-			background-color: inherit !important;
-			padding: 0;
-		}
-	}
-}
-</style>
