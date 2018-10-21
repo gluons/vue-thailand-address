@@ -144,6 +144,11 @@
   dependencies:
     "@types/babel-types" "*"
 
+"@types/jump.js@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/jump.js/-/jump.js-1.0.2.tgz#9eb1cf571e406bb3514a062008b6889ab9984160"
+  integrity sha1-nrHPVx5Aa7NRSgYgCLaImrmYQWA=
+
 "@types/node@8":
   version "8.10.36"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.36.tgz#eac05d576fbcd0b4ea3c912dc58c20475c08d9e4"
@@ -4031,6 +4036,11 @@ jstransformer@1.0.0:
   dependencies:
     is-promise "^2.0.0"
     promise "^7.0.1"
+
+jump.js@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/jump.js/-/jump.js-1.0.2.tgz#e0641b47f40a38f2139c25fda0500bf28e43015a"
+  integrity sha1-4GQbR/QKOPITnCX9oFAL8o5DAVo=
 
 killable@^1.0.0:
   version "1.0.1"

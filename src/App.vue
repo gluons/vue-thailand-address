@@ -1,6 +1,7 @@
 <template lang="pug">
 #app
 	vue-progress-bar/
+	GoToTop/
 	nav.navbar.is-dark(role='navigation'): .container
 		.navbar-brand
 			router-link.navbar-item.brand-link(

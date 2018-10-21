@@ -15,6 +15,7 @@
     "bulma-divider": "^2.0.1",
     "flag-icon-css": "^3.2.0",
     "highlight.js": "^9.13.0",
+    "jump.js": "^1.0.2",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-highlight.js": "^2.2.0",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@gluons/prettier-config": "^2.0.0",
     "@starptech/prettyhtml": "^0.2.2",
+    "@types/jump.js": "^1.0.2",
     "@types/node": "8",
     "@vue/cli-plugin-typescript": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
