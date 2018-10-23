@@ -13,6 +13,7 @@
     "dist"
   ],
   "scripts": {
+    "prepublishOnly": "npm run build",
     "lint": "tslint -p .",
     "build": "vue-pack",
     "dev": "vue-pack dev",
