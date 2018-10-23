@@ -131,19 +131,5 @@ export default class App extends Vue {
 			vertical-align: middle;
 		}
 	}
-	.fade {
-		&-enter-to,
-		&-leave {
-			opacity: 1;
-		}
-		&-enter,
-		&-leave-to {
-			opacity: 0;
-		}
-		&-enter-active,
-		&-leave-active {
-			transition: opacity 0.2s ease;
-		}
-	}
 }
 </style>

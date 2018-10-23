@@ -73,5 +73,12 @@ export default new Router({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	linkActiveClass: 'is-active',
-	routes
+	routes,
+	scrollBehavior() {
+		return new Promise(resolve => {
+			setTimeout(() => {
+				resolve({ x: 0, y: 0 });
+			}, 300);
+		});
+	}
 });

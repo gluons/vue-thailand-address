@@ -36,3 +36,19 @@ code.plain {
 .hljs {
 	tab-size: 4;
 }
+
+// Router transition
+.fade {
+	&-enter-to,
+	&-leave {
+		opacity: 1;
+	}
+	&-enter,
+	&-leave-to {
+		opacity: 0;
+	}
+	&-enter-active,
+	&-leave-active {
+		transition: opacity 0.2s ease;
+	}
+}
