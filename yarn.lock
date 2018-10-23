@@ -366,10 +366,10 @@
   resolved "https://registry.yarnpkg.com/@types/cp-file/-/cp-file-4.2.0.tgz#2b12186b50dad407b11021284627bdf4adb87a87"
   integrity sha512-nkd9c0L2aWfsDFrkpxfGJ5bCKeiAv6lccbH9vxKeWYw9YuyqskjtRTrBEBAiea9R08OSiboQ4ssmwAVJMHmHHA==
 
-"@types/jest@^23.3.5":
-  version "23.3.5"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.5.tgz#870a1434208b60603745bfd214fc3fc675142364"
-  integrity sha512-3LI+vUC3Wju28vbjIjsTKakhMB8HC4l+tMz+Z8WRzVK+kmvezE5jcOvKtBpznWSI5KDLFo+FouUhpTKoekadCA==
+"@types/jest@^23.3.7":
+  version "23.3.7"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.7.tgz#77f9a4332ccf8db680a31818ade3ee454c831a79"
+  integrity sha512-N0p6mHrS0RHC3A9hHN4QH1RM2fGSb2E8rt6ONEK5xKSnyKtn/JAhr1VritkCn6cdyDBephVB80THqJGWzK8FAw==
 
 "@types/leven@^2.1.1":
   version "2.1.1"
