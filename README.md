@@ -32,3 +32,8 @@ yarn add vue-thailand-address
 ## 🛂 วิธีใช้
 
 สามารถอ่านได้ที่ https://vue-thailand-address.netlify.com
+
+## 📝 แผน
+
+ดูได้ที่ https://github.com/gluons/vue-thailand-address/projects
+
