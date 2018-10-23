@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/gluons/vue-thailand-address/issues"
   },
-  "homepage": "https://gluons.github.io/vue-thailand-address/",
+  "homepage": "https://vue-thailand-address.netlify.com/",
   "peerDependencies": {
     "vue": ">=2.4.0"
   },
