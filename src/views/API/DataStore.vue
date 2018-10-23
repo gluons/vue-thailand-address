@@ -45,6 +45,5 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
 	name: 'DataStore'
 })
-export default class DataStore extends Vue {
-}
+export default class DataStore extends Vue {}
 </script>
