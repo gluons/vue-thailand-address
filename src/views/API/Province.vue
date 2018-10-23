@@ -14,6 +14,34 @@
 				defaultValue='defaultStore'
 				:defaultValueLink='{ name: "api-datastore" }'
 			) store สำหรับเก็บข้อมูลที่อยู่
+			APIProp(
+				name='inputClass'
+				type='string'
+			)
+				| CSS class สำหรับ
+				|
+				Link(url='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input')
+					highlight-code(lang='html' inline) &lt;input&gt;
+				|
+				| ภายใน component
+			APIProp(
+				name='label'
+				type='string'
+				defaultValue='"จังหวัด"'
+			) label ของช่องกรอกที่อยู่
+			APIProp(
+				name='placeholder'
+				type='string'
+			)
+				Link(url='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-placeholder')
+					| placeholder
+				|
+				|ของ
+				|
+				Link(url='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input')
+					highlight-code(lang='html' inline) &lt;input&gt;
+				|
+				| ภายใน component
 		template(slot='events')
 			APIEvent(
 				name='itemselect'
