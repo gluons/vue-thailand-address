@@ -2,7 +2,7 @@
 #app
 	vue-progress-bar/
 	GoToTop/
-	nav.navbar.is-dark(role='navigation'): .container
+	nav.navbar.is-dark.is-unselectable(role='navigation'): .container
 		.navbar-brand
 			router-link.navbar-item.brand-link(
 				to='/'

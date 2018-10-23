@@ -1,13 +1,11 @@
 <template lang="pug">
-a#gototop.has-text-centered(
+a#gototop.has-text-centered.is-unselectable(
 	v-show='visible'
 	@click='goToTop'
 )
-	b-icon(
-		icon='chevron-circle-up'
-		size='is-medium'
-	)
-	p Go to Top
+	p.icon.is-medium.is-size-3-desktop.is-size-4-touch
+		i.fas.fa-chevron-circle-up
+	p.is-size-7-touch Go to Top
 </template>
 
 <script lang="ts">
@@ -47,10 +45,23 @@ export default class GoToTop extends Vue {
 </script>
 
 <style lang="scss">
+@import '~bulma/sass/utilities/all';
+
 #gototop {
 	position: fixed;
-	right: 20px;
-	bottom: 20px;
 	z-index: 999;
+
+	@include desktop {
+		right: 20px;
+		bottom: 20px;
+	}
+	@include tablet-only {
+		right: 10px;
+		bottom: 10px;
+	}
+	@include mobile {
+		right: 5px;
+		bottom: 5px;
+	}
 }
 </style>
