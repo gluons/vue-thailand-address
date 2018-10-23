@@ -1,35 +1,37 @@
 <template lang="pug">
-#get-started.container
-	h1.is-size-3 เริ่มต้น
-	h2.is-size-4
-		b-icon(type='is-primary' icon='cog')
+#get-started.container.content
+	h1 เริ่มต้น
+	h2
+		span.icon.is-large.has-text-primary
+			i.fas.fa-cog.fa-lg
 		span การติดตั้ง
 	p: strong ด้วย #[Link(:url='npmLink') npm]:
-	highlight-code(lang='bash') npm install vue-thailand-address
+	highlight-code(lang='bash').is-paddingless npm install vue-thailand-address
 	p: strong ด้วย #[Link(:url='yarnLink') Yarn]:
-	highlight-code(lang='bash') yarn add vue-thailand-address
+	highlight-code(lang='bash').is-paddingless yarn add vue-thailand-address
 	.is-divider
-	h2.is-size-4
-		b-icon(type='is-success' icon='book')
+	h2
+		span.icon.is-large.has-text-success
+			i.fas.fa-book.fa-lg
 		span วิธีใช้
-	h3.is-size-5 ในไฟล์ entry
-	highlight-code(lang='ts'): include ../snippets/GetStarted/main.js
-	h3.is-size-5 ในไฟล์ Vue
+	h3 ในไฟล์ entry
+	highlight-code(lang='ts').is-paddingless: include ../snippets/GetStarted/main.js
+	h3 ในไฟล์ Vue
 	b-collapse.card
 		.card-header(slot='trigger' slot-scope='props')
-			p.card-header-title การใช้งานอย่างง่าย
+			.card-header-title การใช้งานอย่างง่าย
 			a.card-header-icon
 				b-icon(:icon='props.open ? "caret-down" : "caret-up"')
 		.card-content
-			highlight-code(lang='vue')
+			highlight-code(lang='vue').is-paddingless
 				include:escape-html ../snippets/GetStarted/usage1.vue
 	b-collapse.card(:open='false')
 		.card-header(slot='trigger' slot-scope='props')
-			p.card-header-title ใช้ DataStore แยก สำหรับเก็บที่อยู่แยกชุด
+			.card-header-title ใช้ DataStore แยก สำหรับเก็บที่อยู่แยกชุด
 			a.card-header-icon
 				b-icon(:icon='props.open ? "caret-down" : "caret-up"')
 		.card-content
-			highlight-code(lang='vue')
+			highlight-code(lang='vue').is-paddingless
 				include:escape-html ../snippets/GetStarted/usage2.vue
 </template>
 
@@ -51,15 +53,8 @@ export default class GetStarted extends Vue {
 
 <style lang="scss">
 #get-started {
-	margin-top: 1rem;
-
-	h2 {
-		.icon {
-			margin-right: 1rem;
-		}
-		& > * {
-			vertical-align: middle;
-		}
+	h2 span {
+		vertical-align: middle;
 	}
 }
 </style>
