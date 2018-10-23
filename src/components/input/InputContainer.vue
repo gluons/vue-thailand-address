@@ -32,10 +32,7 @@ export default class InputContainer extends Vue {
 
 	// Computed
 	get hasLabel(): boolean {
-		// Disable label when placeholder is given.
-		const hasPlaceholder = (typeof this.$attrs['placeholder'] === 'string') && (this.$attrs['placeholder'].length > 0);
-
-		return !hasPlaceholder && (this.label != null) && (this.label.length > 0);
+		return (this.label != null) && (this.label.length > 0);
 	}
 }
 </script>
