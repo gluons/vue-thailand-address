@@ -9,11 +9,21 @@ export const AUTOCOMPLETE_CLOSE_DELAY = 250;
  * Allowed attributes that can be passed to internal input.
  */
 export const ALLOWED_ATTRS = [
-	'name',
 	'autofocus',
-	'placeholder',
 	'disabled',
+	'id',
+	'inputmode',
+	'list',
+	'maxlength',
+	'minlength',
+	'name',
+	'pattern',
+	'placeholder',
 	'readonly',
 	'required',
-	'tabindex'
+	'required',
+	'size',
+	'spellcheck',
+	'tabindex',
+	'title'
 ];
