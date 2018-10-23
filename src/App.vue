@@ -55,6 +55,11 @@
 						)
 							span= '<addressinput-zipcode>'
 						router-link.navbar-item(
+							:to='{ name: "api-datastore" }'
+							exact
+						)
+							span DataStore
+						router-link.navbar-item(
 							:to='{ name: "api-address-model" }'
 							exact
 						)

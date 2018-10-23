@@ -1,11 +1,14 @@
 <template lang="pug">
-#api-address-model.container.content.is-medium
+#api-address-model.container.content
 	h1
 		code.plain AddressModel
 		span.tag.is-medium.is-info
 			Link(
 				url='https://www.typescriptlang.org/docs/handbook/interfaces.html'
 			) Interface
+	p: strong.has-text-danger สำหรับ #[Link(url='https://www.typescriptlang.org/') TypeScript] เท่านั้น
+	highlight-code(lang='ts').is-paddingless.
+		import { AddressModel } from 'vue-thailand-address';
 	h2: code.plain district
 	p
 		span.has-text-weight-semibold ประเถท:
@@ -31,13 +34,3 @@
 		highlight-code(lang='ts' inline) number | string
 	p รหัสไปรษณีย์
 </template>
-
-<style lang="scss" scoped>
-.tag {
-	margin-left: .5rem;
-
-	a {
-		color: inherit !important;
-	}
-}
-</style>

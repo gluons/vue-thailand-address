@@ -58,6 +58,12 @@ const routes: RouteConfig[] = [
 				name: 'api-address-model',
 				component: () =>
 					import(/* webpackChunkName: "api-address-model" */ './views/API/AddressModel.vue')
+			},
+			{
+				path: 'datastore',
+				name: 'api-datastore',
+				component: () =>
+					import(/* webpackChunkName: "api-datastore" */ './views/API/DataStore.vue')
 			}
 		]
 	}

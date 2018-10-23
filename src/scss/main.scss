@@ -21,12 +21,15 @@ code.plain {
 }
 @for $i from 1 through 6 {
 	h#{$i} {
-		$margin: 1em * (1 - ($i / 10));
+		&:first-child {
+			margin-top: 1rem;
+		}
+		.tag {
+			margin-left: 0.5rem;
 
-		font-weight: 600;
-		margin: {
-			top: $margin;
-			bottom: $margin;
+			a {
+				color: inherit !important;
+			}
 		}
 	}
 }

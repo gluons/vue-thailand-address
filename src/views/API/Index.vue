@@ -1,8 +1,7 @@
 <template lang="pug">
-section#api-list.section: .container.content.is-large
+section#api-list.section: .container.content.is-medium
 	h1 API
 	h2 Component
-	p Vue Thailand Address ประกอบไปด้วย component 4 ชนิด ดังนี้
 	ul
 		li
 			router-link(:to='{ name: "api-subdistrict" }')
@@ -16,6 +15,14 @@ section#api-list.section: .container.content.is-large
 		li
 			router-link(:to='{ name: "api-zipcode" }')
 				code.plain= '<addressinput-zipcode> - รหัสไปรษณีย์'
+	h2 Class/Interface
+	ul
+		li
+			router-link(:to='{ name: "api-datastore" }')
+				code.plain= 'DataStore'
+		li
+			router-link(:to='{ name: "api-address-model" }')
+				code.plain= 'AddressModel'
 </template>
 
 <script lang="ts">

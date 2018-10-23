@@ -7,11 +7,15 @@
 	p
 		strong.has-text-weight-semibold ประเถท:
 		| &nbsp;
-		highlight-code(lang='ts' inline) {{ type }}
+		router-link(v-if='typeLink' :to='typeLink')
+			highlight-code(lang='ts' inline) {{ type }}
+		highlight-code(v-else lang='ts' inline) {{ type }}
 	p(v-if='defaultValue')
 		span.has-text-weight-semibold ค่าเริ่มต้น:
 		| &nbsp;
-		highlight-code(lang='ts' inline) {{ defaultValue }}
+		router-link(v-if='defaultValueLink' :to='defaultValueLink')
+			highlight-code(lang='ts' inline) {{ defaultValue }}
+		highlight-code(v-else lang='ts' inline) {{ defaultValue }}
 	p
 		slot
 </template>
@@ -29,8 +33,14 @@ export default class APIProp extends Vue {
 	@Prop({ type: String, required: true })
 	type: string;
 
+	@Prop([String, Object])
+	typeLink: string | object;
+
 	@Prop(String)
 	defaultValue: string;
+
+	@Prop([String, Object])
+	defaultValueLink: string | object;
 }
 </script>
 

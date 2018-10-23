@@ -1,5 +1,5 @@
 <template lang="pug">
-#api-subdistrict.container.content.is-medium
+#api-subdistrict.container.content
 	h1 รหัสไปรษณีย์
 	APIComponent(name='<addressinput-zipcode>')
 		template(slot='props')
@@ -10,7 +10,9 @@
 			APIProp(
 				name='store'
 				type='DataStore'
+				:typeLink='{ name: "api-datastore" }'
 				defaultValue='defaultStore'
+				:defaultValueLink='{ name: "api-datastore" }'
 			) store สำหรับเก็บข้อมูลที่อยู่
 		template(slot='events')
 			APIEvent(
