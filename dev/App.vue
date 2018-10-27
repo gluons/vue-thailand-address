@@ -4,11 +4,11 @@
 		.title Address Form
 		.showcase.input
 			.row
-				addressinput-subdistrict(:value='data1.subdistrict' @itemselect='onSelectItem1')
-				addressinput-district(:value='data1.district' @itemselect='onSelectItem1')
+				addressinput-subdistrict(v-model='data1.subdistrict')
+				addressinput-district(v-model='data1.district')
 			.row
-				addressinput-province(:value='data1.province' @itemselect='onSelectItem1')
-				addressinput-zipcode(:value='data1.zipcode' @itemselect='onSelectItem1')
+				addressinput-province(v-model='data1.province')
+				addressinput-zipcode(v-model='data1.zipcode')
 		.button-container
 			button(type='button' @click='clear1') Clear
 		.divider
@@ -26,24 +26,20 @@
 			.row
 				addressinput-subdistrict(
 					:store='newStore'
-					:value='data2.subdistrict'
-					@itemselect='onSelectItem2'
+					v-model='data2.subdistrict'
 				)
 				addressinput-district(
 					:store='newStore'
-					:value='data2.district'
-					@itemselect='onSelectItem2'
+					v-model='data2.district'
 				)
 			.row
 				addressinput-province(
 					:store='newStore'
-					:value='data2.province'
-					@itemselect='onSelectItem2'
+					v-model='data2.province'
 				)
 				addressinput-zipcode(
 					:store='newStore'
-					:value='data2.zipcode'
-					@itemselect='onSelectItem2'
+					v-model='data2.zipcode'
 				)
 		.button-container
 			button(type='button' @click='clear2') Clear
@@ -64,7 +60,7 @@ import { DataStore, defaultStore } from '../src';
 const newStore = new DataStore();
 
 export default {
-	name: 'app',
+	name: 'App',
 	data() {
 		return {
 			newStore,
@@ -102,22 +98,6 @@ export default {
 			};
 
 			newStore.resetValue();
-		},
-		onSelectItem1(item) {
-			this.data1 = {
-				subdistrict: item.subdistrict,
-				district: item.district,
-				province: item.province,
-				zipcode: item.zipcode
-			};
-		},
-		onSelectItem2(item) {
-			this.data2 = {
-				subdistrict: item.subdistrict,
-				district: item.district,
-				province: item.province,
-				zipcode: item.zipcode
-			};
 		}
 	}
 };

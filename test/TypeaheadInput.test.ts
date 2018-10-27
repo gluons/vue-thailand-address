@@ -29,9 +29,8 @@ describe('TypeaheadInput', () => {
 
 	it('should has expected data', () => {
 		const vm: any = wrapper.vm;
-		vm.search();
+		vm.search(vm.value);
 
-		expect(vm.query).toEqual(query);
 		expect(vm.possibles).toHaveLength(itemCount);
 		expect(vm.selectedIndex).toEqual(0);
 	});

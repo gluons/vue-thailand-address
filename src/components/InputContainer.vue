@@ -10,9 +10,20 @@ const InputContainer: VueConstructor = Vue.extend({
 		label: String
 	},
 	render(createElement, context) {
-		const label: string = context.props.label;
+		const { props, data } = context;
+		const label: string = props.label;
 		const hasLabel: boolean = (label != null) && (label.length > 0);
-		const input = createElement(TypeaheadInput, context.data);
+		const input = createElement(TypeaheadInput, {
+			...data,
+			on: {
+				// For v-model
+				addressinput(value) {
+					if (data.on && (typeof data.on.input === 'function')) {
+						data.on.input(value);
+					}
+				}
+			}
+		});
 
 		return createElement(
 			'div',

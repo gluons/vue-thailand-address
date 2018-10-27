@@ -4,8 +4,8 @@
 		:class='inputClassList'
 		type='text'
 		autocomplete='off'
-		v-model='query'
-		@input='search'
+		:value='value'
+		@input='search($event.target.value)'
 		@blur='closeAutocomplete'
 		@keydown.esc='clearAutocomplete'
 		@keydown.up.prevent='moveUp'
@@ -15,7 +15,7 @@
 		v-on='$listeners'
 	)
 	autocomplete(
-		:query='query'
+		:query='value'
 		:items='possibles'
 		:target='target'
 		:selectedIndex.sync='selectedIndex'
@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Model, Prop } from 'vue-property-decorator';
 import pick from 'lodash.pick';
 
 import AddressEntry from '../types/AddressEntry';
@@ -36,6 +36,8 @@ import getPossibles from '../lib/getPossibles';
 import addressEntryToModel from '../utils/addressEntryToModel';
 import Autocomplete from './Autocomplete.vue';
 
+const MODEL_EVENT = 'addressinput';
+
 @Component({
 	name: 'TypeaheadInput',
 	components: {
@@ -44,34 +46,26 @@ import Autocomplete from './Autocomplete.vue';
 	inheritAttrs: false
 })
 export default class TypeaheadInput extends Vue {
+	// Model
+	@Model(MODEL_EVENT, { type: String, default: '' }) value: string;
+
 	// Props
 	@Prop({ type: DataStore, default: () => defaultStore }) store: DataStore;
-	@Prop({ type: String, default: '' }) value: string;
 	@Prop({ type: String, required: true }) target: Target; // Name. It's an actual property name in address data.
 	@Prop({ type: String, default: '' }) inputClass: string;
 
-	// Watch
-	@Watch('value')
-	onValueChange(newValue: string) {
-		this.query = newValue;
-		this.store.setValueProp(this.target, newValue);
-	}
-
 	// Data
-	query: string = '';
 	possibles: AddressEntry[] = [];
 	selectedIndex: number = -1;
 
 	// Hooks
 	created() {
-		// Set input value from `value` on created when it's available.
-		this.query = this.value;
 		this.store.setValueProp(this.target, this.value); // Pass initial value into store's value.
 
 		this.store.onValueChange((newModelValue: AddressModel) => {
-			const inputValue = newModelValue[this.target];
+			const newValue = newModelValue[this.target];
 
-			this.query = `${inputValue}`;
+			this.$emit(MODEL_EVENT, newValue);
 		});
 	}
 
@@ -90,11 +84,11 @@ export default class TypeaheadInput extends Vue {
 	}
 
 	// Methods
-	search() {
-		if (this.query && (this.query.length > 0)) {
+	search(query: string) {
+		if (query && (query.length > 0)) {
 			const { dataSource } = this.store;
 
-			this.possibles = getPossibles(dataSource, this.target, this.query);
+			this.possibles = getPossibles(dataSource, this.target, query);
 
 			// If autocomplete list contains items, set index to first item
 			if (this.possibles.length > 0) {
@@ -103,6 +97,8 @@ export default class TypeaheadInput extends Vue {
 		} else {
 			this.clearAutocomplete();
 		}
+
+		this.$emit(MODEL_EVENT, query);
 	}
 	closeAutocomplete() {
 		// Prevent DOM elements destroyed before process complete
@@ -128,7 +124,7 @@ export default class TypeaheadInput extends Vue {
 	}
 	moveDown() {
 		if (this.possibles.length === 0) {
-			this.search(); // Start searching when no items
+			this.search(this.value); // Start searching when no items
 
 			return;
 		}
