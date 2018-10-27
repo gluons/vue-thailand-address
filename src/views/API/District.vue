@@ -25,19 +25,13 @@
 				type='string'
 				defaultValue='"อำเภอ/เขต"'
 			) label ของช่องกรอกที่อยู่
-			APIProp(
-				name='placeholder'
-				type='string'
-			)
-				Link(url='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-placeholder')
-					| placeholder
-				|
-				|ของ
+			blockquote
+				| คุณสามารถใช้ attribute ต่างๆของ
 				|
 				Link(url='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input')
-					highlight-code(lang='html' inline) &lt;input&gt;
+					highlight-code(lang='html' inline) &lt;input type="text"&gt;
 				|
-				| ภายใน component
+				| กับ component ได้โดยตรง
 		template(slot='events')
 			APIEvent(
 				name='itemselect'

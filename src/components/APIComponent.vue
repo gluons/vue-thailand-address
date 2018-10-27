@@ -27,3 +27,11 @@ export default class APIComponent extends Vue {
 	name: string;
 }
 </script>
+
+<style lang="scss">
+.api-component {
+	blockquote {
+		margin: 1em 0;
+	}
+}
+</style>
