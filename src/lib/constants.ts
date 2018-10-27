@@ -11,6 +11,7 @@ export const AUTOCOMPLETE_CLOSE_DELAY = 250;
 export const ALLOWED_ATTRS = [
 	'autofocus',
 	'disabled',
+	'form',
 	'id',
 	'inputmode',
 	'list',
