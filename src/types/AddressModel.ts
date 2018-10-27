@@ -31,8 +31,8 @@ export default interface AddressModel {
 	/**
 	 * รหัสไปรษณีย์ (Zip Code)
 	 *
-	 * @type {(number | string)}
+	 * @type {string}
 	 * @memberof AddressModel
 	 */
-	zipcode: number | string;
+	zipcode: string;
 }
