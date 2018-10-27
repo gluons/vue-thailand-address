@@ -31,6 +31,6 @@
 	p
 		span.has-text-weight-semibold ประเถท:
 		| &nbsp;
-		highlight-code(lang='ts' inline) number | string
+		highlight-code(lang='ts' inline) string
 	p รหัสไปรษณีย์
 </template>
