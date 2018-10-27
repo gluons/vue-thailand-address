@@ -27,13 +27,13 @@
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import pick from 'lodash.pick';
 
-import AddressEntry from '../../types/AddressEntry';
-import AddressModel from '../../types/AddressModel';
-import Target from '../../types/Target';
-import DataStore, { defaultStore } from '../../data/DataStore';
-import { AUTOCOMPLETE_CLOSE_DELAY, ALLOWED_ATTRS } from '../../lib/constants';
-import getPossibles from '../../lib/getPossibles';
-import addressEntryToModel from '../../utils/addressEntryToModel';
+import AddressEntry from '../types/AddressEntry';
+import AddressModel from '../types/AddressModel';
+import Target from '../types/Target';
+import DataStore, { defaultStore } from '../data/DataStore';
+import { AUTOCOMPLETE_CLOSE_DELAY, ALLOWED_ATTRS } from '../lib/constants';
+import getPossibles from '../lib/getPossibles';
+import addressEntryToModel from '../utils/addressEntryToModel';
 import Autocomplete from './Autocomplete.vue';
 
 @Component({

@@ -2,7 +2,7 @@
 
 import { mount } from '@vue/test-utils';
 
-import Autocomplete from '../src/components/input/Autocomplete.vue';
+import Autocomplete from '../src/components/Autocomplete.vue';
 
 import { defaultStore } from '../src/data/DataStore';
 import getPossibles from '../src/lib/getPossibles';

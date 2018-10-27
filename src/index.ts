@@ -4,12 +4,13 @@ import AddressEntry from './types/AddressEntry';
 import AddressModel from './types/AddressModel';
 import Target from './types/Target';
 
-import DistrictInput from './components/DistrictInput.vue';
-import ProvinceInput from './components/ProvinceInput.vue';
-import SubDistrictInput from './components/SubDistrictInput.vue';
-import ZipCodeInput from './components/ZipCodeInput.vue';
-
+import createAddressComponent from './components/createAddressComponent';
 import DataStore, { defaultStore } from './data/DataStore';
+
+const DistrictInput = createAddressComponent('district', 'อำเภอ/เขต');
+const ProvinceInput = createAddressComponent('province', 'จังหวัด');
+const SubDistrictInput = createAddressComponent('subdistrict', 'ตำบล/แขวง');
+const ZipCodeInput = createAddressComponent('zipcode', 'รหัสไปรษณีย์');
 
 /**
  * Install Vue Thailand Address plugin.

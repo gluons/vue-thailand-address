@@ -2,17 +2,24 @@
 
 import { config, shallowMount } from '@vue/test-utils';
 
-import InputContainer from '../src/components/input/InputContainer.vue';
+import InputContainer from '../src/components/InputContainer.vue';
 
 config.logModifiedComponents = false;
 
 const label = 'จังหวัด';
+const target = 'province';
 
 describe('InputContainer', () => {
 	const wrapper = shallowMount(InputContainer, {
+		context: {
+			props: {
+				label,
+				target
+			}
+		},
 		propsData: {
 			label,
-			target: 'province'
+			target
 		}
 	});
 
@@ -20,9 +27,5 @@ describe('InputContainer', () => {
 		expect(wrapper.is('.th-address')).toBe(true);
 		expect(wrapper.contains('label.th-address-label')).toBe(true);
 		expect(wrapper.find('.label-text').text()).toEqual(label);
-	});
-
-	it('should has expected props', () => {
-		expect(wrapper.props('label')).toEqual(label);
 	});
 });

@@ -2,7 +2,7 @@
 
 import { config, shallowMount } from '@vue/test-utils';
 
-import TypeaheadInput from '../src/components/input/TypeaheadInput.vue';
+import TypeaheadInput from '../src/components/TypeaheadInput.vue';
 
 config.logModifiedComponents = false;
 
