@@ -23,12 +23,22 @@
 				span(v-for='i in 3' aria-hidden='true')
 		.navbar-menu(ref='navMenu')
 			.navbar-start
-				router-link.navbar-item(to='/'  exact)
+				router-link.navbar-item(to='/' exact)
 					b-icon(icon='home')
 					span หน้าแรก
-				router-link.navbar-item(to='/get-started' exact)
-					b-icon(icon='play')
-					span เริ่มต้น
+				.navbar-item.has-dropdown.is-hoverable
+					router-link.navbar-link(:to='{ name: "get-started-bundler" }')
+						b-icon(icon='play')
+						span เริ่มต้น
+					.navbar-dropdown
+						router-link.navbar-item(
+							:to='{ name: "get-started-bundler" }'
+							exact
+						) ด้วย bundler
+						router-link.navbar-item(
+							:to='{ name: "get-started-browser" }'
+							exact
+						) บน browser
 				.navbar-item.has-dropdown.is-hoverable
 					router-link.navbar-link(:to='{ name: "api-index" }')
 						b-icon(icon='swatchbook')

@@ -15,7 +15,21 @@ const routes: RouteConfig[] = [
 		path: '/get-started',
 		name: 'get-started',
 		component: () =>
-			import(/* webpackChunkName: "get-started" */ './views/GetStarted.vue')
+			import(/* webpackChunkName: "get-started" */ './views/GetStarted.vue'),
+		children: [
+			{
+				path: '',
+				name: 'get-started-bundler',
+				component: () =>
+					import(/* webpackChunkName: "get-started-bundler" */ './views/GetStarted/Bundler.vue')
+			},
+			{
+				path: 'browser',
+				name: 'get-started-browser',
+				component: () =>
+					import(/* webpackChunkName: "get-started-browser" */ './views/GetStarted/Browser.vue')
+			}
+		]
 	},
 	{
 		path: '/api',
