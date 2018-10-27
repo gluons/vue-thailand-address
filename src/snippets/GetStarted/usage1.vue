@@ -1,9 +1,9 @@
 <template>
 	<div id="app">
-		<addressinput-subdistrict @itemselect='onSelectItem'/> <!-- ตำบล/แขวง -->
-		<addressinput-district @itemselect='onSelectItem'/> <!-- อำเภอ/เขต -->
-		<addressinput-province @itemselect='onSelectItem'/> <!-- จังหวัด -->
-		<addressinput-zipcode @itemselect='onSelectItem'/> <!-- รหัสไปรษณีย์ -->
+		<addressinput-subdistrict v-model="subdistrict"/> <!-- ตำบล/แขวง -->
+		<addressinput-district v-model="district"/> <!-- อำเภอ/เขต -->
+		<addressinput-province v-model="province"/> <!-- จังหวัด -->
+		<addressinput-zipcode v-model="zipcode"/> <!-- รหัสไปรษณีย์ -->
 	</div>
 </template>
 
@@ -18,15 +18,6 @@ export default {
 			province: '',
 			zipcode: ''
 		};
-	},
-	methods: {
-		// Event handler เมื่อมีการเลือกที่อยู่จาก autocomplete
-		onSelectItem({ subdistrict, district, province, zipcode }) {
-			this.subdistrict = subdistrict;
-			this.district = district;
-			this.province = province;
-			this.zipcode = zipcode;
-		}
 	}
 };
 </script>

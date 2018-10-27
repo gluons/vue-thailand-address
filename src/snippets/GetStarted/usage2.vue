@@ -2,38 +2,38 @@
 	<div id="app">
 		<div id="address1">
 			<addressinput-subdistrict
-				:store='store1'
-				@itemselect='onSelectItem1'
+				:store="store1"
+				v-model="address1.subdistrict"
 			/>
 			<addressinput-district
-				:store='store1'
-				@itemselect='onSelectItem1'
+				:store="store1"
+				v-model="address1.district"
 			/>
 			<addressinput-province
-				:store='store1'
-				@itemselect='onSelectItem1'
+				:store="store1"
+				v-model="address1.province"
 			/>
 			<addressinput-zipcode
-				:store='store1'
-				@itemselect='onSelectItem1'
+				:store="store1"
+				v-model="address1.zipcode"
 			/>
 		</div>
 		<div id="address2">
 			<addressinput-subdistrict
-				:store='store2'
-				@itemselect='onSelectItem2'
+				:store="store2"
+				v-model="address2.subdistrict"
 			/>
 			<addressinput-district
-				:store='store2'
-				@itemselect='onSelectItem2'
+				:store="store2"
+				v-model="address2.district"
 			/>
 			<addressinput-province
-				:store='store2'
-				@itemselect='onSelectItem2'
+				:store="store2"
+				v-model="address2.province"
 			/>
 			<addressinput-zipcode
-				:store='store2'
-				@itemselect='onSelectItem2'
+				:store="store2"
+				v-model="address2.zipcode"
 			/>
 		</div>
 	</div>
@@ -65,24 +65,6 @@ export default {
 				zipcode: ''
 			}
 		};
-	},
-	methods: {
-		onSelectItem1({ subdistrict, district, province, zipcode }) {
-			this.address1 = {
-				subdistrict,
-				district,
-				province,
-				zipcode
-			};
-		},
-		onSelectItem2({ subdistrict, district, province, zipcode }) {
-			this.address2 = {
-				subdistrict,
-				district,
-				province,
-				zipcode
-			};
-		}
 	}
 };
 </script>
