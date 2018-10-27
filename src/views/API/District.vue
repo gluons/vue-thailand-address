@@ -4,10 +4,6 @@
 	APIComponent(name='<addressinput-district>')
 		template(slot='props')
 			APIProp(
-				name='value'
-				type='string'
-			) ค่าเริ่มต้นของ input
-			APIProp(
 				name='store'
 				type='DataStore'
 				:typeLink='{ name: "api-datastore" }'
