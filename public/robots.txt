@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://vue-thailand-address.netlify.com/sitemap.xml
