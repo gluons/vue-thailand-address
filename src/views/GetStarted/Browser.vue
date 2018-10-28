@@ -66,6 +66,12 @@
 			ul
 				li: highlight-code(inline) {{ item.unmin }}
 				li: highlight-code(inline).minified {{ item.min }}
+	h2
+		span.icon.is-large.has-text-danger
+			i.fas.fa-chalkboard.fa-lg
+		span ตัวอย่าง
+	highlight-code(lang='html').is-paddingless
+		include:escape-html ../../snippets/GetStarted/browser.html
 </template>
 
 <script lang="ts">
