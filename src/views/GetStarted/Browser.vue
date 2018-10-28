@@ -13,10 +13,8 @@
 			|
 			| หรือ
 			|
-			highlight-code(inline) vue-thailand-address.min.css
-			|
-			| (minified)
-	blockquote หากต้องใช้ style ที่เขียนขึ้นเอง ก็ไม่จำเป็นต้องใช้ไฟล์นี้ก็ได้ครับ
+			highlight-code(inline).minified vue-thailand-address.min.css
+	b-message(type='is-info' has-icon) คุณไม่จำเป็นต้องใช้ไฟล์นี้ก็ได้ ถ้าหากต้องการใช้ style ที่เขียนขึ้นเอง
 	p: strong JavaScript:
 	ol
 		li
@@ -24,58 +22,86 @@
 			|
 			| หรือ
 			|
-			highlight-code(inline) db.web.min.js
-			|
-			| (minified)
+			highlight-code(inline).minified db.web.min.js
 		li
 			highlight-code(inline) vue-thailand-address.web.js
 			|
 			| หรือ
 			|
-			highlight-code(inline) vue-thailand-address.web.min.js
-			|
-			| (minified)
-	blockquote กรุณาเพิ่มไฟล์ตามลำดับ มิฉะนั้นอาจพบข้อผิดพลาด
+			highlight-code(inline).minified vue-thailand-address.web.min.js
+	b-message(type='is-danger' has-icon) กรุณาเพิ่มไฟล์ตามลำดับ มิฉะนั้นอาจพบข้อผิดพลาด
 	h2
 		span.icon.is-large.has-text-success
-			i.fas.fa-book.fa-lg
+			i.fas.fa-dice-d20.fa-lg
 		span CDN
 	h3
 		Link(url='https://www.jsdelivr.com/') jsDelivr
 	p: strong CSS:
-	ul: li
-		highlight-code(inline) vue-thailand-address.css
+	ul: li(v-for='item in jsDelivr.css' :key='item.fileName')
+		strong {{ item.fileName }}
 		ul
-			li: highlight-code(inline) https://cdn.jsdelivr.net/npm/vue-thailand-address@3.0.0-rc.3/dist/vue-thailand-address.css
-			li
-				highlight-code(inline) https://cdn.jsdelivr.net/npm/vue-thailand-address@3.0.0-rc.3/dist/vue-thailand-address.min.css
-				|
-				| (minified)
+			li: highlight-code(inline) {{ item.unmin }}
+			li: highlight-code(inline).minified {{ item.min }}
 	p: strong JavaScript:
 	ul
-		li
-			| รวม
-			|
-			highlight-code(inline) db.web.js
-			|
-			| กับ
-			|
-			highlight-code(inline) vue-thailand-address.web.js
+		li.combined
+			strong(
+				v-for='item in jsDelivr.js.fileName'
+				:key='item'
+			) {{ item }}
 			ul
-				li: highlight-code(inline) https://cdn.jsdelivr.net/combine/npm/vue-thailand-address@3.0.0-rc.3/dist/db.web.js,npm/vue-thailand-address@3.0.0-rc.3/dist/vue-thailand-address.web.js
-				li
-					highlight-code(inline) https://cdn.jsdelivr.net/combine/npm/vue-thailand-address@3.0.0-rc.3/dist/db.web.min.js,npm/vue-thailand-address@3.0.0-rc.3
-					|
-					| (minified)
+				li: highlight-code(inline) {{ jsDelivr.js.unmin }}
+				li: highlight-code(inline).minified {{ jsDelivr.js.min }}
+	h3
+		Link(url='https://unpkg.com/') unpkg
+	p: strong CSS:
+	ul: li(v-for='item in unpkg.css' :key='item.fileName')
+		strong {{ item.fileName }}
+		ul
+			li: highlight-code(inline) {{ item.unmin }}
+			li: highlight-code(inline).minified {{ item.min }}
+	p: strong JavaScript:
+	ul: li(v-for='item in unpkg.js' :key='item.fileName')
+			strong {{ item.fileName }}
+			ul
+				li: highlight-code(inline) {{ item.unmin }}
+				li: highlight-code(inline).minified {{ item.min }}
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+import { CDN, jsDelivr, unpkg } from '@/constants/cdn';
+
+@Component({
+	name: 'Browser'
+})
+export default class Browser extends Vue {
+	jsDelivr: CDN = jsDelivr;
+	unpkg: CDN = unpkg;
+}
+</script>
+
 
 <style lang="scss">
 #get-started-browser {
 	li {
 		line-height: 2rem;
+
+		&.combined > strong:not(:last-of-type)::after {
+			content: '+';
+			font-weight: normal;
+			margin: 0 3px;
+		}
 	}
 	blockquote {
 		margin: 1em 0;
+	}
+	.minified {
+		&::after {
+			content: '(minified)';
+			margin-left: 3px;
+		}
 	}
 }
 </style>
