@@ -52,7 +52,7 @@
     "@gluons/vue-pack-splitchunks-plugin": "^1.14.2",
     "@types/copy-webpack-plugin": "^4.4.2",
     "@types/cp-file": "^4.2.0",
-    "@types/jest": "^23.3.7",
+    "@types/jest": "^23.3.8",
     "@types/leven": "^2.1.1",
     "@types/lodash.pick": "^4.4.4",
     "@types/node": "8",
