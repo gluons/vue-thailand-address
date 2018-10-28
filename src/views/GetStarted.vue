@@ -3,3 +3,14 @@
 	transition(name='fade' mode='out-in')
 		router-view/
 </template>
+
+<style lang="scss">
+#get-started {
+	h2 span {
+		vertical-align: middle;
+	}
+	.tooltip .hljs {
+		cursor: pointer;
+	}
+}
+</style>

@@ -40,8 +40,10 @@
 	ul: li(v-for='item in jsDelivr.css' :key='item.fileName')
 		strong {{ item.fileName }}
 		ul
-			li: highlight-code(inline) {{ item.unmin }}
-			li: highlight-code(inline).minified {{ item.min }}
+			li: b-tooltip(:label='tooltipText' animated)
+				highlight-code(inline @click.native='copyText(item.unmin)') {{ item.unmin }}
+			li: b-tooltip(:label='tooltipText' animated)
+				highlight-code(inline @click.native='copyText(item.min)').minified {{ item.min }}
 	p: strong JavaScript:
 	ul
 		li.combined
@@ -50,22 +52,28 @@
 				:key='item'
 			) {{ item }}
 			ul
-				li: highlight-code(inline) {{ jsDelivr.js.unmin }}
-				li: highlight-code(inline).minified {{ jsDelivr.js.min }}
+				li: b-tooltip(:label='tooltipText' animated)
+					highlight-code(inline @click.native='copyText(jsDelivr.js.unmin)') {{ jsDelivr.js.unmin }}
+				li: b-tooltip(:label='tooltipText' animated)
+					highlight-code(inline @click.native='copyText(jsDelivr.js.min)').minified {{ jsDelivr.js.min }}
 	h3
 		Link(url='https://unpkg.com/') unpkg
 	p: strong CSS:
 	ul: li(v-for='item in unpkg.css' :key='item.fileName')
 		strong {{ item.fileName }}
 		ul
-			li: highlight-code(inline) {{ item.unmin }}
-			li: highlight-code(inline).minified {{ item.min }}
+			li: b-tooltip(:label='tooltipText' animated)
+				highlight-code(inline @click.native='copyText(item.unmin)') {{ item.unmin }}
+			li: b-tooltip(:label='tooltipText' animated)
+				highlight-code(inline @click.native='copyText(item.min)').minified {{ item.min }}
 	p: strong JavaScript:
 	ul: li(v-for='item in unpkg.js' :key='item.fileName')
 			strong {{ item.fileName }}
 			ul
-				li: highlight-code(inline) {{ item.unmin }}
-				li: highlight-code(inline).minified {{ item.min }}
+				li: b-tooltip(:label='tooltipText' animated)
+					highlight-code(inline @click.native='copyText(item.unmin)') {{ item.unmin }}
+				li: b-tooltip(:label='tooltipText' animated)
+					highlight-code(inline @click.native='copyText(item.min)').minified {{ item.min }}
 	h2
 		span.icon.is-large.has-text-danger
 			i.fas.fa-chalkboard.fa-lg
@@ -75,6 +83,7 @@
 </template>
 
 <script lang="ts">
+import copy from 'copy-text-to-clipboard';
 import { Component, Vue } from 'vue-property-decorator';
 
 import { CDN, jsDelivr, unpkg } from '@/constants/cdn';
@@ -85,6 +94,16 @@ import { CDN, jsDelivr, unpkg } from '@/constants/cdn';
 export default class Browser extends Vue {
 	jsDelivr: CDN = jsDelivr;
 	unpkg: CDN = unpkg;
+	tooltipText = 'คลิ๊กเพื่อคัดลอก';
+
+	copyText(text: string) {
+		copy(text);
+
+		this.$toast.open({
+			message: 'คัดลอกเรียบร้อย',
+			type: 'is-success'
+		});
+	}
 }
 </script>
 
@@ -99,9 +118,6 @@ export default class Browser extends Vue {
 			font-weight: normal;
 			margin: 0 3px;
 		}
-	}
-	blockquote {
-		margin: 1em 0;
 	}
 	.minified {
 		&::after {
