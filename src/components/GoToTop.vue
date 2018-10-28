@@ -5,7 +5,7 @@ a#gototop.has-text-centered.is-unselectable(
 )
 	p.icon.is-medium.is-size-3-desktop.is-size-4-touch
 		i.fas.fa-chevron-circle-up
-	p.is-size-7-touch Go to Top
+	p.is-size-7-touch ขึ้นไปข้างบน
 </template>
 
 <script lang="ts">
