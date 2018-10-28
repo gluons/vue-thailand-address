@@ -25,7 +25,7 @@
 				type='string'
 				defaultValue='"รหัสไปรษณีย์"'
 			) label ของช่องกรอกที่อยู่
-			blockquote
+			b-message(type='is-info' has-icon)
 				| คุณสามารถใช้ attribute ต่างๆของ
 				|
 				Link(url='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input')

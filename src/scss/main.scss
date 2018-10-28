@@ -39,6 +39,11 @@ code.plain {
 .hljs {
 	tab-size: 4;
 }
+article.message {
+	.hljs {
+		background-color: #272822 !important;
+	}
+}
 
 // Router transition
 .fade {
