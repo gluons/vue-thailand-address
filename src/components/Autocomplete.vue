@@ -1,9 +1,10 @@
 <template lang="pug">
-ul.th-address-autocomplete(v-show='hasData')
+ul.th-address-autocomplete(v-show='hasData' :style='autocompleteStyle')
 	li(
 		ref='autocomplete-item'
 		v-for='(item, index) in itemList'
 		:class='{ active: selectedIndex === index }'
+		:style='autocompleteListStyle'
 		:key='item.text'
 		v-html='item.text'
 		@click='onItemClick(item.data)'
@@ -27,6 +28,21 @@ export default class Autocomplete extends Vue {
 	@Prop(Array) items: AddressEntry[];
 	@Prop({ type: String, required: true }) target: Target; // A property name in data item.
 	@Prop({ type: Number, default: -1 }) selectedIndex: number;
+
+	// Data
+	autocompleteStyle = {
+		listStyle: 'none',
+		margin: 0,
+		overflowY: 'auto',
+		padding: 0,
+		position: 'absolute',
+		width: '100%',
+		zIndex: 1
+	};
+	autocompleteListStyle = {
+		backgroundColor: 'white',
+		cursor: 'pointer'
+	}
 
 	// Watch
 	@Watch('selectedIndex')
@@ -86,24 +102,15 @@ export default class Autocomplete extends Vue {
 .th-address-autocomplete {
 	border: 1px solid $border-color;
 	box-sizing: border-box;
-	list-style: none;
-	margin: 0;
-	overflow-y: auto;
-	padding: 0;
-	position: absolute;
-	width: 100%;
 	max-height: $autocomplete-height;
-	z-index: 100;
 
 	li {
-		background: $bg-color;
-		cursor: pointer;
 		box-sizing: border-box;
 		padding: 10px 5px;
 		height: $autocomplete-item-height;
 
 		&:hover, &.active {
-			background-color: $bg-hover-color;
+			background-color: $bg-hover-color !important;
 		}
 		&:not(:last-child) {
 			border-bottom: 1px solid $border-color;

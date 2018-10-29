@@ -1,5 +1,5 @@
 <template lang="pug">
-.th-address-container
+.th-address-container(:style='containerStyle')
 	input.th-address-input(
 		:class='inputClassList'
 		type='text'
@@ -55,6 +55,9 @@ export default class TypeaheadInput extends Vue {
 	@Prop({ type: String, default: '' }) inputClass: string;
 
 	// Data
+	containerStyle = {
+		position: 'relative'
+	};
 	possibles: AddressEntry[] = [];
 	selectedIndex: number = -1;
 
@@ -155,9 +158,6 @@ export default class TypeaheadInput extends Vue {
 <style lang="scss">
 @import '~$style/variable';
 
-.th-address-container {
-	position: relative;
-}
 input.th-address-input {
 	background-color: $bg-color;
 	border: 1px solid $border-color;
