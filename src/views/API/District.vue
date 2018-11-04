@@ -11,6 +11,16 @@
 				:defaultValueLink='{ name: "api-datastore" }'
 			) store สำหรับเก็บข้อมูลที่อยู่
 			APIProp(
+				name='autocompleteMaxHeight'
+				type='number'
+				defaultValue='200'
+			) ความสูงสูงสุดของ autocomplete
+			APIProp(
+				name='autocompleteItemCount'
+				type='number'
+				defaultValue='5'
+			) จำนวนรายการที่จะให้แสดงใน autocomplete
+			APIProp(
 				name='inputClass'
 				type='string'
 			)
