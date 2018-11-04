@@ -18,6 +18,8 @@
 		:query='value'
 		:items='possibles'
 		:target='target'
+		:maxHeight='autocompleteMaxHeight'
+		:itemCount='autocompleteItemCount'
 		:selectedIndex.sync='selectedIndex'
 		@itemclick='commitItem'
 	)
@@ -52,6 +54,8 @@ export default class TypeaheadInput extends Vue {
 	// Props
 	@Prop({ type: DataStore, default: () => defaultStore }) store: DataStore;
 	@Prop({ type: String, required: true }) target: Target; // Name. It's an actual property name in address data.
+	@Prop({ type: Number, default: 200 }) autocompleteMaxHeight: number;
+	@Prop({ type: Number, default: 5 }) autocompleteItemCount: number;
 	@Prop({ type: String, default: '' }) inputClass: string;
 
 	// Data

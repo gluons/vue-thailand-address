@@ -27,6 +27,8 @@ export default class Autocomplete extends Vue {
 	@Prop(String) query: string;
 	@Prop(Array) items: AddressEntry[];
 	@Prop({ type: String, required: true }) target: Target; // A property name in data item.
+	@Prop({ type: Number, required: true }) maxHeight: number;
+	@Prop({ type: Number, required: true }) itemCount: number;
 	@Prop({ type: Number, default: -1 }) selectedIndex: number;
 
 	// Watch
@@ -57,6 +59,7 @@ export default class Autocomplete extends Vue {
 	// Computed
 	get autocompleteStyle() {
 		return {
+			maxHeight: `${this.maxHeight}px`,
 			listStyle: 'none',
 			margin: 0,
 			overflowY: 'auto',
@@ -67,7 +70,11 @@ export default class Autocomplete extends Vue {
 		};
 	}
 	get autocompleteListStyle() {
+		const { maxHeight, itemCount } = this;
+		const itemHeight = maxHeight / itemCount;
+
 		return {
+			height: `${itemHeight}px`,
 			cursor: 'pointer'
 		};
 	}
@@ -103,13 +110,16 @@ export default class Autocomplete extends Vue {
 .th-address-autocomplete {
 	border: 1px solid $border-color;
 	box-sizing: border-box;
-	max-height: $autocomplete-height;
 
 	li {
 		background-color: $bg-color;
 		box-sizing: border-box;
 		padding: 10px 5px;
-		height: $autocomplete-item-height;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		align-content: center;
 
 		&:hover, &.active {
 			background-color: $bg-hover-color !important;
