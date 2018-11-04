@@ -29,21 +29,6 @@ export default class Autocomplete extends Vue {
 	@Prop({ type: String, required: true }) target: Target; // A property name in data item.
 	@Prop({ type: Number, default: -1 }) selectedIndex: number;
 
-	// Data
-	autocompleteStyle = {
-		listStyle: 'none',
-		margin: 0,
-		overflowY: 'auto',
-		padding: 0,
-		position: 'absolute',
-		width: '100%',
-		zIndex: 1
-	};
-	autocompleteListStyle = {
-		backgroundColor: 'white',
-		cursor: 'pointer'
-	}
-
 	// Watch
 	@Watch('selectedIndex')
 	onSelectedIndexChange(newIndex: number) {
@@ -70,6 +55,22 @@ export default class Autocomplete extends Vue {
 	}
 
 	// Computed
+	get autocompleteStyle() {
+		return {
+			listStyle: 'none',
+			margin: 0,
+			overflowY: 'auto',
+			padding: 0,
+			position: 'absolute',
+			width: '100%',
+			zIndex: 1
+		};
+	}
+	get autocompleteListStyle() {
+		return {
+			cursor: 'pointer'
+		};
+	}
 	get hasData(): boolean {
 		return this.items && (this.items.length > 0);
 	}
@@ -105,6 +106,7 @@ export default class Autocomplete extends Vue {
 	max-height: $autocomplete-height;
 
 	li {
+		background-color: $bg-color;
 		box-sizing: border-box;
 		padding: 10px 5px;
 		height: $autocomplete-item-height;

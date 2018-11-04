@@ -55,9 +55,6 @@ export default class TypeaheadInput extends Vue {
 	@Prop({ type: String, default: '' }) inputClass: string;
 
 	// Data
-	containerStyle = {
-		position: 'relative'
-	};
 	possibles: AddressEntry[] = [];
 	selectedIndex: number = -1;
 
@@ -73,6 +70,11 @@ export default class TypeaheadInput extends Vue {
 	}
 
 	// Computed
+	get containerStyle() {
+		return {
+			position: 'relative'
+		};
+	}
 	get filteredAttrs() {
 		return pick(this.$attrs, ALLOWED_ATTRS);
 	}
