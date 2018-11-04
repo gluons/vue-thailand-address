@@ -17,6 +17,8 @@ describe('Autocomplete', () => {
 			query,
 			items: possibles,
 			target: 'province',
+			maxHeight: 200,
+			itemCount: 5,
 			selectedIndex: 0
 		}
 	});
