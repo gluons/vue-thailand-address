@@ -23,7 +23,7 @@
     "typeface-fira-mono": "^0.0.54",
     "vue": "^2.5.17",
     "vue-class-component": "^6.3.2",
-    "vue-fragments": "^2.1.0",
+    "vue-fragment": "^1.1.0",
     "vue-highlight.js": "^2.2.0",
     "vue-progressbar": "^0.7.5",
     "vue-property-decorator": "^7.0.0",

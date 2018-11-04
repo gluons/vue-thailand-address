@@ -1,5 +1,5 @@
 <template lang="pug">
-v-fragment
+fragment
 	h2
 		code.plain(v-if='title') {{ title }}
 		slot(v-else='title' name='title')/

@@ -8078,10 +8078,10 @@ vue-cli-plugin-pug@^1.0.7:
     pug-plain-loader "^1.0.0"
     raw-loader "^0.5.1"
 
-vue-fragments@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/vue-fragments/-/vue-fragments-2.1.0.tgz#b7f3ab480169eb70b00fef82e63063a0080e035b"
-  integrity sha512-h4lQFunlMGsr9nmqk5dAyiB4l7V6BxzJdOk/f95FdJyeWrZogOuhrqLkUXUI3O36m/kbSTngP5u1KMrUkBUZGw==
+vue-fragment@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vue-fragment/-/vue-fragment-1.1.0.tgz#7827fbb3d866452995a43f29cfb068b3096e2746"
+  integrity sha512-LHiejMcbtuSrU9fTPT5tKseQrLxlghsl+ywlJoWuppvItyK+Q48KXr+hxxXj9/ke+bjhdmUVzTmByqPa6o8ocA==
 
 vue-highlight.js@^2.2.0:
   version "2.2.0"

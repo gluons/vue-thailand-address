@@ -1,6 +1,6 @@
 import Buefy, { BuefyConfig } from 'buefy';
 import Vue from 'vue';
-import VueFragment from 'vue-fragments';
+import { Plugin as VueFragment } from 'vue-fragment';
 import VueHighlightJS from 'vue-highlight.js';
 import VueProgressBar from 'vue-progressbar';
 
@@ -35,7 +35,7 @@ Vue.config.productionTip = false;
 Vue.use(Buefy, {
 	defaultIconPack: 'fas'
 } as BuefyConfig);
-Vue.use(VueFragment.Plugin);
+Vue.use(VueFragment);
 Vue.use(VueProgressBar, {
 	color: 'hsl(171, 100%, 41%)'
 });
