@@ -32,7 +32,12 @@ const config: Configuration = {
 	},
 	externals: {
 		module: [
-			nodeExternals(),
+			nodeExternals({
+				whitelist: [
+					'vue-class-component',
+					'vue-property-decorator'
+				]
+			}),
 			(_, request, callback) => {
 				if (/data\/db\.json$/.test(request)) {
 					return callback(null, 'commonjs ./db.json');
