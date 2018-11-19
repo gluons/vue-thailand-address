@@ -6,7 +6,6 @@
   "module": "./dist/vue-thailand-address.es.js",
   "jsdelivr": "./dist/vue-thailand-address.web.min.js",
   "unpkg": "./dist/vue-thailand-address.web.min.js",
-  "browser": "./dist/vue-thailand-address.web.min.js",
   "style": "./dist/vue-thailand-address.css",
   "typings": "./dist/index.d.ts",
   "files": [
