@@ -69,7 +69,7 @@
     "vue": "^2.5.17",
     "vue-class-component": "^7.0.0",
     "vue-jest": "^3.0.0",
-    "vue-property-decorator": "^7.1.1",
+    "vue-property-decorator": "^8.0.0",
     "vue-template-compiler": "^2.5.17"
   },
   "dependencies": {
