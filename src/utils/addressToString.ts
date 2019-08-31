@@ -1,4 +1,5 @@
 import AddressEntry from '../types/AddressEntry';
+import AddressModel from '../types/AddressModel';
 import Target from '../types/Target';
 import highlightQuery from './highlightQuery';
 import translateTarget from './translateTarget';
@@ -17,16 +18,22 @@ export const SEPARATOR: string = '»';
 export default function addressToString(addressData: AddressEntry, currentTarget: Target, query: string): string {
 	// Clone item to `addressComponents`. Do not mutate the original item.
 	const addressComponents = Object.assign({}, addressData);
+	const addressModel: AddressModel = {
+		subdistrict: addressComponents.district,
+		district: addressComponents.amphoe,
+		province: addressComponents.province,
+		zipcode: `${addressComponents.zipcode}`
+	};
 	const key = translateTarget(currentTarget);
 
 	if (addressComponents[key]) {
-		addressComponents[key] = highlightQuery(query, `${addressComponents[key]}`);
+		addressModel[currentTarget] = highlightQuery(query, `${addressComponents[key]}`);
 	}
 
 	return [
-		addressComponents.district,
-		addressComponents.amphoe,
-		addressComponents.province,
-		addressComponents.zipcode
+		addressModel.subdistrict,
+		addressModel.district,
+		addressModel.province,
+		addressModel.zipcode
 	].join(` ${SEPARATOR} `);
 }
