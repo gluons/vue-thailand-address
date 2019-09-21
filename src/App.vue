@@ -76,6 +76,9 @@
 					exact
 				)
 					span AddressModel
+			b-navbar-item(tag='router-link' to='/demo' exact)
+				b-icon(icon='chalkboard')
+				span สาธิต
 		template(#end)
 			b-navbar-item.is-hidden-touch(tag='Link' :url='repoLink')
 				b-icon(pack='fab' icon='github')

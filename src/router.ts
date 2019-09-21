@@ -98,6 +98,11 @@ const routes: RouteConfig[] = [
 					)
 			}
 		]
+	},
+	{
+		path: '/demo',
+		component: () =>
+			import(/* webpackChunkName: "demo" */ './views/Demo.vue')
 	}
 ];
 

@@ -5,6 +5,7 @@ import VueHighlightJS, {
 	Options as VueHighlightJSOptions
 } from 'vue-highlight.js';
 import VueProgressBar from 'vue-progressbar';
+import VueThailandAddress from 'vue-thailand-address';
 
 import bash from 'highlight.js/lib/languages/bash';
 import css from 'highlight.js/lib/languages/css';
@@ -24,6 +25,7 @@ import 'buefy/dist/buefy.css';
 import 'bulma-divider';
 import 'flag-icon-css/css/flag-icon.css';
 import 'highlight.js/styles/monokai.css';
+import 'vue-thailand-address/dist/vue-thailand-address.css';
 import './scss/main.scss';
 
 import jumpPlugin from './plugins/jump';
@@ -56,6 +58,7 @@ Vue.use<VueHighlightJSOptions>(VueHighlightJS, {
 		vue
 	}
 });
+Vue.use(VueThailandAddress);
 Vue.use(jumpPlugin);
 
 new Vue({
