@@ -2,81 +2,83 @@
 #app
 	vue-progress-bar/
 	GoToTop/
-	nav.navbar.is-dark.is-unselectable(role='navigation'): .container
-		.navbar-brand
-			router-link.navbar-item.brand-link(
+	b-navbar.is-unselectable(
+		type='is-dark'
+		wrapper-class='container'
+		close-on-click
+	)
+		template(#brand)
+			b-navbar-item.brand-link(
+				tag='router-link'
 				to='/'
 				active-class=''
 				exact-active-class=''
 			): strong
 				span.flag-icon.flag-icon-th.is-size-4
 				span Vue Thailand Address
-			Link.navbar-item.is-hidden-desktop(:url='repoLink')
+			b-navbar-item.is-hidden-desktop(tag='Link' :url='repoLink')
 				b-icon(pack='fab' icon='github')
-			a.navbar-burger.has-text-white(
-				ref='navBurger'
-				role='button'
-				aria-label='menu'
-				aria-expanded='false'
-				@click='toggleNavMenu'
-			)
-				span(v-for='i in 3' aria-hidden='true')
-		.navbar-menu(ref='navMenu')
-			.navbar-start
-				router-link.navbar-item(to='/' exact)
-					b-icon(icon='home')
-					span หน้าแรก
-				.navbar-item.has-dropdown.is-hoverable
-					router-link.navbar-link(to='/get-started')
-						b-icon(icon='play')
-						span เริ่มต้น
-					.navbar-dropdown
-						router-link.navbar-item(
-							:to='{ name: "get-started-bundler" }'
-							exact
-						) ด้วย bundler
-						router-link.navbar-item(
-							:to='{ name: "get-started-browser" }'
-							exact
-						) บน browser
-				.navbar-item.has-dropdown.is-hoverable
-					router-link.navbar-link(to='/api')
-						b-icon(icon='swatchbook')
-						span API
-					.navbar-dropdown
-						router-link.navbar-item(
-							:to='{ name: "api-subdistrict" }'
-							exact
-						)
-							span= '<addressinput-subdistrict>'
-						router-link.navbar-item(
-							:to='{ name: "api-district" }'
-							exact
-						)
-							span= '<addressinput-district>'
-						router-link.navbar-item(
-							:to='{ name: "api-province" }'
-							exact
-						)
-							span= '<addressinput-province>'
-						router-link.navbar-item(
-							:to='{ name: "api-zipcode" }'
-							exact
-						)
-							span= '<addressinput-zipcode>'
-						router-link.navbar-item(
-							:to='{ name: "api-datastore" }'
-							exact
-						)
-							span DataStore
-						router-link.navbar-item(
-							:to='{ name: "api-address-model" }'
-							exact
-						)
-							span AddressModel
-			.navbar-end
-				Link.navbar-item.is-hidden-touch(:url='repoLink')
-					b-icon(pack='fab' icon='github')
+		template(#start)
+			b-navbar-item(tag='router-link' to='/' exact)
+				b-icon(icon='home')
+				span หน้าแรก
+			b-navbar-dropdown(hoverable)
+				template(#label)
+					b-icon(icon='play')
+					span เริ่มต้น
+				b-navbar-item(
+					tag='router-link'
+					:to='{ name: "get-started-bundler" }'
+					exact
+				) ด้วย bundler
+				b-navbar-item(
+					tag='router-link'
+					:to='{ name: "get-started-browser" }'
+					exact
+				) บน browser
+			b-navbar-dropdown(hoverable)
+				template(#label)
+					b-icon(icon='swatchbook')
+					span API
+				b-navbar-item(
+					tag='router-link'
+					:to='{ name: "api-subdistrict" }'
+					exact
+				)
+					span= '<addressinput-subdistrict>'
+				b-navbar-item(
+					tag='router-link'
+					:to='{ name: "api-district" }'
+					exact
+				)
+					span= '<addressinput-district>'
+				b-navbar-item(
+					tag='router-link'
+					:to='{ name: "api-province" }'
+					exact
+				)
+					span= '<addressinput-province>'
+				b-navbar-item(
+					tag='router-link'
+					:to='{ name: "api-zipcode" }'
+					exact
+				)
+					span= '<addressinput-zipcode>'
+				b-navbar-item(
+					tag='router-link'
+					:to='{ name: "api-datastore" }'
+					exact
+				)
+					span DataStore
+				b-navbar-item(
+					tag='router-link'
+					:to='{ name: "api-address-model" }'
+					exact
+				)
+					span AddressModel
+		template(#end)
+			b-navbar-item.is-hidden-touch(tag='Link' :url='repoLink')
+				b-icon(pack='fab' icon='github')
 	transition(name='fade' mode='out-in')
 		router-view/
 </template>
@@ -91,7 +93,6 @@ import { repoLink } from '@/constants/links';
 })
 export default class App extends Vue {
 	repoLink: string = repoLink;
-	menuVisible: boolean = false;
 
 	created() {
 		this.$Progress.start();
@@ -100,29 +101,11 @@ export default class App extends Vue {
 			next();
 		});
 		this.$router.afterEach(() => {
-			this.menuVisible = false;
 			this.$Progress.finish();
 		});
 	}
 	mounted() {
 		this.$Progress.finish();
-	}
-
-	@Watch('menuVisible')
-	onMenuVisibleChanged(newValue: boolean) {
-		const { navBurger, navMenu } = this.$refs as { [key: string]: Element };
-
-		if (newValue) {
-			navBurger.classList.add('is-active');
-			navMenu.classList.add('is-active');
-		} else {
-			navBurger.classList.remove('is-active');
-			navMenu.classList.remove('is-active');
-		}
-	}
-
-	toggleNavMenu() {
-		this.menuVisible = !this.menuVisible;
 	}
 }
 </script>
