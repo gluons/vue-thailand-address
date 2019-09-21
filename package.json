@@ -7,9 +7,7 @@
     "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "build": "cross-env NODE_ENV=production vue-cli-service build",
     "postbuild": "ts-node -O \"{ \\\"module\\\": \\\"commonjs\\\" }\" ./scripts/generateSitemap.ts",
-    "format:html": "prettyhtml \"public/*.html\"",
-    "format:code": "prettier \"**/*.{js,ts,vue}\" --write",
-    "format": "run-p format:*",
+    "format": "prettier \"**/*.{js,ts,html,vue}\" --write",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -31,7 +29,6 @@
   },
   "devDependencies": {
     "@gluons/prettier-config": "^2.0.0",
-    "@starptech/prettyhtml": "^0.10.0",
     "@types/highlight.js": "^9.12.3",
     "@types/jump.js": "^1.0.2",
     "@types/node": "8",

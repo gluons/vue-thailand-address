@@ -1,0 +1,7 @@
+# Ignore some files that are cause error on Prettier
+src/App.vue
+src/views/API/District.vue
+src/views/API/Index.vue
+src/views/API/Province.vue
+src/views/API/Subdistrict.vue
+src/views/API/Zipcode.vue
