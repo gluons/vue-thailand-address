@@ -27,7 +27,7 @@
 					b-icon(icon='home')
 					span หน้าแรก
 				.navbar-item.has-dropdown.is-hoverable
-					router-link.navbar-link(:to='{ name: "get-started-bundler" }')
+					router-link.navbar-link(to='/get-started')
 						b-icon(icon='play')
 						span เริ่มต้น
 					.navbar-dropdown
@@ -40,7 +40,7 @@
 							exact
 						) บน browser
 				.navbar-item.has-dropdown.is-hoverable
-					router-link.navbar-link(:to='{ name: "api-index" }')
+					router-link.navbar-link(to='/api')
 						b-icon(icon='swatchbook')
 						span API
 					.navbar-dropdown
