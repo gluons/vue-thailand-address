@@ -40,10 +40,8 @@ export const unpkg: CDN = {
 	js: [
 		{
 			fileName: 'db.web.js',
-			unmin:
-				'https://unpkg.com/vue-thailand-address@3/dist/db.web.js',
-			min:
-				'https://unpkg.com/vue-thailand-address@3/dist/db.web.min.js'
+			unmin: 'https://unpkg.com/vue-thailand-address@3/dist/db.web.js',
+			min: 'https://unpkg.com/vue-thailand-address@3/dist/db.web.min.js'
 		},
 		{
 			fileName: 'vue-thailand-address.web.js',

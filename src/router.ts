@@ -15,19 +15,25 @@ const routes: RouteConfig[] = [
 		path: '/get-started',
 		name: 'get-started',
 		component: () =>
-			import(/* webpackChunkName: "get-started" */ './views/GetStarted.vue'),
+			import(
+				/* webpackChunkName: "get-started" */ './views/GetStarted.vue'
+			),
 		children: [
 			{
 				path: '',
 				name: 'get-started-bundler',
 				component: () =>
-					import(/* webpackChunkName: "get-started-bundler" */ './views/GetStarted/Bundler.vue')
+					import(
+						/* webpackChunkName: "get-started-bundler" */ './views/GetStarted/Bundler.vue'
+					)
 			},
 			{
 				path: 'browser',
 				name: 'get-started-browser',
 				component: () =>
-					import(/* webpackChunkName: "get-started-browser" */ './views/GetStarted/Browser.vue')
+					import(
+						/* webpackChunkName: "get-started-browser" */ './views/GetStarted/Browser.vue'
+					)
 			}
 		]
 	},
@@ -41,43 +47,57 @@ const routes: RouteConfig[] = [
 				path: '',
 				name: 'api-index',
 				component: () =>
-					import(/* webpackChunkName: "api-index" */ './views/API/Index.vue')
+					import(
+						/* webpackChunkName: "api-index" */ './views/API/Index.vue'
+					)
 			},
 			{
 				path: 'subdistrict',
 				name: 'api-subdistrict',
 				component: () =>
-					import(/* webpackChunkName: "api-subdistrict" */ './views/API/Subdistrict.vue')
+					import(
+						/* webpackChunkName: "api-subdistrict" */ './views/API/Subdistrict.vue'
+					)
 			},
 			{
 				path: 'district',
 				name: 'api-district',
 				component: () =>
-					import(/* webpackChunkName: "api-district" */ './views/API/District.vue')
+					import(
+						/* webpackChunkName: "api-district" */ './views/API/District.vue'
+					)
 			},
 			{
 				path: 'province',
 				name: 'api-province',
 				component: () =>
-					import(/* webpackChunkName: "api-province" */ './views/API/Province.vue')
+					import(
+						/* webpackChunkName: "api-province" */ './views/API/Province.vue'
+					)
 			},
 			{
 				path: 'zipcode',
 				name: 'api-zipcode',
 				component: () =>
-					import(/* webpackChunkName: "api-zipcode" */ './views/API/Zipcode.vue')
+					import(
+						/* webpackChunkName: "api-zipcode" */ './views/API/Zipcode.vue'
+					)
 			},
 			{
 				path: 'address-model',
 				name: 'api-address-model',
 				component: () =>
-					import(/* webpackChunkName: "api-address-model" */ './views/API/AddressModel.vue')
+					import(
+						/* webpackChunkName: "api-address-model" */ './views/API/AddressModel.vue'
+					)
 			},
 			{
 				path: 'datastore',
 				name: 'api-datastore',
 				component: () =>
-					import(/* webpackChunkName: "api-datastore" */ './views/API/DataStore.vue')
+					import(
+						/* webpackChunkName: "api-datastore" */ './views/API/DataStore.vue'
+					)
 			}
 		]
 	}

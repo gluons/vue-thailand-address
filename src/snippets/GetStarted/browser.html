@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Vue Thailand Address</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Vue Thailand Address</title>
 
-	<!-- Vue -->
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<!-- Vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-	<!-- CSS (optional) -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-thailand-address@3/dist/vue-thailand-address.min.css">
+		<!-- CSS (optional) -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/vue-thailand-address@3/dist/vue-thailand-address.min.css"
+		/>
 
-	<!-- JavaScript -->
-	<script src="https://cdn.jsdelivr.net/combine/npm/vue-thailand-address@3/dist/db.web.min.js,npm/vue-thailand-address@3"></script>
-</head>
-<body>
-	<div id="app">
-		<addressinput-subdistrict v-model="subdistrict"></addressinput-subdistrict>
-		<addressinput-district v-model="district"></addressinput-district>
-		<addressinput-province v-model="province"></addressinput-province>
-		<addressinput-zipcode v-model="zipcode"></addressinput-zipcode>
-	</div>
-	<script>
-		new Vue({
-			el: '#app',
-			data: {
-				subdistrict: '',
-				district: '',
-				province: '',
-				zipcode: ''
-			}
-		});
-	</script>
-</body>
+		<!-- JavaScript -->
+		<script src="https://cdn.jsdelivr.net/combine/npm/vue-thailand-address@3/dist/db.web.min.js,npm/vue-thailand-address@3"></script>
+	</head>
+	<body>
+		<div id="app">
+			<addressinput-subdistrict
+				v-model="subdistrict"
+			></addressinput-subdistrict>
+			<addressinput-district v-model="district"></addressinput-district>
+			<addressinput-province v-model="province"></addressinput-province>
+			<addressinput-zipcode v-model="zipcode"></addressinput-zipcode>
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					subdistrict: '',
+					district: '',
+					province: '',
+					zipcode: ''
+				}
+			});
+		</script>
+	</body>
 </html>

@@ -107,7 +107,6 @@ export default class Browser extends Vue {
 }
 </script>
 
-
 <style lang="scss">
 #get-started-browser {
 	li {

@@ -1,7 +1,9 @@
 import Buefy, { BuefyConfig } from 'buefy';
 import Vue from 'vue';
 import { Plugin as VueFragment } from 'vue-fragment';
-import VueHighlightJS, { Options as VueHighlightJSOptions } from 'vue-highlight.js';
+import VueHighlightJS, {
+	Options as VueHighlightJSOptions
+} from 'vue-highlight.js';
 import VueProgressBar from 'vue-progressbar';
 
 import bash from 'highlight.js/lib/languages/bash';

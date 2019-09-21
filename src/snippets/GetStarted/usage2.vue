@@ -13,10 +13,7 @@
 				:store="store1"
 				v-model="address1.province"
 			/>
-			<addressinput-zipcode
-				:store="store1"
-				v-model="address1.zipcode"
-			/>
+			<addressinput-zipcode :store="store1" v-model="address1.zipcode" />
 		</div>
 		<div id="address2">
 			<addressinput-subdistrict
@@ -31,10 +28,7 @@
 				:store="store2"
 				v-model="address2.province"
 			/>
-			<addressinput-zipcode
-				:store="store2"
-				v-model="address2.zipcode"
-			/>
+			<addressinput-zipcode :store="store2" v-model="address2.zipcode" />
 		</div>
 	</div>
 </template>

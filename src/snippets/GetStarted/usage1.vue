@@ -1,9 +1,13 @@
 <template>
 	<div id="app">
-		<addressinput-subdistrict v-model="subdistrict"/> <!-- ตำบล/แขวง -->
-		<addressinput-district v-model="district"/> <!-- อำเภอ/เขต -->
-		<addressinput-province v-model="province"/> <!-- จังหวัด -->
-		<addressinput-zipcode v-model="zipcode"/> <!-- รหัสไปรษณีย์ -->
+		<!-- ตำบล/แขวง -->
+		<addressinput-subdistrict v-model="subdistrict" />
+		<!-- อำเภอ/เขต -->
+		<addressinput-district v-model="district" />
+		<!-- จังหวัด -->
+		<addressinput-province v-model="province" />
+		<!-- รหัสไปรษณีย์ -->
+		<addressinput-zipcode v-model="zipcode" />
 	</div>
 </template>
 
