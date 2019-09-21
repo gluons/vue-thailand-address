@@ -1,3 +1,6 @@
+# Dist files
+dist/
+
 # Ignore some files that are cause error on Prettier
 src/App.vue
 src/views/API/District.vue
