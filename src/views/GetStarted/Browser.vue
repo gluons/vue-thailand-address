@@ -99,7 +99,7 @@ export default class Browser extends Vue {
 	copyText(text: string) {
 		copy(text);
 
-		this.$toast.open({
+		this.$buefy.toast.open({
 			message: 'คัดลอกเรียบร้อย',
 			type: 'is-success'
 		});

@@ -9,7 +9,7 @@
 	h2 span {
 		vertical-align: middle;
 	}
-	.tooltip .hljs {
+	.b-tooltip .hljs {
 		cursor: pointer;
 	}
 }

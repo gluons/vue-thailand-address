@@ -1,8 +1,14 @@
 import Buefy, { BuefyConfig } from 'buefy';
 import Vue from 'vue';
 import { Plugin as VueFragment } from 'vue-fragment';
-import VueHighlightJS from 'vue-highlight.js';
+import VueHighlightJS, { Options as VueHighlightJSOptions } from 'vue-highlight.js';
 import VueProgressBar from 'vue-progressbar';
+
+import bash from 'highlight.js/lib/languages/bash';
+import css from 'highlight.js/lib/languages/css';
+import javascript from 'highlight.js/lib/languages/javascript';
+import typescript from 'highlight.js/lib/languages/typescript';
+import vue from 'vue-highlight.js/lib/languages/vue';
 
 import App from './App.vue';
 import router from './router';
@@ -32,14 +38,22 @@ requireComponent.keys().forEach(file => {
 Vue.config.productionTip = false;
 
 // Plugins
-Vue.use(Buefy, {
+Vue.use<BuefyConfig>(Buefy, {
 	defaultIconPack: 'fas'
-} as BuefyConfig);
+});
 Vue.use(VueFragment);
 Vue.use(VueProgressBar, {
 	color: 'hsl(171, 100%, 41%)'
 });
-Vue.use(VueHighlightJS);
+Vue.use<VueHighlightJSOptions>(VueHighlightJS, {
+	languages: {
+		bash,
+		css,
+		javascript,
+		typescript,
+		vue
+	}
+});
 Vue.use(jumpPlugin);
 
 new Vue({
