@@ -1,56 +1,66 @@
 import { writeFileSync } from 'fs';
 import { resolve } from 'path';
 import signale from 'signale';
-import sm from 'sitemap';
+import { createSitemap, EnumChangefreq } from 'sitemap';
 
-const sitemap = sm.createSitemap({
+const sitemap = createSitemap({
 	hostname: 'https://vue-thailand-address.netlify.com',
 	urls: [
-		{ url: '/', changefreq: 'monthly', lastmodrealtime: true },
+		{
+			url: '/',
+			changefreq: EnumChangefreq.MONTHLY,
+			lastmodfile: resolve(__dirname, '../src/views/Home.vue')
+		},
 		{
 			url: '/get-started',
-			changefreq: 'weekly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.WEEKLY,
+			lastmodfile: resolve(
+				__dirname,
+				'../src/views/GetStarted/Bundler.vue'
+			)
 		},
 		{
 			url: '/get-started/browser',
-			changefreq: 'weekly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.WEEKLY,
+			lastmodfile: resolve(
+				__dirname,
+				'../src/views/GetStarted/Browser.vue'
+			)
 		},
 		{
 			url: '/api',
-			changefreq: 'monthly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.MONTHLY,
+			lastmodfile: resolve(__dirname, '../src/views/API/Index.vue')
 		},
 		{
 			url: '/api/subdistrict',
-			changefreq: 'weekly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.WEEKLY,
+			lastmodfile: resolve(__dirname, '../src/views/API/Subdistrict.vue')
 		},
 		{
 			url: '/api/district',
-			changefreq: 'weekly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.WEEKLY,
+			lastmodfile: resolve(__dirname, '../src/views/API/District.vue')
 		},
 		{
 			url: '/api/province',
-			changefreq: 'weekly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.WEEKLY,
+			lastmodfile: resolve(__dirname, '../src/views/API/Province.vue')
 		},
 		{
 			url: '/api/zipcode',
-			changefreq: 'weekly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.WEEKLY,
+			lastmodfile: resolve(__dirname, '../src/views/API/Zipcode.vue')
 		},
 		{
 			url: '/api/address-model',
-			changefreq: 'weekly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.WEEKLY,
+			lastmodfile: resolve(__dirname, '../src/views/API/AddressModel.vue')
 		},
 		{
 			url: '/api/datastore',
-			changefreq: 'weekly',
-			lastmodrealtime: true
+			changefreq: EnumChangefreq.WEEKLY,
+			lastmodfile: resolve(__dirname, '../src/views/API/DataStore.vue')
 		}
 	]
 });
