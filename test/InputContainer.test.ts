@@ -1,10 +1,8 @@
 /// <reference path='../src/sfc.d.ts' />
 
-import { config, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 
 import InputContainer from '../src/components/InputContainer.vue';
-
-config.logModifiedComponents = false;
 
 const label = 'จังหวัด';
 const target = 'province';

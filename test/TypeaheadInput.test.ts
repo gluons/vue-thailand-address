@@ -1,10 +1,8 @@
 /// <reference path='../src/sfc.d.ts' />
 
-import { config, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 
 import TypeaheadInput from '../src/components/TypeaheadInput.vue';
-
-config.logModifiedComponents = false;
 
 const query = 'กรุงเทพมหานคร';
 const itemCount = 182;
