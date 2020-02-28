@@ -2449,10 +2449,10 @@ cosmiconfig@^5.0.0:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
-cp-file@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.npmjs.org/cp-file/-/cp-file-7.0.0.tgz#b9454cfd07fe3b974ab9ea0e5f29655791a9b8cd"
-  integrity sha512-0Cbj7gyvFVApzpK/uhCtQ/9kE9UnYpxMzaq5nQQC/Dh4iaj5fxp7iEFIullrYwzj8nf0qnsI1Qsx34hAeAebvw==
+cp-file@^8.0.0:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/cp-file/-/cp-file-8.0.1.tgz#7cf382853a5a5ad2152766ab3f5a95f0189b5ccc"
+  integrity sha512-P3iYQyJegjYEoerocg071Cubh0yoebHv0ojmy499yc0YOUxatb1X5jeb9w2FmGtq7yqa1Pfq0cxmaqEzk0vMew==
   dependencies:
     graceful-fs "^4.1.2"
     make-dir "^3.0.0"
