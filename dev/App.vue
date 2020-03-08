@@ -8,7 +8,7 @@
 				addressinput-district(v-model='data1.district')
 			.row
 				addressinput-province(v-model='data1.province')
-				addressinput-zipcode(v-model='data1.zipcode')
+				addressinput-zipcode(v-model='data1.zipcode' numbered)
 		.button-container
 			button(type='button' @click='clear1') Clear
 		.divider
@@ -40,6 +40,7 @@
 				addressinput-zipcode(
 					:store='newStore'
 					v-model='data2.zipcode'
+					numbered
 				)
 		.button-container
 			button(type='button' @click='clear2') Clear

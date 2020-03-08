@@ -2,7 +2,7 @@
 .th-address-container(:style='containerStyle')
 	input.th-address-input(
 		:class='inputClassList'
-		type='text'
+		:type='inputType'
 		autocomplete='off'
 		:value='value'
 		@input='search($event.target.value)'
@@ -57,6 +57,7 @@ export default class TypeaheadInput extends Vue {
 	@Prop({ type: Number, default: 200 }) autocompleteMaxHeight: number;
 	@Prop({ type: Number, default: 5 }) autocompleteItemCount: number;
 	@Prop({ type: String, default: '' }) inputClass: string;
+	@Prop({ type: Boolean, default: false }) numbered: boolean;
 
 	// Data
 	possibles: AddressEntry[] = [];
@@ -74,6 +75,13 @@ export default class TypeaheadInput extends Vue {
 	}
 
 	// Computed
+	get inputType() {
+		if (!this.numbered || this.target !== 'zipcode') {
+			return 'text';
+		}
+
+		return 'number';
+	}
 	get containerStyle() {
 		return {
 			position: 'relative'
@@ -181,6 +189,9 @@ input.th-address-input {
 	&:focus {
 		outline: 0;
 		border-color: $border-focus-color;
+	}
+	&[type='number'] {
+		appearance: textfield;
 	}
 }
 </style>
