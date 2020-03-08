@@ -52,5 +52,8 @@
     "vue-cli-plugin-pug": "^1.0.7",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.42.0"
+  },
+  "resolutions": {
+    "vue-cli-plugin-pug/raw-loader": "^4.0.0"
   }
 }
