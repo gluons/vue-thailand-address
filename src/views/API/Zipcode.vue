@@ -35,6 +35,22 @@
 				type='string'
 				defaultValue='"รหัสไปรษณีย์"'
 			) label ของช่องกรอกที่อยู่
+			APIProp(
+				name='numbered'
+				type='boolean'
+				defaultValue='false'
+			)
+				| เปลี่ยน
+				|
+				highlight-code(inline) type
+				|
+				| ของ
+				|
+				highlight-code(lang='html' inline) &lt;input&gt;
+				|
+				| ให้เป็น
+				|
+				highlight-code(inline) number
 			b-message(type='is-info' has-icon)
 				| คุณสามารถใช้ attribute ต่างๆของ
 				|
