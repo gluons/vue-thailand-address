@@ -4109,10 +4109,10 @@ lcid@^2.0.0:
   dependencies:
     invert-kv "^2.0.0"
 
-leven@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/leven/-/leven-2.1.0.tgz#c2e7a9f772094dee9d34202ae8acce4687875580"
-  integrity sha1-wuep93IJTe6dNCAq6KzORoeHVYA=
+leven@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
+  integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
 lines-and-columns@^1.1.6:
   version "1.1.6"
@@ -7791,12 +7791,12 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npmjs.org/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue-thailand-address@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/vue-thailand-address/-/vue-thailand-address-3.2.0.tgz#2813a63b91091f5c32ca452ce7417dcf88fbbe66"
-  integrity sha512-4W/6P6et/9SKJOjj2Hkpaea64+4i4w6av/VM0tpvbqpSFAxQSmls4nIAL0EQ+vVeW1Ri7ktbqYyQmKjZjS7Ssw==
+vue-thailand-address@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/vue-thailand-address/-/vue-thailand-address-3.3.0.tgz#1045b38f6abef2e3497a5cb2b747b2a674ef4c1b"
+  integrity sha512-ju4Z9iZa1rZ3+o6qQbh56E50z9yQNLAnaloq4FuYkq/lI0wWpOE27NBTe/nOPCmiDt3dNrsyYPqqyJ3eEXLuFw==
   dependencies:
-    leven "^2.1.0"
+    leven "^3.1.0"
     lodash.pick "^4.4.0"
 
 vue@^2.6.11:
