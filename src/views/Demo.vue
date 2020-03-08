@@ -39,6 +39,7 @@
 				addressinput-zipcode(
 					:store='address.store'
 					v-model='address.model.zipcode'
+					numbered
 				)
 </template>
 
