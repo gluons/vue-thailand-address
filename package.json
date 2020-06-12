@@ -50,7 +50,7 @@
     "@gluons/vue-pack-copy-plugin": "^1.20.3",
     "@gluons/vue-pack-splitchunks-plugin": "^1.20.3",
     "@types/copy-webpack-plugin": "^6.0.0",
-    "@types/jest": "^25.1.4",
+    "@types/jest": "^26.0.0",
     "@types/lodash.pick": "^4.4.6",
     "@types/node": "10",
     "@types/webpack-node-externals": "^1.7.1",
