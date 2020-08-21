@@ -60,7 +60,7 @@
     "cp-file": "^9.0.0",
     "jest": "^26.0.0",
     "ts-jest": "^26.0.0",
-    "ts-node": "^8.6.2",
+    "ts-node": "^9.0.0",
     "tslint": "^6.0.0",
     "tslint-config-gluons": "^2.1.0",
     "typescript": "^4.0.0",
