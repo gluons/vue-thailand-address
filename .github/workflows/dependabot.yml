@@ -28,4 +28,4 @@ jobs:
       MERGE_COMMIT_MESSAGE: "🔀 Automerge pull request #${{ github.event.pull_request.number }}"
     steps:
       - name: Automerge
-        uses: pascalgn/automerge-action@v0.9.0
+        uses: pascalgn/automerge-action@v0.12.0
