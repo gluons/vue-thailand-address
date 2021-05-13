@@ -15,7 +15,7 @@ function getPossibles(dataSource: ReadonlyArray<AddressEntry>, target: Target, q
 	const newDataSource = dataSource.slice(0); // Prevent mutate the original data source. Clone it!
 
 	const key = translateTarget(target);
-	const pattern = new RegExp(`^${query}`);
+	const pattern = new RegExp(`^${query.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1")}`);
 	const possibles: AddressEntry[] = newDataSource.filter(item => {
 		return item[key] ? pattern.test(`${item[key]}`) : false;
 	});
