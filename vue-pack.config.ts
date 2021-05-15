@@ -33,7 +33,7 @@ const config: Configuration = {
 	externals: {
 		module: [
 			nodeExternals({
-				whitelist: [
+				allowlist: [
 					'vue-class-component',
 					'vue-property-decorator'
 				]
