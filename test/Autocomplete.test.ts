@@ -24,7 +24,8 @@ describe('Autocomplete', () => {
 	});
 
 	it('should render expected DOM', () => {
-		expect(wrapper.is('ul.th-address-autocomplete')).toBe(true);
+		expect(wrapper.element.tagName).toBe('UL');
+		expect(wrapper.classes('th-address-autocomplete')).toBe(true);
 
 		const listItems = wrapper.findAll('li');
 

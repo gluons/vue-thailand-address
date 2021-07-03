@@ -16,8 +16,8 @@ describe('TypeaheadInput', () => {
 	});
 
 	it('should render expected DOM', () => {
-		expect(wrapper.is('.th-address-container')).toBe(true);
-		expect(wrapper.contains('input.th-address-input')).toBe(true);
+		expect(wrapper.classes('th-address-container')).toBe(true);
+		expect(wrapper.element.querySelector('input.th-address-input')).toBeTruthy();
 	});
 
 	it('should has expected props', () => {

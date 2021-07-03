@@ -22,8 +22,8 @@ describe('InputContainer', () => {
 	});
 
 	it('should render expected DOM', () => {
-		expect(wrapper.is('.th-address')).toBe(true);
-		expect(wrapper.contains('label.th-address-label')).toBe(true);
+		expect(wrapper.classes('th-address')).toBe(true);
+		expect(wrapper.element.querySelector('label.th-address-label')).toBeTruthy();
 		expect(wrapper.find('.label-text').text()).toEqual(label);
 	});
 });
