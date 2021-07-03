@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/dt/vue-thailand-address.svg?style=flat-square)](https://www.npmjs.com/package/vue-thailand-address)
 [![Codacy grade](https://img.shields.io/codacy/grade/f12ddf1f1a9f40dd834a28a65b2c1727.svg?style=flat-square)](https://www.codacy.com/app/gluons/vue-thailand-address)
 [![Known Vulnerabilities](https://snyk.io/test/github/gluons/vue-thailand-address/badge.svg?targetFile=package.json&style=flat-square)](https://snyk.io/test/github/gluons/vue-thailand-address?targetFile=package.json)
-[![Travis (.org)](https://img.shields.io/travis/gluons/vue-thailand-address.svg?style=flat-square)](https://travis-ci.org/gluons/vue-thailand-address)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/gluons/vue-thailand-address/CI/master?style=flat-square)](https://github.com/gluons/vue-thailand-address/actions/workflows/ci.yaml)
 [![TSLint](https://img.shields.io/badge/TSLint-gluons-15757B.svg?style=flat-square)](https://github.com/gluons/tslint-config-gluons)
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://github.com/carloscuesta/gitmoji)
 
