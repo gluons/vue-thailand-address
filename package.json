@@ -75,6 +75,6 @@
     "lodash.pick": "^4.4.0"
   },
   "resolutions": {
-    "node-sass": "4"
+    "node-sass": "6"
   }
 }
