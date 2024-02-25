@@ -1,6 +1,6 @@
 {
   "name": "vue-thailand-address",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "Thai address input for Vue.",
   "main": "./dist/vue-thailand-address.cjs.js",
   "module": "./dist/vue-thailand-address.es.js",
