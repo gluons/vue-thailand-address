@@ -728,6 +728,15 @@
         "amphoe_code": 1026,
         "province_code": 10
     },
+	{
+        "district": "รัชดาภิเษก",
+        "amphoe": "ดินแดง",
+        "province": "กรุงเทพมหานคร",
+        "zipcode": 10400,
+        "district_code": 101703,
+        "amphoe_code": 1026,
+        "province_code": 10
+    },
     {
         "district": "ดุสิต",
         "amphoe": "ดุสิต",
@@ -1107,7 +1116,34 @@
         "province_code": 10
     },
     {
-        "district": "บางบอน",
+        "district": "บางบอนเหนือ",
+        "amphoe": "บางบอน",
+        "province": "กรุงเทพมหานคร",
+        "zipcode": 10150,
+        "district_code": 102104,
+        "amphoe_code": 1050,
+        "province_code": 10
+    },
+	{
+        "district": "บางบอนใต้",
+        "amphoe": "บางบอน",
+        "province": "กรุงเทพมหานคร",
+        "zipcode": 10150,
+        "district_code": 102104,
+        "amphoe_code": 1050,
+        "province_code": 10
+    },
+	{
+        "district": "คลองบางพราน",
+        "amphoe": "บางบอน",
+        "province": "กรุงเทพมหานคร",
+        "zipcode": 10150,
+        "district_code": 102104,
+        "amphoe_code": 1050,
+        "province_code": 10
+    },
+	{
+        "district": "คลองบางบอน",
         "amphoe": "บางบอน",
         "province": "กรุงเทพมหานคร",
         "zipcode": 10150,
@@ -1439,6 +1475,15 @@
         "amphoe_code": 1008,
         "province_code": 10
     },
+	{
+        "district": "พญาไท",
+        "amphoe": "พญาไท",
+        "province": "กรุงเทพมหานคร",
+        "zipcode": 10400,
+        "district_code": 100299,
+        "amphoe_code": 1014,
+        "province_code": 10
+    },
     {
         "district": "สามเสนใน",
         "amphoe": "พญาไท",
@@ -1558,6 +1603,15 @@
     },
     {
         "district": "บางจาก",
+        "amphoe": "พระโขนง",
+        "province": "กรุงเทพมหานคร",
+        "zipcode": 10260,
+        "district_code": 100905,
+        "amphoe_code": 1009,
+        "province_code": 10
+    },
+	{
+        "district": "พระโขนงใต้",
         "amphoe": "พระโขนง",
         "province": "กรุงเทพมหานคร",
         "zipcode": 10260,
